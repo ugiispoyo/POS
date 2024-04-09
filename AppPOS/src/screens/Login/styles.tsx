@@ -20,6 +20,7 @@ export default StyleSheet.create({
   gr: {
     width: '100%',
     height: '80%',
+    minHeight: 550,
     position: 'absolute',
     top: 0,
   },
@@ -34,7 +35,7 @@ export default StyleSheet.create({
   },
   shadowCardLogin: {
     width: '90%',
-    height: '38%',
+    height: 280,
     shadowColor: '#171717',
     shadowOffset: {width: 1, height: 2},
     shadowOpacity: 0.1,

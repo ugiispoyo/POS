@@ -19,6 +19,7 @@ export default StyleSheet.create({
   gr: {
     width: '100%',
     height: '80%',
+    minHeight: 550,
     position: 'absolute',
     top: 0,
   },
