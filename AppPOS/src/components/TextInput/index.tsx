@@ -6,7 +6,6 @@ import {T_TextInput} from './type';
 
 export default function index({
   label,
-  placeholder,
   ...props
 }: T_TextInput & TextInputProps): React.JSX.Element {
   return (
@@ -14,7 +13,6 @@ export default function index({
       <Text style={styles.labelInputText}>{label}</Text>
       <TextInput
         style={styles.inputText}
-        placeholder={placeholder}
         placeholderTextColor={'#ccc'}
         {...props}
       />
