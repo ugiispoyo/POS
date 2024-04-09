@@ -14,8 +14,8 @@ function App(): React.JSX.Element {
       <Stack.Navigator
         initialRouteName="Host"
         screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Host" component={Host} />
+        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>
     </NavigationContainer>

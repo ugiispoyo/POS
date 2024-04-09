@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image, View} from 'react-native';
+import {Image, SafeAreaView, StatusBar, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import DropShadow from 'react-native-drop-shadow';
@@ -16,7 +16,8 @@ export default function Host(): React.JSX.Element {
   const [host, setHost] = useState<string>('');
 
   return (
-    <View style={styles.body}>
+    <SafeAreaView style={styles.body}>
+      <StatusBar animated={true} translucent backgroundColor="transparent" />
       <View style={styles.bg}>
         <Image
           style={styles.bgImg}
@@ -64,6 +65,6 @@ export default function Host(): React.JSX.Element {
           </Animated.View>
         </View>
       </DropShadow>
-    </View>
+    </SafeAreaView>
   );
 }

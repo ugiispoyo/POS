@@ -1,9 +1,5 @@
-import React, {useState} from 'react';
-import {Image, View} from 'react-native';
-
-import LinearGradient from 'react-native-linear-gradient';
-import DropShadow from 'react-native-drop-shadow';
-import Animated, {FadeInDown, FadeInUp} from 'react-native-reanimated';
+import React from 'react';
+import {SafeAreaView, StatusBar, View} from 'react-native';
 
 import Header from './components/header';
 import Card from './components/card';
@@ -12,9 +8,10 @@ import styles from './styles';
 
 export default function Home(): React.JSX.Element {
   return (
-    <View style={styles.body}>
+    <SafeAreaView style={styles.body}>
+      <StatusBar animated={true} translucent backgroundColor="transparent" />
       <Header />
       <Card />
-    </View>
+    </SafeAreaView>
   );
 }
