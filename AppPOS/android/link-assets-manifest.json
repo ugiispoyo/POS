@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/GloriaHallelujah-Regular.ttf",
+      "sha1": "f8daece907bf486d3ccf7138f34027e37583c862"
+    },
+    {
+      "path": "src/assets/fonts/SpecialElite-Regular.ttf",
+      "sha1": "dba5375769650ccf8308f24b73c5a1563d8a4731"
+    }
+  ]
+}

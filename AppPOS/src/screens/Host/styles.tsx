@@ -16,12 +16,19 @@ export default StyleSheet.create({
     color: '#fff',
     textAlign: 'left',
   },
-  gr: {
+  bg: {
     width: '100%',
-    height: '80%',
+    height: '100%',
     minHeight: 550,
     position: 'absolute',
+    backgroundColor: '#000000f2',
     top: 0,
+  },
+  bgImg: {
+    width: '100%',
+    height: '100%',
+    minHeight: 700,
+    position: 'absolute'
   },
   cardHost: {
     width: '100%',
@@ -36,8 +43,8 @@ export default StyleSheet.create({
     width: '90%',
     height: 180,
     shadowColor: '#171717',
-    shadowOffset: {width: 1, height: 2},
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
+    shadowOffset: {width: 2, height: 2},
+    shadowOpacity: 3,
+    shadowRadius: 5,
   }
 });

@@ -17,12 +17,19 @@ export default StyleSheet.create({
     color: '#fff',
     textAlign: 'left',
   },
-  gr: {
+  bg: {
     width: '100%',
-    height: '80%',
+    height: '100%',
     minHeight: 550,
     position: 'absolute',
+    backgroundColor: '#000000f2',
     top: 0,
+  },
+  bgImg: {
+    width: '100%',
+    height: '100%',
+    minHeight: 700,
+    position: 'absolute'
   },
   cardLogin: {
     width: '100%',

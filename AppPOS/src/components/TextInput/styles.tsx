@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   labelInputText: {
-    color: '#0f97ce',
+    color: '#608B55',
     fontSize: 14,
     marginBottom: 5,
     fontWeight: '600',

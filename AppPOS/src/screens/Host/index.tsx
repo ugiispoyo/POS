@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
+import {Image, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import LinearGradient from 'react-native-linear-gradient';
 import DropShadow from 'react-native-drop-shadow';
 import Animated, {FadeInDown, FadeInUp} from 'react-native-reanimated';
 
@@ -18,12 +17,12 @@ export default function Host(): React.JSX.Element {
 
   return (
     <View style={styles.body}>
-      <LinearGradient
-        style={styles.gr}
-        colors={['#10a8e5', '#fff']}
-        start={{x: 0, y: 0}}
-        end={{x: 0, y: 1}}
-      />
+      <View style={styles.bg}>
+        <Image
+          style={styles.bgImg}
+          source={require('@assets/images/bg-header.jpeg')}
+        />
+      </View>
       <Animated.Text
         entering={FadeInUp.delay(200).duration(1000)}
         style={styles.textHost}>
@@ -35,7 +34,7 @@ export default function Host(): React.JSX.Element {
           fontSize: 14,
           fontWeight: '600',
           marginBottom: 20,
-          color: '#21232b',
+          color: '#fff',
           textAlign: 'center',
         }}>
         Masukan alamat hostname anda untuk melanjutkan, contoh:
