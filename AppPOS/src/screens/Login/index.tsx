@@ -1,9 +1,12 @@
 import React, {useState} from 'react';
-import {Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {View} from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
 import DropShadow from 'react-native-drop-shadow';
 import Animated, {FadeInDown, FadeInUp} from 'react-native-reanimated';
+
+import TextInput from '@components/TextInput';
+import Button from '@components/Button';
 
 import styles from './styles';
 
@@ -29,26 +32,22 @@ export default function Login(): React.JSX.Element {
           <Animated.View
             entering={FadeInDown.delay(200).duration(1000).springify()}
             style={{marginBottom: 20}}>
-            <Text style={styles.labelInputText}>Email</Text>
             <TextInput
-              style={styles.inputText}
-              onChangeText={setEmail}
+              label="Email"
               value={email}
+              onChangeText={setEmail}
               placeholder="examlple@gmail.com"
-              placeholderTextColor={'#ccc'}
             />
           </Animated.View>
           <Animated.View
             entering={FadeInDown.delay(400).duration(1000).springify()}
             style={{marginBottom: 20}}>
-            <Text style={styles.labelInputText}>Password</Text>
             <TextInput
-              style={styles.inputText}
-              onChangeText={setPassword}
+              label="Passowrd"
               value={password}
-              placeholder="examlple@gmail.com"
+              onChangeText={setPassword}
+              placeholder="*****"
               secureTextEntry
-              placeholderTextColor={'#ccc'}
             />
           </Animated.View>
           <Animated.View
@@ -59,9 +58,7 @@ export default function Login(): React.JSX.Element {
               width: '100%',
               alignItems: 'center',
             }}>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.textButton}>Login</Text>
-            </TouchableOpacity>
+            <Button>Login</Button>
           </Animated.View>
         </View>
       </DropShadow>

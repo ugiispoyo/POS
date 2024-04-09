@@ -1,6 +1,46 @@
-module.exports = {
-  presets: ['module:@react-native/babel-preset'],
-  plugins: [
-    'react-native-reanimated/plugin'
-  ]
-};
+// module.exports = {
+//   presets: ['module:@react-native/babel-preset'],
+//   plugins: [
+//     'react-native-reanimated/plugin'
+//   ]
+// };
+const config = require('./tsconfig.json')
+
+const { baseUrl, paths } = config.compilerOptions
+
+const getAliases = () => {
+  return Object.entries(paths).reduce((aliases, alias) => {
+    const key = alias[0].replace('/*', '')
+    const value = baseUrl + alias[1][0].replace('*', '')
+    return {
+      ...aliases,
+      [key]: value,
+    }
+  }, {})
+}
+
+module.exports = function (api) {
+  api.cache(true)
+  return {
+    presets: ['module:@react-native/babel-preset'],
+    plugins: [
+      'react-native-reanimated/plugin',
+      [
+        'module-resolver',
+        {
+          extensions: [
+            '.js',
+            '.jsx',
+            '.ts',
+            '.tsx',
+            '.android.js',
+            '.android.tsx',
+            '.ios.js',
+            '.ios.tsx',
+          ],
+          alias: getAliases(),
+        },
+      ],
+    ],
+  }
+}
