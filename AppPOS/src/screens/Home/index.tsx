@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, View} from 'react-native';
+import {SafeAreaView, StatusBar} from 'react-native';
 
 import Header from './components/header';
 import Card from './components/card';
