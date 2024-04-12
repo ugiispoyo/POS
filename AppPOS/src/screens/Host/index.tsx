@@ -10,10 +10,11 @@ import Button from '@components/Button';
 
 import styles from './styles';
 
-export default function Host(): React.JSX.Element {
-  const navigation = useNavigation<any>();
+import {T_GlobalContextCTX} from '@context/types';
+import {useGlobalProps} from '@context/context';
 
-  const [host, setHost] = useState<string>('');
+export default function Host(): React.JSX.Element {
+  const {host, setHost, saveHost} = useGlobalProps() as T_GlobalContextCTX;
 
   return (
     <SafeAreaView style={styles.body}>
@@ -61,7 +62,7 @@ export default function Host(): React.JSX.Element {
               width: '100%',
               alignItems: 'center',
             }}>
-            <Button onPress={() => navigation.navigate('Login')}>Save</Button>
+            <Button onPress={async () => saveHost()}>Simpan</Button>
           </Animated.View>
         </View>
       </DropShadow>

@@ -5,7 +5,7 @@ import {T_GlobalContextCTX, T_GlobalContextProvider} from './types';
 
 export const GlobalContextCTX = createContext<T_GlobalContextCTX | null>(null);
 
-export const useProps = (): T_GlobalContextCTX | null => {
+export const useGlobalProps = (): T_GlobalContextCTX | null => {
   const data = useContext(GlobalContextCTX);
   return data;
 };
