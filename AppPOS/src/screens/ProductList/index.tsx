@@ -1,7 +1,8 @@
 import React from 'react';
 import {SafeAreaView, StatusBar} from 'react-native';
 
-import Header from './components/header';
+import Header from '@components/Header';
+
 import List from './components/list';
 import Navbar from './components/navbar';
 
@@ -13,7 +14,7 @@ export default function ProductList(): React.JSX.Element {
     <ProductListProvider>
       <SafeAreaView style={styles.body}>
         <StatusBar animated={true} translucent backgroundColor="transparent" />
-        <Header />
+        <Header title="List produk" />
         <Navbar />
         <List />
       </SafeAreaView>
