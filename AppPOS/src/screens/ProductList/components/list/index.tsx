@@ -33,14 +33,23 @@ export default function List(): React.JSX.Element {
           textDecorationLine: 'line-through',
         },
       }).price;
+
     const isActive =
       state.ProductList.action.hasAction &&
       state.ProductList.action.id === Item.id + Item.index;
 
+    const styleDeactive = !isActive
+      ? StyleSheet.create({
+          item: {
+            borderBottomRightRadius: 10,
+          },
+        }).item
+      : {};
+
     return (
       <View style={{position: 'relative'}}>
         <Pressable
-          style={styles.item}
+          style={{...styles.item, ...styleDeactive}}
           onPress={() =>
             dispatch({
               type: 'SET_ACTION_PRODUCT_LIST',
@@ -105,7 +114,8 @@ export default function List(): React.JSX.Element {
       <View style={styles.wrapActionOuter}>
         <Animated.View
           style={styles.wrapAction}
-          entering={FadeInUp.duration(100).delay(1000)}>
+          entering={FadeInUp.duration(50).delay(10)}
+        >
           <TouchableOpacity style={{marginRight: 20}}>
             <Image
               style={{width: 25, height: 25}}

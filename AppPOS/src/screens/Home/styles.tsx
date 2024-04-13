@@ -58,6 +58,7 @@ export default StyleSheet.create({
     height: '43%',
     position: 'relative',
     borderColor: '#bbb',
+    backgroundColor: '#fafafa',
     borderWidth: 1,
     display: 'flex',
     justifyContent: 'center',

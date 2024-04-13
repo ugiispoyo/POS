@@ -39,6 +39,7 @@ export default StyleSheet.create({
     borderTopRightRadius: 10,
     borderBottomLeftRadius: 10,
     flexDirection: 'row',
+    backgroundColor: '#fafafa'
   },
   itemImg: {
     width: '15%',
@@ -84,6 +85,7 @@ export default StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#fafafa'
   }
 });
