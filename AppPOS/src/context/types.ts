@@ -2,7 +2,7 @@ import {UseFormReturn} from 'react-hook-form';
 import {T_Action, T_State} from 'store/type';
 
 export type T_GlobalContextCTX = {
-  saveHost: () => Promise<void>;
+  saveHost: (data: T_FieldHostname) => Promise<void>;
   changeHostname: () => Promise<void>;
   hookHostnameForm: UseFormReturn<T_FieldHostname, any, undefined>;
 

@@ -6,8 +6,9 @@ import {
   FlatList,
   StyleSheet,
   TouchableOpacity,
-  Dimensions,
+  Pressable,
 } from 'react-native';
+import Animated, {FadeInUp} from 'react-native-reanimated';
 
 import numberToIDR from '@utils/numberToIDR';
 
@@ -15,11 +16,13 @@ import styles from '../../styles';
 
 import {useProps} from '@screens/ProductList/context';
 import {T_ListProducts, T_ProductListCTX} from '@screens/ProductList/types';
+import {store} from '@store/index';
 
 export default function List(): React.JSX.Element {
+  const {dispatch, state} = store();
   const {ListProducts} = useProps() as T_ProductListCTX;
 
-  const Item = (Item: T_ListProducts) => {
+  const Item = (Item: {index: number} & T_ListProducts) => {
     const stylePrice =
       Item.isDiscount &&
       StyleSheet.create({
@@ -30,22 +33,47 @@ export default function List(): React.JSX.Element {
           textDecorationLine: 'line-through',
         },
       }).price;
+    const isActive =
+      state.ProductList.action.hasAction &&
+      state.ProductList.action.id === Item.id + Item.index;
 
     return (
-      <TouchableOpacity style={styles.item}>
-        <Image style={styles.itemImg} source={{uri: Item.image}} />
-        <Text style={styles.itemTextName}>{Item.name}</Text>
-        <View style={{display: 'flex', width: '33%', marginLeft: 3}}>
-          {Item.isDiscount ? (
-            <>
-              <Text
-                style={{
-                  ...styles.itemTextName,
-                  fontWeight: '600',
-                  width: '100%',
-                }}>
-                {numberToIDR(Item.priceAfterDiscount)}
-              </Text>
+      <View style={{position: 'relative'}}>
+        <Pressable
+          style={styles.item}
+          onPress={() =>
+            dispatch({
+              type: 'SET_ACTION_PRODUCT_LIST',
+              value: {
+                hasAction: !isActive,
+                id: isActive ? '' : Item.id + Item.index,
+              },
+            })
+          }>
+          <Image style={styles.itemImg} source={{uri: Item.image}} />
+          <Text style={styles.itemTextName}>{Item.name}</Text>
+          <View style={{display: 'flex', width: '33%', marginLeft: 3}}>
+            {Item.isDiscount ? (
+              <>
+                <Text
+                  style={{
+                    ...styles.itemTextName,
+                    fontWeight: '600',
+                    width: '100%',
+                  }}>
+                  {numberToIDR(Item.priceAfterDiscount)}
+                </Text>
+                <Text
+                  style={{
+                    ...styles.itemTextName,
+                    ...stylePrice,
+                    fontWeight: '600',
+                    width: '100%',
+                  }}>
+                  {numberToIDR(Item.price)}
+                </Text>
+              </>
+            ) : (
               <Text
                 style={{
                   ...styles.itemTextName,
@@ -55,29 +83,43 @@ export default function List(): React.JSX.Element {
                 }}>
                 {numberToIDR(Item.price)}
               </Text>
-            </>
-          ) : (
-            <Text
-              style={{
-                ...styles.itemTextName,
-                ...stylePrice,
-                fontWeight: '600',
-                width: '100%',
-              }}>
-              {numberToIDR(Item.price)}
-            </Text>
+            )}
+          </View>
+          <View style={styles.itemViewPcs}>
+            <Text style={{color: '#000'}}>{Item.stock}</Text>
+          </View>
+          {Item.isDiscount && (
+            <Image
+              style={styles.itemImgDiscount}
+              source={require('@assets/icons/discount.png')}
+            />
           )}
-        </View>
-        <View style={styles.itemViewPcs}>
-          <Text style={{color: '#000'}}>{Item.stock}</Text>
-        </View>
-        {Item.isDiscount && (
-          <Image
-            style={styles.itemImgDiscount}
-            source={require('@assets/icons/discount.png')}
-          />
-        )}
-      </TouchableOpacity>
+        </Pressable>
+        {isActive && <Action {...Item} />}
+      </View>
+    );
+  };
+
+  const Action = (Item: T_ListProducts) => {
+    return (
+      <View style={styles.wrapActionOuter}>
+        <Animated.View
+          style={styles.wrapAction}
+          entering={FadeInUp.duration(100).delay(1000)}>
+          <TouchableOpacity style={{marginRight: 20}}>
+            <Image
+              style={{width: 25, height: 25}}
+              source={require('@assets/icons/edit.png')}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image
+              style={{width: 25, height: 25}}
+              source={require('@assets/icons/trash.png')}
+            />
+          </TouchableOpacity>
+        </Animated.View>
+      </View>
     );
   };
 
@@ -118,9 +160,9 @@ export default function List(): React.JSX.Element {
       <FlatList
         style={{flexGrow: 0, height: '100%'}}
         data={ListProducts}
-        renderItem={({item}) => <Item {...item} />}
+        renderItem={({item, index}) => <Item {...{index, ...item}} />}
         keyExtractor={(item, index) => item.id + index}
-        ItemSeparatorComponent={() => <View style={{height: 15}} />}
+        ItemSeparatorComponent={() => <View style={{height: 20}} />}
       />
     </View>
   );

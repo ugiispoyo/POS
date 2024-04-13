@@ -35,7 +35,9 @@ export default StyleSheet.create({
     minHeight: 70,
     borderColor: '#aaa',
     borderWidth: 1,
-    borderRadius: 10,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
     flexDirection: 'row',
   },
   itemImg: {
@@ -64,4 +66,24 @@ export default StyleSheet.create({
     top: -5,
     right: 0,
   },
+  wrapActionOuter: {
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end'
+  },
+  wrapAction: {
+    borderBottomWidth: 1,
+    borderRightWidth: 1,
+    borderLeftWidth: 1,
+    borderColor: '#aaa',
+    padding: 15,
+    minWidth: 70,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center'
+  }
 });
