@@ -10,7 +10,8 @@
       "@context/*": ["context/*"],
       "@utils/*": ["utils/*"],
       "@services/*": ["services/*"],
-      "@storage/*": ["storage/*"]
+      "@store/*": ["store/*"],
+      "@constants/*": ["constants/*"]
     }
   }
 }

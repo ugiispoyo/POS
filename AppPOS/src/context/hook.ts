@@ -4,8 +4,10 @@ import {
   useNavigation,
 } from '@react-navigation/native';
 
+import {localKeys} from '@constants/index';
 import {getStorage, removeStorage, setStorage} from '@utils/storage';
-import {store} from '@storage/index';
+
+import {store} from 'store/index';
 
 export const useLogic = () => {
   const navigation = useNavigation<any>();
@@ -16,34 +18,34 @@ export const useLogic = () => {
   const [host, setHost] = useState<string>('');
 
   useEffect(() => {
-    dispatch({type: 'IS_LOADING', value: true});
+    dispatch({isLoading: true});
     checkHostName();
   }, []);
 
   const checkHostName = async () => {
-    const host = await getStorage('hostname');
+    const host = await getStorage(localKeys.HOSTNAME);
     if (host) {
       dispatch({type: 'SET_HOSTNAME', value: host.hostname});
     } else {
-      dispatch({type: 'IS_LOADING', value: false});
+      dispatch({isLoading: false});
     }
   };
 
   const saveHost = async () => {
-    dispatch({type: 'IS_LOADING', value: true});
-    await setStorage('hostname', {hostname: host});
+    dispatch({isLoading: true});
+    await setStorage(localKeys.HOSTNAME, {hostname: host});
     setTimeout(async () => {
-      const check = await getStorage('hostname');
+      const check = await getStorage(localKeys.HOSTNAME);
       if (!check) {
-        dispatch({type: 'IS_LOADING', value: true});
+        dispatch({isLoading: false});
       }
       dispatch({type: 'SET_HOSTNAME', value: check.hostname});
     }, 500);
   };
 
   const changeHostname = async () => {
-    dispatch({type: 'IS_LOADING', value: true});
-    await removeStorage('hostname');
+    dispatch({isLoading: true});
+    await removeStorage(localKeys.HOSTNAME);
     setTimeout(async () => {
       dispatch({type: 'REMOVE_HOSTNAME'});
       if (navigationRef.isReady()) {
@@ -56,8 +58,8 @@ export const useLogic = () => {
     host,
     setHost,
     saveHost,
+    changeHostname,
     state,
     dispatch,
-    changeHostname,
   };
 };

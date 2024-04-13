@@ -1,4 +1,4 @@
-import {T_Action, T_State} from '@storage/type';
+import {T_Action, T_State} from 'store/type';
 
 export type T_GlobalContextCTX = {
   host: string;
