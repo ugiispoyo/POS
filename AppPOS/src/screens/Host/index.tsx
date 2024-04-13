@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Image, SafeAreaView, StatusBar, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 
 import DropShadow from 'react-native-drop-shadow';
 import Animated, {FadeInDown, FadeInUp} from 'react-native-reanimated';
@@ -14,7 +13,7 @@ import {T_GlobalContextCTX} from '@context/types';
 import {useGlobalProps} from '@context/context';
 
 export default function Host(): React.JSX.Element {
-  const {host, setHost, saveHost} = useGlobalProps() as T_GlobalContextCTX;
+  const {saveHost, hookHostnameForm} = useGlobalProps() as T_GlobalContextCTX;
 
   return (
     <SafeAreaView style={styles.body}>
@@ -49,8 +48,16 @@ export default function Host(): React.JSX.Element {
             style={{marginBottom: 20}}>
             <TextInput
               label="Hostname"
-              value={host}
-              onChangeText={setHost}
+              name="hostname"
+              hookOptions={{
+                required: 'Hostname wajib diisi!',
+                pattern: {
+                  value:
+                    /^(https?):\/\/((\d{1,3}\.){3}\d{1,3}|[\da-z\.-]+\.[a-z]{2,6})(:[0-9]{1,5})?(\/[^\s]*)?$/i,
+                  message: 'Url hostname tidak valid!',
+                },
+              }}
+              hookForm={hookHostnameForm}
               placeholder="http://192.168.0.1:8000/"
             />
           </Animated.View>
@@ -62,7 +69,9 @@ export default function Host(): React.JSX.Element {
               width: '100%',
               alignItems: 'center',
             }}>
-            <Button onPress={async () => saveHost()}>Simpan</Button>
+            <Button onPress={hookHostnameForm.handleSubmit(saveHost)}>
+              Simpan
+            </Button>
           </Animated.View>
         </View>
       </DropShadow>

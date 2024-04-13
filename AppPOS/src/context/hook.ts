@@ -3,11 +3,18 @@ import {
   createNavigationContainerRef,
   useNavigation,
 } from '@react-navigation/native';
+import {useForm} from 'react-hook-form';
 
 import {localKeys} from '@constants/index';
 import {getStorage, removeStorage, setStorage} from '@utils/storage';
 
-import {store} from 'store/index';
+import {store} from '@store/index';
+import {T_FieldHostname} from './types';
+
+/* default field hostname React hook */
+const fieldHostnameForm: T_FieldHostname = {
+  hostname: '',
+};
 
 export const useLogic = () => {
   const navigation = useNavigation<any>();
@@ -15,7 +22,9 @@ export const useLogic = () => {
     createNavigationContainerRef<ReactNavigation.RootParamList>();
   const {dispatch, state} = store();
 
-  const [host, setHost] = useState<string>('');
+  const hookHostnameForm = useForm({
+    defaultValues: fieldHostnameForm,
+  });
 
   useEffect(() => {
     dispatch({isLoading: true});
@@ -31,9 +40,9 @@ export const useLogic = () => {
     }
   };
 
-  const saveHost = async () => {
+  const saveHost = async (data: T_FieldHostname) => {
     dispatch({isLoading: true});
-    await setStorage(localKeys.HOSTNAME, {hostname: host});
+    await setStorage(localKeys.HOSTNAME, {hostname: data.hostname});
     setTimeout(async () => {
       const check = await getStorage(localKeys.HOSTNAME);
       if (!check) {
@@ -55,10 +64,10 @@ export const useLogic = () => {
   };
 
   return {
-    host,
-    setHost,
     saveHost,
     changeHostname,
+    hookHostnameForm,
+
     state,
     dispatch,
   };

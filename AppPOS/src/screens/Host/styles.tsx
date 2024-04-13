@@ -32,7 +32,8 @@ export default StyleSheet.create({
   },
   cardHost: {
     width: '100%',
-    height: '100%',
+    height: 'auto',
+    minHeight: 180,
     backgroundColor: '#fff',
     display: 'flex',
     padding: 20,
@@ -41,7 +42,7 @@ export default StyleSheet.create({
   },
   shadowCardHost: {
     width: '90%',
-    height: 180,
+    minHeight: 180,
     shadowColor: '#171717',
     shadowOffset: {width: 2, height: 2},
     shadowOpacity: 3,
