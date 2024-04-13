@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Pressable,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import Animated, {FadeInUp} from 'react-native-reanimated';
 
 import numberToIDR from '@utils/numberToIDR';
@@ -19,6 +20,7 @@ import {T_ListProducts, T_ProductListCTX} from '@screens/ProductList/types';
 import {store} from '@store/index';
 
 export default function List(): React.JSX.Element {
+  const navigation = useNavigation<any>();
   const {dispatch, state} = store();
   const {ListProducts} = useProps() as T_ProductListCTX;
 
@@ -114,9 +116,12 @@ export default function List(): React.JSX.Element {
       <View style={styles.wrapActionOuter}>
         <Animated.View
           style={styles.wrapAction}
-          entering={FadeInUp.duration(50).delay(10)}
-        >
-          <TouchableOpacity style={{marginRight: 20}}>
+          entering={FadeInUp.duration(50).delay(10)}>
+          <TouchableOpacity
+            style={{marginRight: 20}}
+            onPress={() =>
+              navigation.navigate('ProductAddEdit', {id: Item.id})
+            }>
             <Image
               style={{width: 25, height: 25}}
               source={require('@assets/icons/edit.png')}
