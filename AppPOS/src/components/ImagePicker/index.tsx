@@ -18,9 +18,6 @@ export default function ImagePicker({
 
   let choicePhoto: (onChange?: (...event: any[]) => void) => void;
 
-  const isUsingHookForm =
-    typeof hookForm !== 'undefined' && typeof name !== 'undefined';
-
   choicePhoto = onChange => {
     launchImageLibrary({mediaType: 'photo'}, response => {
       if (typeof response?.assets !== 'undefined') {
@@ -71,8 +68,10 @@ export default function ImagePicker({
           name={name}
           rules={hookOptions}
           render={({field: {onChange, value}, formState: {errors}}) => {
+            const val = img || value;
+
             let styleImg =
-              value !== null && value.length !== 0
+              val !== null && val.length !== 0
                 ? StyleSheet.create({
                     imgPriview: {
                       minWidth: '100%',
@@ -97,10 +96,10 @@ export default function ImagePicker({
                   onPress={() => choicePhoto(onChange)}>
                   <Image
                     source={
-                      value.length === 0
+                      val?.length === 0 || val === null
                         ? require('@assets/icons/img.png')
                         : {
-                            uri: value?.[0]?.uri,
+                            uri: val?.[0]?.uri,
                           }
                     }
                     style={styleImg.imgPriview}

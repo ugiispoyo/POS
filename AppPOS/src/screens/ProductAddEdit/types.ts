@@ -2,6 +2,8 @@ import {UseFormReturn} from 'react-hook-form';
 
 export type T_ProductAddEditCTX = {
   onSave: (data: T_FieldFormProduct) => Promise<void>;
+  isDiscount: boolean;
+  type: 'MINUMAN' | 'MAKANAN';
 
   hookForm: UseFormReturn<T_FieldFormProduct, any, undefined>;
 };

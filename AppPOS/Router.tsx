@@ -67,9 +67,9 @@ export default () => {
 
   return (
     <Stack.Navigator
-      initialRouteName={
-        !hasHostname && hostname === '' ? 'Host' : 'ProductAddEdit'
-      }
+      // initialRouteName={
+      //   !hasHostname && hostname === '' ? 'Host' : 'ProductAddEdit'
+      // }
       screenOptions={{headerShown: false}}>
       {!hasHostname && hostname === '' ? (
         <>
@@ -77,12 +77,12 @@ export default () => {
         </>
       ) : (
         <>
+          {/* <Stack.Screen name="Login" component={Login} /> */}
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="ProductList" component={ProductList} />
           <Stack.Screen name="ProductAddEdit" component={ProductAddEdit} />
         </>
       )}
-      {/* <Stack.Screen name="Login" component={Login} /> */}
     </Stack.Navigator>
   );
 };

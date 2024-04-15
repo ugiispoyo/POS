@@ -21,23 +21,29 @@ export const useLogic = () => {
     defaultValues: fieldFormProduct,
   });
 
+  const isDiscount = hookForm.watch('isDiscount');
+  const type = hookForm.watch('type');
+
   useEffect(() => {
     setValue();
   }, [route.params]);
 
   const setValue = () => {
-    // hookForm.setValue('image', [
-    //   {
-    //     fileName: '1000381997.jpg',
-    //     fileSize: 2202029,
-    //     height: 4032,
-    //     originalPath:
-    //       '/sdcard/.transforms/synthetic/picker/0/com.android.providers.media.photopicker/media/1000381997.jpg',
-    //     type: 'image/jpeg',
-    //     uri: 'file:///data/user/0/com.apppos/cache/rn_image_picker_lib_temp_97a0c1ab-76a4-43ac-bddf-927ed40d29b7.jpg',
-    //     width: 3024,
-    //   },
-    // ]);
+    hookForm.reset();
+    // if (typeof route?.params?.id !== "undefined") {
+    //   hookForm.setValue('image', [
+    //     {
+    //       fileName: '1000381997.jpg',
+    //       fileSize: 2202029,
+    //       height: 4032,
+    //       originalPath:
+    //         '/sdcard/.transforms/synthetic/picker/0/com.android.providers.media.photopicker/media/1000381997.jpg',
+    //       type: 'image/jpeg',
+    //       uri: 'file:///data/user/0/com.apppos/cache/rn_image_picker_lib_temp_97a0c1ab-76a4-43ac-bddf-927ed40d29b7.jpg',
+    //       width: 3024,
+    //     },
+    //   ]);
+    // }
   };
 
   const onSave = async (data: T_FieldFormProduct) => {
@@ -46,6 +52,8 @@ export const useLogic = () => {
 
   return {
     onSave,
+    isDiscount,
+    type,
 
     hookForm,
   };
