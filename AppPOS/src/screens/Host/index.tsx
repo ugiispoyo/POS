@@ -44,8 +44,7 @@ export default function Host(): React.JSX.Element {
       <DropShadow style={styles.shadowCardHost}>
         <View style={styles.cardHost}>
           <Animated.View
-            entering={FadeInDown.delay(200).duration(1000).springify()}
-            style={{marginBottom: 20}}>
+            entering={FadeInDown.delay(200).duration(1000).springify()}>
             <TextInput
               label="Hostname"
               name="hostname"

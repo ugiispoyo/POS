@@ -1,7 +1,11 @@
 export type T_State = {
   isLoading: boolean;
   hasHostname: boolean;
-  hostname: string;
+  hostname: string; /* loading for first open app */
+  loading: { /* loading for action each module */ 
+    isLoading: boolean;
+    module: string;
+  };
   ProductList: T_ScreenProductList;
 };
 

@@ -6,4 +6,5 @@ export type T_TextInput = {
   hookForm?: UseFormReturn<any, any, undefined>;
   hookOptions?: RegisterOptions<any, string>;
   label?: string;
+  isFormatCurrency?: boolean;
 } & TextInputProps;

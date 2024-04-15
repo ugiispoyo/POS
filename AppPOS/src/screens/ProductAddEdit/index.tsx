@@ -1,10 +1,13 @@
 import React from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+} from 'react-native';
 import {useRoute} from '@react-navigation/native';
 
 import Header from '@components/Header';
-
-import Navbar from './components/navbar';
+import Form from './components/form';
 
 import styles from './styles';
 import {ProductAddEditProvider} from './context';
@@ -15,8 +18,10 @@ export default function ProductAddEdit(): React.JSX.Element {
     <ProductAddEditProvider>
       <SafeAreaView style={styles.body}>
         <StatusBar animated={true} translucent backgroundColor="transparent" />
-        <Header title={route?.params?.id ? 'Edit produk' : 'Tambah produk'} />
-        <Navbar />
+        <ScrollView>
+          <Header title={route?.params?.id ? 'Edit produk' : 'Tambah produk'} />
+          <Form />
+        </ScrollView>
       </SafeAreaView>
     </ProductAddEditProvider>
   );

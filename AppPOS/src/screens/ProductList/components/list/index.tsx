@@ -177,7 +177,7 @@ export default function List(): React.JSX.Element {
         data={ListProducts}
         renderItem={({item, index}) => <Item {...{index, ...item}} />}
         keyExtractor={(item, index) => item.id + index}
-        ItemSeparatorComponent={() => <View style={{height: 20}} />}
+        ItemSeparatorComponent={() => <View style={{height: 15}} />}
       />
     </View>
   );

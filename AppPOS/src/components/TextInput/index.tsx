@@ -1,17 +1,41 @@
 import React from 'react';
-import {View, Text, TextInput, StyleSheet} from 'react-native';
+import {View, Text, TextInput, StyleSheet, TextInputProps} from 'react-native';
 import {Controller} from 'react-hook-form';
 
 import styles from './styles';
 import {T_TextInput} from './type';
+import {numericFormatter, removeNumericFormat} from 'react-number-format';
 
 export default function index({
   name,
   hookForm,
   hookOptions,
   label,
+  isFormatCurrency,
   ...props
 }: T_TextInput): React.JSX.Element {
+  /* for custom style */
+  const customStyles = props?.style ? props?.style : ({} as any);
+  /* filter props exclude style */
+  const initProps = Object.entries(props)
+    .filter(([key]) => key !== 'style')
+    .reduce((obj: any, item: any) => {
+      obj[item[0]] = item[1];
+      return obj;
+    }, {}) as TextInputProps;
+
+  /* Check is type keyboard type is number only */
+  const isKeyborboarNumb =
+    initProps?.keyboardType &&
+    [
+      'number-pad',
+      'decimal-pad',
+      'numeric',
+      'numbers-and-punctuation',
+    ].includes(initProps?.keyboardType)
+      ? true
+      : false;
+
   const InputText = () => {
     if (typeof hookForm !== 'undefined') {
       if (typeof name === 'undefined') {
@@ -33,20 +57,35 @@ export default function index({
               ? StyleSheet.create({
                   error: {
                     borderColor: 'red',
-                    borderWidth: 1
+                    borderWidth: 1,
                   },
                 }).error
               : {};
 
+            let val = isKeyborboarNumb ? value.toString() : value;
+
+            val =
+              isFormatCurrency &&
+              numericFormatter(value.toString(), {thousandSeparator: '.'});
+
             return (
               <>
                 <TextInput
-                  style={{...styles.inputText, ...styleError}}
+                  style={[styles.inputText, styleError, customStyles]}
                   placeholderTextColor={'#ccc'}
-                  value={value}
+                  value={val}
                   onBlur={onBlur}
-                  onChangeText={val => onChange(val)}
-                  {...props}
+                  onChangeText={(val: any) => {
+                    let value = val as any;
+                    if (isFormatCurrency) {
+                      value = value.replace(/\./g, '');
+                    }
+                    if (isKeyborboarNumb && value !== '') {
+                      value = parseInt(value);
+                    }
+                    onChange(value);
+                  }}
+                  {...initProps}
                 />
                 {!!errors?.[name] && (
                   <Text style={{color: 'red', fontSize: 12}}>
@@ -62,15 +101,15 @@ export default function index({
 
     return (
       <TextInput
-        style={styles.inputText}
+        style={[styles.inputText, customStyles]}
         placeholderTextColor={'#ccc'}
-        {...props}
+        {...initProps}
       />
     );
   };
 
   return (
-    <View style={{width: '100%'}}>
+    <View style={{width: '100%', marginBottom: 16}}>
       <Text style={styles.labelInputText}>{label}</Text>
       <InputText />
     </View>

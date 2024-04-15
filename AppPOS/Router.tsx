@@ -66,7 +66,11 @@ export default () => {
   }
 
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Navigator
+      initialRouteName={
+        !hasHostname && hostname === '' ? 'Host' : 'ProductAddEdit'
+      }
+      screenOptions={{headerShown: false}}>
       {!hasHostname && hostname === '' ? (
         <>
           <Stack.Screen name="Host" component={Host} />
