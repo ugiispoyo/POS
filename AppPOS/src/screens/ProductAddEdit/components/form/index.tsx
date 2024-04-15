@@ -22,10 +22,8 @@ import ImagePicker from '@components/ImagePicker';
 
 export default function Form(): React.JSX.Element {
   const navigation = useNavigation<any>();
-  const {hookForm, onSave, isDiscount, type} =
+  const {hookForm, onSave, isDiscount, isFood} =
     useProps() as T_ProductAddEditCTX;
-
-  const isFood = type === 'MAKANAN';
 
   return (
     <View style={styles.wrapForm}>

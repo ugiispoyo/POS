@@ -23,6 +23,7 @@ export const useLogic = () => {
 
   const isDiscount = hookForm.watch('isDiscount');
   const type = hookForm.watch('type');
+  const isFood = type === 'MAKANAN';
 
   useEffect(() => {
     setValue();
@@ -54,6 +55,7 @@ export const useLogic = () => {
     onSave,
     isDiscount,
     type,
+    isFood,
 
     hookForm,
   };

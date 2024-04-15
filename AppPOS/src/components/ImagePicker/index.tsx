@@ -17,6 +17,7 @@ export default function ImagePicker({
   const [img, setImg] = useState<Asset[] | null>(value || null);
 
   let choicePhoto: (onChange?: (...event: any[]) => void) => void;
+  const isUseHookform = hookForm && name;
 
   choicePhoto = onChange => {
     launchImageLibrary({mediaType: 'photo'}, response => {
@@ -25,8 +26,10 @@ export default function ImagePicker({
         if (typeof onImageChange !== 'undefined') {
           onImageChange(response?.assets);
         }
-
-        if (onChange) onChange(response?.assets);
+        if (isUseHookform && onChange) {
+          hookForm.clearErrors(name);
+          onChange(response?.assets);
+        }
       }
     });
   };
@@ -67,7 +70,7 @@ export default function ImagePicker({
           control={control}
           name={name}
           rules={hookOptions}
-          render={({field: {onChange, value}, formState: {errors}}) => {
+          render={({field: {value, onChange}, formState: {errors}}) => {
             const val = img || value;
 
             let styleImg =
@@ -89,10 +92,22 @@ export default function ImagePicker({
                     },
                   });
 
+            const styleError = !!errors?.[name]
+              ? StyleSheet.create({
+                  error: {
+                    borderColor: 'red',
+                    borderWidth: 1,
+                  },
+                }).error
+              : {};
+
             return (
               <>
                 <Pressable
-                  style={styles.btnImg}
+                  style={{
+                    ...styles.btnImg,
+                    ...styleError,
+                  }}
                   onPress={() => choicePhoto(onChange)}>
                   <Image
                     source={

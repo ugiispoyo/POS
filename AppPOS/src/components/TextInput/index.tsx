@@ -1,12 +1,18 @@
 import React from 'react';
-import {View, Text, TextInput, StyleSheet, TextInputProps} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput as _TextInput,
+  StyleSheet,
+  TextInputProps,
+} from 'react-native';
 import {Controller} from 'react-hook-form';
 
 import styles from './styles';
 import {T_TextInput} from './type';
 import {numericFormatter, removeNumericFormat} from 'react-number-format';
 
-export default function index({
+export default function TextInput({
   name,
   hookForm,
   hookOptions,
@@ -64,13 +70,13 @@ export default function index({
 
             let val = isKeyborboarNumb ? value.toString() : value;
 
-            val =
-              isFormatCurrency &&
-              numericFormatter(value.toString(), {thousandSeparator: '.'});
+            val = isFormatCurrency
+              ? numericFormatter(value.toString(), {thousandSeparator: '.'})
+              : value.toString();
 
             return (
               <>
-                <TextInput
+                <_TextInput
                   style={[styles.inputText, styleError, customStyles]}
                   placeholderTextColor={'#ccc'}
                   value={val}
@@ -100,7 +106,7 @@ export default function index({
     }
 
     return (
-      <TextInput
+      <_TextInput
         style={[styles.inputText, customStyles]}
         placeholderTextColor={'#ccc'}
         {...initProps}

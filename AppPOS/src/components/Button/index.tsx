@@ -4,7 +4,7 @@ import {Text, TouchableOpacity, TouchableOpacityProps} from 'react-native';
 import styles from './styles';
 import {T_Button} from './type';
 
-export default function index({
+export default function Button({
   children,
   ...props
 }: T_Button & TouchableOpacityProps): React.JSX.Element {
