@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   body: {
@@ -22,11 +22,12 @@ export default StyleSheet.create({
     display: 'flex',
     justifyContent: 'space-between',
     position: 'relative',
-    padding: 10,
+    paddingTop: 10,
     alignItems: 'center',
-    minWidth: 160,
-    maxWidth: '48%',
-    width: 'auto',
+    width: (Dimensions.get("window").width / 2) - 30,
+    // minWidth: 160,
+    // maxWidth: '47%',
+    // width: 'auto',
     minHeight: 70,
     borderColor: '#aaa',
     borderWidth: 1,
@@ -55,7 +56,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 4
+    marginTop: 4,
   },
   itemTextPrice: {
     color: '#333',
@@ -69,5 +70,14 @@ export default StyleSheet.create({
     position: 'absolute',
     top: -5,
     right: 0,
+  },
+  btnCart: {
+    width: '100%',
+    marginTop: 10,
+    height: 30,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+    display: 'flex',
+    flexDirection: 'row',
   },
 });

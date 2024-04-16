@@ -17,6 +17,7 @@ import {useGlobalProps} from '@context/context';
 import {T_GlobalContextCTX} from '@context/types';
 import {useProps} from '@screens/Casier/context';
 import {T_ListProducts, T_CasierCTX} from '@screens/Casier/types';
+import Button from '@components/Button';
 
 export default function List(): React.JSX.Element {
   const {dispatch} = useGlobalProps() as T_GlobalContextCTX;
@@ -34,9 +35,9 @@ export default function List(): React.JSX.Element {
       }).price;
 
     return (
-      <View style={{position: 'relative'}}>
+      <View style={styles.item}>
         <Pressable
-          style={{...styles.item}}
+          style={{width: '100%', paddingHorizontal: 10}}
           onPress={() => {
             dispatch({
               type: 'SET_DETAIL_PRODUCT',
@@ -83,13 +84,24 @@ export default function List(): React.JSX.Element {
             </View>
             <Text style={{color: '#000', fontSize: 11}}>{Item.stock}</Text>
           </View>
-          {Item.isDiscount && (
-            <Image
-              style={styles.itemImgDiscount}
-              source={require('@assets/icons/discount.png')}
-            />
-          )}
         </Pressable>
+        {Item.isDiscount && (
+          <Image
+            style={styles.itemImgDiscount}
+            source={require('@assets/icons/discount.png')}
+          />
+        )}
+        <Button style={styles.btnCart}>
+          <>
+            <Image
+              style={{width: 20, height: 20, marginRight: 5}}
+              source={require('@assets/icons/add-cart.png')}
+            />
+            <Text style={{fontSize: 14, color: '#fff', fontWeight: '600'}}>
+              Tambah
+            </Text>
+          </>
+        </Button>
       </View>
     );
   };
