@@ -1,0 +1,73 @@
+import {StyleSheet} from 'react-native';
+
+export default StyleSheet.create({
+  body: {
+    position: 'relative',
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#f5f5f5',
+  },
+  navbar: {
+    width: '100%',
+    height: '5%',
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center',
+    position: 'absolute',
+    top: 35,
+    padding: 20,
+  },
+  item: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    position: 'relative',
+    padding: 10,
+    alignItems: 'center',
+    minWidth: 160,
+    maxWidth: '48%',
+    width: 'auto',
+    minHeight: 70,
+    borderColor: '#aaa',
+    borderWidth: 1,
+    borderRadius: 10,
+    margin: 5,
+    flexDirection: 'column',
+    backgroundColor: '#fafafa',
+  },
+  itemImg: {
+    width: '100%',
+    minHeight: 120,
+    height: 'auto',
+    borderRadius: 10,
+  },
+  itemTextName: {
+    color: '#333',
+    width: '100%',
+    textAlign: 'center',
+    fontWeight: '600',
+    marginTop: 5,
+    fontSize: 14,
+  },
+  itemViewDetail: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 4
+  },
+  itemTextPrice: {
+    color: '#333',
+    width: '100%',
+    fontWeight: '600',
+    fontSize: 12,
+  },
+  itemImgDiscount: {
+    width: 27,
+    height: 27,
+    position: 'absolute',
+    top: -5,
+    right: 0,
+  },
+});

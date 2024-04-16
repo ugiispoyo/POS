@@ -10,7 +10,7 @@ import {Controller} from 'react-hook-form';
 
 import styles from './styles';
 import {T_TextInput} from './type';
-import {numericFormatter, removeNumericFormat} from 'react-number-format';
+import {numericFormatter} from 'react-number-format';
 
 export default function TextInput({
   name,

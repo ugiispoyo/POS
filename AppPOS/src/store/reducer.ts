@@ -31,6 +31,14 @@ const reducer = (state: T_State, action: T_Action): T_State => {
           action: value,
         },
       };
+    case 'SET_DETAIL_PRODUCT':
+      return {
+        ...state,
+        Casier: {
+          ...state.Casier,
+          detailProduct: value,
+        },
+      };
     default:
       return state;
   }

@@ -15,13 +15,14 @@ import numberToIDR from '@utils/numberToIDR';
 
 import styles from '../../styles';
 
+import {useGlobalProps} from '@context/context';
+import {T_GlobalContextCTX} from '@context/types';
 import {useProps} from '@screens/ProductList/context';
 import {T_ListProducts, T_ProductListCTX} from '@screens/ProductList/types';
-import {store} from '@store/index';
 
 export default function List(): React.JSX.Element {
   const navigation = useNavigation<any>();
-  const {dispatch, state} = store();
+  const {state, dispatch} = useGlobalProps() as T_GlobalContextCTX;
   const {ListProducts} = useProps() as T_ProductListCTX;
 
   const Item = (Item: {index: number} & T_ListProducts) => {

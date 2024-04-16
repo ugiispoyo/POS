@@ -4,9 +4,11 @@ import {Image, View, Text} from 'react-native';
 import styles from './styles';
 import {T_Header} from './type';
 
-export default function Header({title}: T_Header): React.JSX.Element {
+export default function Header({title, style}: T_Header): React.JSX.Element {
+  const styleCTM = style ? style : ({} as any);
+
   return (
-    <View style={styles.header}>
+    <View style={{...styles.header, ...styleCTM}}>
       <Image
         style={styles.headerImg}
         source={require('@assets/images/bg-header.jpeg')}

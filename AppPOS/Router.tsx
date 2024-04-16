@@ -6,6 +6,7 @@ import Host from '@screens/Host';
 import Home from '@screens/Home';
 import ProductList from '@screens/ProductList';
 import ProductAddEdit from '@screens/ProductAddEdit';
+import Casier from '@screens/Casier';
 
 import {T_GlobalContextCTX} from '@context/types';
 import {useGlobalProps} from '@context/context';
@@ -67,9 +68,7 @@ export default () => {
 
   return (
     <Stack.Navigator
-      // initialRouteName={
-      //   !hasHostname && hostname === '' ? 'Host' : 'ProductAddEdit'
-      // }
+      initialRouteName={!hasHostname && hostname === '' ? 'Host' : 'Casier'}
       screenOptions={{headerShown: false}}>
       {!hasHostname && hostname === '' ? (
         <>
@@ -81,6 +80,7 @@ export default () => {
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="ProductList" component={ProductList} />
           <Stack.Screen name="ProductAddEdit" component={ProductAddEdit} />
+          <Stack.Screen name="Casier" component={Casier} />
         </>
       )}
     </Stack.Navigator>

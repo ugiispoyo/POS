@@ -20,7 +20,9 @@ export default function Card(): React.JSX.Element {
         </View>
         <Text style={styles.textCard}>Produk</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.btnCard}>
+      <TouchableOpacity
+        style={styles.btnCard}
+        onPress={() => navigation.navigate('Casier')}>
         <View style={styles.wrapBtnCard}>
           <Image
             style={styles.imgCard}

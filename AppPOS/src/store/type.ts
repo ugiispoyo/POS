@@ -1,12 +1,15 @@
+import {T_ListProducts} from '@screens/Casier/types';
+
 export type T_State = {
   isLoading: boolean;
   hasHostname: boolean;
-  hostname: string; /* loading for first open app */
-  loading: { /* loading for action each module */ 
-    isLoading: boolean;
+  hostname: string /* loading for first open app */;
+  loading: {
+    /* loading for action each module */ isLoading: boolean;
     module: string;
   };
   ProductList: T_ScreenProductList;
+  Casier: T_ScreenCasier;
 };
 
 export type T_Action = {
@@ -22,7 +25,8 @@ export type T_ReturnStore = {
 export type T_TypeAction =
   | 'SET_HOSTNAME'
   | 'REMOVE_HOSTNAME'
-  | 'SET_ACTION_PRODUCT_LIST';
+  | 'SET_ACTION_PRODUCT_LIST'
+  | 'SET_DETAIL_PRODUCT';
 
 /* State screen of Product List */
 export type T_ScreenProductList = {
@@ -30,4 +34,9 @@ export type T_ScreenProductList = {
     hasAction: boolean;
     id: string;
   };
+};
+
+/* State screen of Product List */
+export type T_ScreenCasier = {
+  detailProduct: T_ListProducts | null;
 };
