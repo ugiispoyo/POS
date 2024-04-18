@@ -17,6 +17,7 @@ export default StyleSheet.create({
     position: 'absolute',
     top: 35,
     padding: 20,
+    zIndex: 9
   },
   item: {
     display: 'flex',
@@ -70,6 +71,14 @@ export default StyleSheet.create({
     position: 'absolute',
     top: -5,
     right: 0,
+  },
+  itemViewPcs: {
+    marginLeft: 7,
+    width: '17%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   btnCart: {
     width: '100%',
@@ -131,5 +140,47 @@ export default StyleSheet.create({
     height: 40,
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
-  }
+  },
+  itemCart: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    position: 'relative',
+    padding: 10,
+    alignItems: 'center',
+    width: '100%',
+    minHeight: 70,
+    borderColor: '#aaa',
+    borderWidth: 1,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    flexDirection: 'row',
+    backgroundColor: '#fafafa'
+  },
+  itemCartImg: {
+    width: '15%',
+    height: 50,
+    borderRadius: 10,
+  },
+  itemCartTextName: {
+    color: '#333',
+    marginLeft: 7,
+    width: '33%',
+    fontSize: 14,
+  },
+  itemCartViewPcs: {
+    marginLeft: 7,
+    width: '17%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  itemCartImgDiscount: {
+    width: 27,
+    height: 27,
+    position: 'absolute',
+    top: -5,
+    right: 0,
+  },
 });

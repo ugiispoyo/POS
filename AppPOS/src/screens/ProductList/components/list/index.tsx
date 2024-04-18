@@ -175,6 +175,7 @@ export default function List(): React.JSX.Element {
       <FlatList
         style={{flexGrow: 0, height: '100%'}}
         data={ListProducts}
+        showsVerticalScrollIndicator={false}
         renderItem={({item, index}) => <Item {...{index, ...item}} />}
         keyExtractor={(item, index) => item.id + index}
         ItemSeparatorComponent={() => <View style={{height: 15}} />}

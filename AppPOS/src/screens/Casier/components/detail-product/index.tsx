@@ -17,7 +17,7 @@ export default function DetailProduct(): React.JSX.Element {
 
   const product = state.Casier?.detailProduct;
 
-  const snapPoints = useMemo(() => ['65%'], []);
+  const snapPoints = useMemo(() => ['60%'], []);
 
   useEffect(() => {}, [open, state]);
 
@@ -61,6 +61,7 @@ export default function DetailProduct(): React.JSX.Element {
           <View style={styles.wrapDetailProduct}>
             <BottomSheet ref={sheetRef} index={0} snapPoints={snapPoints}>
               <BottomSheetScrollView
+                showsVerticalScrollIndicator={false}
                 contentContainerStyle={styles.containerBottomSheet}>
                 <Text style={styles.textDetailProduct}>{product?.name}</Text>
                 {product !== null && (

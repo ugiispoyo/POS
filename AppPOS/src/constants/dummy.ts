@@ -49,4 +49,42 @@ export const ListProducts: Array<T_ListProducts> = [
     type: 'MINUMAN',
     stock: 100,
   },
+  {
+    id: '127',
+    name: 'Es jeruk',
+    description: 'Es jeruk',
+    image:
+      'https://dcostseafood.id/wp-content/uploads/2021/12/ES-JERUK-murni.jpg',
+    isDiscount: false,
+    price: 5000,
+    priceAfterDiscount: 0,
+    type: 'MINUMAN',
+    stock: 100,
+  },
+  {
+    id: '128',
+    name: 'Ayam bakar saus padang',
+    description:
+      'Ayam bakar dengan lumuran saus padang yang pedas menggoda lidah',
+    image:
+      'https://asset.kompas.com/crops/yoovaRyPxaPFOY4gfCciore2eUY=/3x0:700x465/750x500/data/photo/2020/12/30/5fec5602f116e.jpg',
+    isDiscount: false,
+    price: 20000,
+    priceAfterDiscount: 0,
+    type: 'MINUMAN',
+    stock: 100,
+  },
+  {
+    id: '129',
+    name: 'Ayam saus tiram',
+    description:
+      'Ayam saus tiram',
+    image:
+      'https://asset.kompas.com/crops/yoovaRyPxaPFOY4gfCciore2eUY=/3x0:700x465/750x500/data/photo/2020/12/30/5fec5602f116e.jpg',
+    isDiscount: false,
+    price: 20000,
+    priceAfterDiscount: 0,
+    type: 'MINUMAN',
+    stock: 100,
+  },
 ];

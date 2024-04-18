@@ -21,6 +21,7 @@ import {T_ListProducts} from '@store/types';
 export default function List(): React.JSX.Element {
   const {dispatch, state} = useGlobalProps() as T_GlobalContextCTX;
   const ListProducts = state.Products;
+  const listCart = state.Casier.cart;
 
   const Item = (Item: {index: number} & T_ListProducts) => {
     const stylePrice =
@@ -108,12 +109,21 @@ export default function List(): React.JSX.Element {
   };
 
   return (
-    <View style={{height: '90%', padding: 20, marginTop: 90}}>
+    <View
+      style={{
+        height: listCart.length === 0 ? '90%' : '79%',
+        // height: '90%',
+        padding: 20,
+        marginTop: 90,
+        zIndex: 1,
+        position: 'relative',
+      }}>
       <FlatList
         style={{flexGrow: 0, height: '100%'}}
         key={2}
         numColumns={2}
-        contentContainerStyle={{width: '100%'}}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{width: '100%', zIndex: 2}}
         data={ListProducts}
         renderItem={({item, index}) => <Item {...{index, ...item}} />}
         keyExtractor={(item, index) => item.id + index}
