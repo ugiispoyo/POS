@@ -68,7 +68,7 @@ export default () => {
 
   return (
     <Stack.Navigator
-      initialRouteName={!hasHostname && hostname === '' ? 'Host' : 'Casier'}
+      // initialRouteName={!hasHostname && hostname === '' ? 'Host' : 'Casier'}
       screenOptions={{headerShown: false}}>
       {!hasHostname && hostname === '' ? (
         <>
