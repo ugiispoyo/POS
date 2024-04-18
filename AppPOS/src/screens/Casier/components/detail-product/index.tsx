@@ -147,6 +147,10 @@ export default function DetailProduct(): React.JSX.Element {
                       ...styles.btnCart,
                       ...styles.btnDetailProduct,
                       width: '65%',
+                    }}
+                    onPress={() => {
+                      dispatch({type: 'ADD_TO_CART', value: product});
+                      handleClosePress();
                     }}>
                     <>
                       <Image

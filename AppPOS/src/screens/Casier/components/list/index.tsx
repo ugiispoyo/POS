@@ -91,7 +91,9 @@ export default function List(): React.JSX.Element {
             source={require('@assets/icons/discount.png')}
           />
         )}
-        <Button style={styles.btnCart}>
+        <Button
+          style={styles.btnCart}
+          onPress={() => dispatch({type: 'ADD_TO_CART', value: Item})}>
           <>
             <Image
               style={{width: 20, height: 20, marginRight: 5}}

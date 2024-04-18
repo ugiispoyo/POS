@@ -16,6 +16,7 @@ const initialState: T_State = {
   },
   Casier: {
     detailProduct: null,
+    cart: [],
   },
 };
 

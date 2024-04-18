@@ -26,7 +26,8 @@ export type T_TypeAction =
   | 'SET_HOSTNAME'
   | 'REMOVE_HOSTNAME'
   | 'SET_ACTION_PRODUCT_LIST'
-  | 'SET_DETAIL_PRODUCT';
+  | 'SET_DETAIL_PRODUCT'
+  | 'ADD_TO_CART';
 
 /* State screen of Product List */
 export type T_ScreenProductList = {
@@ -39,4 +40,11 @@ export type T_ScreenProductList = {
 /* State screen of Product List */
 export type T_ScreenCasier = {
   detailProduct: T_ListProducts | null;
+  cart: T_ListCart;
+};
+
+export type T_ListCart = Array<T_Cart> | [];
+
+export type T_Cart = T_ListProducts & {
+  total: number;
 };

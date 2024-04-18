@@ -1,6 +1,12 @@
+import {useGlobalProps} from '@context/context';
 import {T_ListProducts} from './types';
+import {T_GlobalContextCTX} from '@context/types';
 
 export const useLogic = () => {
+  const {state, dispatch} = useGlobalProps() as T_GlobalContextCTX;
+
+  console.log(state.Casier?.cart);
+
   const ListProducts: Array<T_ListProducts> = [
     {
       id: '123',
@@ -36,138 +42,6 @@ export const useLogic = () => {
       price: 5000,
       priceAfterDiscount: 0,
       type: 'MAKANAN',
-      stock: 100,
-    },
-    {
-      id: '126',
-      name: 'Es teh manis',
-      description: 'Es teh manis',
-      image:
-        'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2021/06/15093247/Ketahui-Fakta-Es-Teh-Manis.jpg',
-      isDiscount: true,
-      price: 5000,
-      priceAfterDiscount: 3000,
-      type: 'MINUMAN',
-      stock: 100,
-    },
-    {
-      id: '126',
-      name: 'Es teh manis',
-      description: 'Es teh manis',
-      image:
-        'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2021/06/15093247/Ketahui-Fakta-Es-Teh-Manis.jpg',
-      isDiscount: true,
-      price: 5000,
-      priceAfterDiscount: 3000,
-      type: 'MINUMAN',
-      stock: 100,
-    },
-    {
-      id: '126',
-      name: 'Es teh manis',
-      description: 'Es teh manis',
-      image:
-        'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2021/06/15093247/Ketahui-Fakta-Es-Teh-Manis.jpg',
-      isDiscount: true,
-      price: 5000,
-      priceAfterDiscount: 3000,
-      type: 'MINUMAN',
-      stock: 100,
-    },
-    {
-      id: '126',
-      name: 'Es teh manis',
-      description: 'Es teh manis',
-      image:
-        'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2021/06/15093247/Ketahui-Fakta-Es-Teh-Manis.jpg',
-      isDiscount: true,
-      price: 5000,
-      priceAfterDiscount: 3000,
-      type: 'MINUMAN',
-      stock: 100,
-    },
-    {
-      id: '126',
-      name: 'Es teh manis',
-      description: 'Es teh manis',
-      image:
-        'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2021/06/15093247/Ketahui-Fakta-Es-Teh-Manis.jpg',
-      isDiscount: true,
-      price: 5000,
-      priceAfterDiscount: 3000,
-      type: 'MINUMAN',
-      stock: 100,
-    },
-    {
-      id: '126',
-      name: 'Es teh manis',
-      description: 'Es teh manis',
-      image:
-        'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2021/06/15093247/Ketahui-Fakta-Es-Teh-Manis.jpg',
-      isDiscount: true,
-      price: 5000,
-      priceAfterDiscount: 3000,
-      type: 'MINUMAN',
-      stock: 100,
-    },
-    {
-      id: '126',
-      name: 'Es teh manis',
-      description: 'Es teh manis',
-      image:
-        'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2021/06/15093247/Ketahui-Fakta-Es-Teh-Manis.jpg',
-      isDiscount: true,
-      price: 5000,
-      priceAfterDiscount: 3000,
-      type: 'MINUMAN',
-      stock: 100,
-    },
-    {
-      id: '126',
-      name: 'Es teh manis',
-      description: 'Es teh manis',
-      image:
-        'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2021/06/15093247/Ketahui-Fakta-Es-Teh-Manis.jpg',
-      isDiscount: true,
-      price: 5000,
-      priceAfterDiscount: 3000,
-      type: 'MINUMAN',
-      stock: 100,
-    },
-    {
-      id: '126',
-      name: 'Es teh manis',
-      description: 'Es teh manis',
-      image:
-        'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2021/06/15093247/Ketahui-Fakta-Es-Teh-Manis.jpg',
-      isDiscount: true,
-      price: 5000,
-      priceAfterDiscount: 3000,
-      type: 'MINUMAN',
-      stock: 100,
-    },
-    {
-      id: '126',
-      name: 'Es teh manis',
-      description: 'Es teh manis',
-      image:
-        'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2021/06/15093247/Ketahui-Fakta-Es-Teh-Manis.jpg',
-      isDiscount: true,
-      price: 5000,
-      priceAfterDiscount: 3000,
-      type: 'MINUMAN',
-      stock: 100,
-    },
-    {
-      id: '126',
-      name: 'Es teh manis',
-      description: 'Es teh manis',
-      image:
-        'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2021/06/15093247/Ketahui-Fakta-Es-Teh-Manis.jpg',
-      isDiscount: true,
-      price: 5000,
-      priceAfterDiscount: 3000,
-      type: 'MINUMAN',
       stock: 100,
     },
     {
