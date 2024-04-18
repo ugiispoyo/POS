@@ -5,6 +5,7 @@ import Header from '@components/Header';
 
 import List from './components/list';
 import Navbar from './components/navbar';
+import DetailProduct from './components/detail-product';
 
 import styles from './styles';
 import {CasierProvider} from './context';
@@ -17,6 +18,7 @@ export default function Casier(): React.JSX.Element {
         <Header title="Kasir" style={{position: 'absolute'}} />
         <Navbar />
         <List />
+        <DetailProduct />
       </SafeAreaView>
     </CasierProvider>
   );

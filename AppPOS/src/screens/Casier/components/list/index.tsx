@@ -107,7 +107,7 @@ export default function List(): React.JSX.Element {
   };
 
   return (
-    <View style={{height: '83%', padding: 20, marginTop: 90}}>
+    <View style={{height: '90%', padding: 20, marginTop: 90}}>
       <FlatList
         style={{flexGrow: 0, height: '100%'}}
         key={2}
