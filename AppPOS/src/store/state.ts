@@ -1,4 +1,4 @@
-import {T_State} from './type';
+import {T_State} from './types';
 
 const initialState: T_State = {
   hasHostname: false,
@@ -18,6 +18,7 @@ const initialState: T_State = {
     detailProduct: null,
     cart: [],
   },
+  Products: [],
 };
 
 export default initialState;

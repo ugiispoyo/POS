@@ -1,5 +1,5 @@
 import {UseFormReturn} from 'react-hook-form';
-import {T_Action, T_State} from 'store/type';
+import {T_Action, T_State} from '@store/types';
 
 export type T_GlobalContextCTX = {
   saveHost: (data: T_FieldHostname) => Promise<void>;

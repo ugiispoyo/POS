@@ -1,4 +1,4 @@
-import {T_ListProducts} from './types';
+import {T_ListProducts} from '@store/types';
 
 export const useLogic = () => {
   const ListProducts: Array<T_ListProducts> = [

@@ -10,6 +10,7 @@ import {getStorage, removeStorage, setStorage} from '@utils/storage';
 
 import {store} from '@store/index';
 import {T_FieldHostname} from './types';
+import {ListProducts} from '@constants/dummy';
 
 /* default field hostname React hook */
 const fieldHostnameForm: T_FieldHostname = {
@@ -28,6 +29,7 @@ export const useLogic = () => {
 
   useEffect(() => {
     dispatch({isLoading: true});
+    dispatch({Products: ListProducts});
     checkHostName();
   }, []);
 

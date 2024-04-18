@@ -1,5 +1,3 @@
-import {T_ListProducts} from '@screens/Casier/types';
-
 export type T_State = {
   isLoading: boolean;
   hasHostname: boolean;
@@ -10,6 +8,7 @@ export type T_State = {
   };
   ProductList: T_ScreenProductList;
   Casier: T_ScreenCasier;
+  Products: Array<T_ListProducts> | [];
 };
 
 export type T_Action = {
@@ -47,4 +46,16 @@ export type T_ListCart = Array<T_Cart> | [];
 
 export type T_Cart = T_ListProducts & {
   total: number;
+};
+
+export type T_ListProducts = {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  isDiscount: boolean;
+  price: number;
+  priceAfterDiscount: number;
+  type: 'MINUMAN' | 'MAKANAN';
+  stock: number;
 };

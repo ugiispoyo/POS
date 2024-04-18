@@ -1,5 +1,5 @@
 import {T_ListProducts} from '@screens/Casier/types';
-import {T_Action, T_Cart, T_ListCart, T_State} from './type';
+import {T_Action, T_Cart, T_ListCart, T_State} from './types';
 
 const reducer = (state: T_State, action: T_Action): T_State => {
   const {type, value} = action;

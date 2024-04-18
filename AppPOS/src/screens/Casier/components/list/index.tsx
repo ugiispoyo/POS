@@ -10,18 +10,17 @@ import {
 } from 'react-native';
 
 import numberToIDR from '@utils/numberToIDR';
+import Button from '@components/Button';
 
 import styles from '../../styles';
 
 import {useGlobalProps} from '@context/context';
 import {T_GlobalContextCTX} from '@context/types';
-import {useProps} from '@screens/Casier/context';
-import {T_ListProducts, T_CasierCTX} from '@screens/Casier/types';
-import Button from '@components/Button';
+import {T_ListProducts} from '@store/types';
 
 export default function List(): React.JSX.Element {
-  const {dispatch} = useGlobalProps() as T_GlobalContextCTX;
-  const {ListProducts} = useProps() as T_CasierCTX;
+  const {dispatch, state} = useGlobalProps() as T_GlobalContextCTX;
+  const ListProducts = state.Products;
 
   const Item = (Item: {index: number} & T_ListProducts) => {
     const stylePrice =
