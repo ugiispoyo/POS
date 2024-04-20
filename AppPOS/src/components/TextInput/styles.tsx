@@ -11,6 +11,7 @@ export default StyleSheet.create({
     backgroundColor: '#ebebeb',
     color: "#000",
     width: '100%',
+    minHeight: 45,
     paddingLeft: 10,
     paddingRight: 10,
     borderRadius: 7,

@@ -15,7 +15,7 @@
 		37E26D8876594F60AA436DEF /* GloriaHallelujah-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B11D75CAA2354FD19F87A8DE /* GloriaHallelujah-Regular.ttf */; };
 		4A0A10EF1C5744C8B55C250F /* SpecialElite-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB1F795069D44F7BAC7EF5A8 /* SpecialElite-Regular.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-AppPOS-AppPOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-AppPOS-AppPOSTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		840F231C2BD36C02005D51C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840F231B2BD36C02005D51C1 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,10 +43,10 @@
 		5709B34CF0A7D63546082F79 /* Pods-AppPOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppPOS.release.xcconfig"; path = "Target Support Files/Pods-AppPOS/Pods-AppPOS.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-AppPOS-AppPOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppPOS-AppPOSTests.debug.xcconfig"; path = "Target Support Files/Pods-AppPOS-AppPOSTests/Pods-AppPOS-AppPOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-AppPOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppPOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = AppPOS/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		840F231B2BD36C02005D51C1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-AppPOS-AppPOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppPOS-AppPOSTests.release.xcconfig"; path = "Target Support Files/Pods-AppPOS-AppPOSTests/Pods-AppPOS-AppPOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		B11D75CAA2354FD19F87A8DE /* GloriaHallelujah-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "GloriaHallelujah-Regular.ttf"; path = "../src/assets/fonts/GloriaHallelujah-Regular.ttf"; sourceTree = "<group>"; };
-		CB1F795069D44F7BAC7EF5A8 /* SpecialElite-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SpecialElite-Regular.ttf"; path = "../src/assets/fonts/SpecialElite-Regular.ttf"; sourceTree = "<group>"; };
+		B11D75CAA2354FD19F87A8DE /* GloriaHallelujah-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "GloriaHallelujah-Regular.ttf"; path = "../src/assets/fonts/GloriaHallelujah-Regular.ttf"; sourceTree = "<group>"; };
+		CB1F795069D44F7BAC7EF5A8 /* SpecialElite-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SpecialElite-Regular.ttf"; path = "../src/assets/fonts/SpecialElite-Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -94,8 +94,8 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				840F231B2BD36C02005D51C1 /* LaunchScreen.storyboard */,
 			);
 			name = AppPOS;
 			sourceTree = "<group>";
@@ -117,7 +117,6 @@
 				CB1F795069D44F7BAC7EF5A8 /* SpecialElite-Regular.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -256,9 +255,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				37E26D8876594F60AA436DEF /* GloriaHallelujah-Regular.ttf in Resources */,
+				840F231C2BD36C02005D51C1 /* LaunchScreen.storyboard in Resources */,
 				4A0A10EF1C5744C8B55C250F /* SpecialElite-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -597,10 +596,7 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -668,10 +664,7 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
