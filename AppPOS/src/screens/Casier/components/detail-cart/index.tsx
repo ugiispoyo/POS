@@ -9,7 +9,6 @@ import {T_GlobalContextCTX} from '@context/types';
 
 import styles from '../../styles';
 import numberToIDR from '@utils/numberToIDR';
-import {T_CartItems} from '@store/types';
 import ItemCart from '../item-cart';
 
 export default function DetailCart(): React.JSX.Element {
@@ -52,6 +51,7 @@ export default function DetailCart(): React.JSX.Element {
   const handleClosePress = useCallback(() => {
     sheetRef.current?.close();
     setTimeout(() => {
+      setZindex(0);
       setOpen(false);
     }, 10);
   }, []);
@@ -94,6 +94,12 @@ export default function DetailCart(): React.JSX.Element {
               }}
               style={{
                 borderRadius: 14,
+                backgroundColor: '#fff',
+                shadowColor: '#000',
+                shadowOffset: {width: 20, height: 20},
+                shadowOpacity: 1,
+                shadowRadius: 20,
+                elevation: 20,
               }}
               handleStyle={{
                 backgroundColor: '#fff',
@@ -105,14 +111,13 @@ export default function DetailCart(): React.JSX.Element {
               // enableHandlePanningGesture={false}
               // enableContentPanningGesture={false}
               enableHandlePanningGesture={zIndex === 0 ? false : true}
-              enableContentPanningGesture={zIndex === 0 ? false : true}
-            >
+              enableContentPanningGesture={zIndex === 0 ? false : true}>
               <View
                 style={{
                   width: '100%',
                   height: '100%',
                 }}>
-                {zIndex === 0 && (
+                {zIndex === 0 ? (
                   <Animated.View
                     entering={FadeInDown.delay(200)}
                     style={styles.wrapItemCart}>
@@ -138,11 +143,10 @@ export default function DetailCart(): React.JSX.Element {
                       </Pressable>
                     </DropShadow>
                   </Animated.View>
-                )}
-                {zIndex !== 0 && (
+                ) : (
                   <Text style={styles.textItemKeranjang}>Item Keranjang</Text>
                 )}
-                <BottomSheetScrollView>
+                <BottomSheetScrollView showsVerticalScrollIndicator={false}>
                   {product.map((item, i) => (
                     <ItemCart key={i} Item={item} index={i} />
                   ))}

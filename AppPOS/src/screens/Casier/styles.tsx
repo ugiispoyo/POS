@@ -164,7 +164,7 @@ export default StyleSheet.create({
   },
   itemCartTextName: {
     color: '#333',
-    marginLeft: 7,
+    marginLeft: 8,
     width: '25%',
     fontSize: 14,
   },
@@ -247,7 +247,7 @@ export default StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 10
+    paddingVertical: 10,
   },
   textFooterCart: {
     fontSize: 20,

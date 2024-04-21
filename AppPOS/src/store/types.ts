@@ -26,7 +26,8 @@ export type T_TypeAction =
   | 'REMOVE_HOSTNAME'
   | 'SET_ACTION_PRODUCT_LIST'
   | 'SET_DETAIL_PRODUCT'
-  | 'ADD_TO_CART';
+  | 'ADD_TO_CART'
+  | 'ADD_OR_MIN_CART';
 
 /* State screen of Product List */
 export type T_ScreenProductList = {

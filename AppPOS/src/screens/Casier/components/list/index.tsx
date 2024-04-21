@@ -1,13 +1,5 @@
-import React from 'react';
-import {
-  Image,
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  TouchableOpacity,
-  Pressable,
-} from 'react-native';
+import React, {useMemo} from 'react';
+import {Image, View, Text, FlatList, StyleSheet, Pressable} from 'react-native';
 
 import numberToIDR from '@utils/numberToIDR';
 import Button from '@components/Button';
@@ -17,13 +9,17 @@ import styles from '../../styles';
 import {useGlobalProps} from '@context/context';
 import {T_GlobalContextCTX} from '@context/types';
 import {T_ListProducts} from '@store/types';
+// import {useProps} from '@screens/Casier/context';
+// import {T_CasierCTX} from '@screens/Casier/types';
 
 export default function List(): React.JSX.Element {
   const {dispatch, state} = useGlobalProps() as T_GlobalContextCTX;
-  const ListProducts = state.Products;
+  // const {scrollHandler, offsetY} = useProps() as T_CasierCTX;
+
+  const ListProducts = useMemo(() => state.Products, []);
   const listCart = state.Casier.cart.items;
 
-  const Item = (Item: {index: number} & T_ListProducts) => {
+  const Item = (Item: T_ListProducts) => {
     const stylePrice =
       Item.isDiscount &&
       StyleSheet.create({
@@ -113,21 +109,26 @@ export default function List(): React.JSX.Element {
       style={{
         height: listCart.length === 0 ? '90%' : '79%',
         // height: '90%',
-        padding: 20,
+        paddingHorizontal: 20,
+        paddingBottom: 20,
+        paddingTop: 1,
         marginTop: 90,
         zIndex: 1,
         position: 'relative',
       }}>
-      <FlatList
-        style={{flexGrow: 0, height: '100%'}}
-        key={2}
-        numColumns={2}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{width: '100%', zIndex: 2}}
-        data={ListProducts}
-        renderItem={({item, index}) => <Item {...{index, ...item}} />}
-        keyExtractor={(item, index) => item.id + index}
-      />
+      <View style={{paddingBottom: 2}}>
+        <FlatList
+          style={{flexGrow: 0, height: '100%'}}
+          key={2}
+          // onScroll={scrollHandler}
+          numColumns={2}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{width: '100%', zIndex: 2}}
+          data={ListProducts}
+          renderItem={({item}) => <Item {...item} />}
+          keyExtractor={item => item.id}
+        />
+      </View>
     </View>
   );
 }

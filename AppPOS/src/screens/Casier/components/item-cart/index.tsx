@@ -17,12 +17,12 @@ const ItemCart = ({
   Item: T_CartItems;
   index: number;
 }): React.JSX.Element => {
-  const {state} = useGlobalProps() as T_GlobalContextCTX;
+  const {state, dispatch} = useGlobalProps() as T_GlobalContextCTX;
 
   const totalItem = state.Casier.cart?.items?.length;
 
   const stylePrice =
-    Item.isDiscount &&
+    Item?.isDiscount &&
     StyleSheet.create({
       price: {
         marginLeft: 7,
@@ -43,10 +43,10 @@ const ItemCart = ({
           borderWidth: 0,
           borderBottomWidth: index + 1 !== totalItem ? 1 : 0,
         }}>
-        <Image style={styles.itemCartImg} source={{uri: Item.image}} />
-        <Text style={styles.itemCartTextName}>{Item.name}</Text>
+        <Image style={styles.itemCartImg} source={{uri: Item?.image}} />
+        <Text style={styles.itemCartTextName}>{Item?.name}</Text>
         <View style={{display: 'flex', width: '27%', marginLeft: 3}}>
-          {Item.isDiscount ? (
+          {Item?.isDiscount ? (
             <>
               <Text
                 style={{
@@ -54,7 +54,7 @@ const ItemCart = ({
                   fontWeight: '600',
                   width: '100%',
                 }}>
-                {numberToIDR(Item.priceAfterDiscount)}
+                {numberToIDR(Item?.priceAfterDiscount)}
               </Text>
               <Text
                 style={{
@@ -63,7 +63,7 @@ const ItemCart = ({
                   fontWeight: '600',
                   width: '100%',
                 }}>
-                {numberToIDR(Item.price)}
+                {numberToIDR(Item?.price)}
               </Text>
             </>
           ) : (
@@ -74,16 +74,34 @@ const ItemCart = ({
                 fontWeight: '600',
                 width: '100%',
               }}>
-              {numberToIDR(Item.price)}
+              {numberToIDR(Item?.price)}
             </Text>
           )}
         </View>
         <View style={styles.itemCartViewPcs}>
-          <Button style={{width: 35, height: 35}}>-</Button>
+          <Button
+            style={{width: 35, height: 35}}
+            onPress={() =>
+              dispatch({
+                type: 'ADD_OR_MIN_CART',
+                value: {id: Item?.id, AddOrMin: '-'},
+              })
+            }>
+            -
+          </Button>
           <Text style={{color: '#000', fontWeight: '600', fontSize: 16}}>
-            {Item.total}
+            {Item?.total}
           </Text>
-          <Button style={{width: 35, height: 35}}>+</Button>
+          <Button
+            style={{width: 35, height: 35}}
+            onPress={() =>
+              dispatch({
+                type: 'ADD_OR_MIN_CART',
+                value: {id: Item?.id, AddOrMin: '+'},
+              })
+            }>
+            +
+          </Button>
         </View>
       </View>
     </View>

@@ -47,6 +47,14 @@ const reducer = (state: T_State, action: T_Action): T_State => {
           cart: addToCart(state.Casier.cart, value),
         },
       };
+    case 'ADD_OR_MIN_CART':
+      return {
+        ...state,
+        Casier: {
+          ...state.Casier,
+          cart: addMinCart(state.Casier.cart, value),
+        },
+      };
     default:
       return state;
   }
@@ -72,8 +80,8 @@ function addToCart(prev: T_Cart, product: T_CartItems): T_Cart {
     let totalFixAmount = 0;
     let totalOriginalAmount = 0;
 
-    const checkCart = updateCart.filter(item => item.id === product.id);
-    if (checkCart.length !== 0) {
+    const checkCart = updateCart.filter(item => item?.id === product?.id);
+    if (checkCart?.length !== 0) {
       for (var i in updateCart) {
         if (updateCart[i].id == updateProduct.id) {
           updateCart[i].total = updateCart[i].total + 1;
@@ -85,11 +93,11 @@ function addToCart(prev: T_Cart, product: T_CartItems): T_Cart {
     }
 
     for (let i in updateCart) {
-      totalOriginalAmount += updateCart[i].price * updateCart[i].total;
-      totalItems += updateCart[i].total;
-      totalFixAmount += updateCart[i].isDiscount
-        ? updateCart[i].priceAfterDiscount * updateCart[i].total
-        : updateCart[i].price * updateCart[i].total;
+      totalOriginalAmount += updateCart[i]?.price * updateCart[i]?.total;
+      totalItems += updateCart[i]?.total;
+      totalFixAmount += updateCart[i]?.isDiscount
+        ? updateCart[i].priceAfterDiscount * updateCart[i]?.total
+        : updateCart[i]?.price * updateCart[i]?.total;
     }
 
     return {
@@ -99,6 +107,63 @@ function addToCart(prev: T_Cart, product: T_CartItems): T_Cart {
       items: updateCart,
     };
   }
+}
+
+function addMinCart(
+  listCart: T_Cart,
+  {id, AddOrMin}: {id: string; AddOrMin: '-' | '+'},
+): T_Cart {
+  let updateCart = listCart;
+  let items = updateCart?.items;
+
+  const indexItems = items?.findIndex(item => item?.id === id);
+
+  if (AddOrMin === '+') {
+    if (items[indexItems].id === id) {
+      items[indexItems].total += 1;
+    }
+  }
+
+  if (AddOrMin === '-') {
+    if (items[indexItems].id === id) {
+      items[indexItems].total -= 1;
+    }
+  }
+  updateCart = {
+    ...updateCart,
+    items,
+    totalItems: updateCart.totalItems - 1,
+  };
+  let item = updateCart.items;
+
+  let totalOriginalAmount = 0;
+  let totalFixAmount = 0;
+  let totalItems = 0;
+  for (let i in item) {
+    totalOriginalAmount += item[i].price * item[i].total;
+    totalItems += item[i].total;
+    if (item[i].isDiscount) {
+      totalFixAmount += item[i].priceAfterDiscount * item[i].total;
+    } else {
+      totalFixAmount += item[i].price * item[i].total;
+    }
+  }
+  if (totalItems === 0) {
+    updateCart = {
+      ...updateCart,
+      items: [],
+    };
+  }
+  item = item.filter(item => item.total !== 0);
+
+  const result = {
+    items: item,
+    totalFixAmount,
+    totalOriginalAmount,
+    totalItems,
+  };
+
+  return result;
 }
 
 export default reducer;
