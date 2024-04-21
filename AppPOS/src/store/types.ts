@@ -39,12 +39,17 @@ export type T_ScreenProductList = {
 /* State screen of Product List */
 export type T_ScreenCasier = {
   detailProduct: T_ListProducts | null;
-  cart: T_ListCart;
+  cart: T_Cart;
 };
 
-export type T_ListCart = Array<T_Cart> | [];
+export type T_Cart = {
+  items: Array<T_CartItems> | [];
+  totalItems: number;
+  totalOriginalAmount: number;
+  totalFixAmount: number; /* if any discount */
+};
 
-export type T_Cart = T_ListProducts & {
+export type T_CartItems = T_ListProducts & {
   total: number;
 };
 

@@ -16,7 +16,12 @@ const initialState: T_State = {
   },
   Casier: {
     detailProduct: null,
-    cart: [],
+    cart: {
+      items: [],
+      totalItems: 0,
+      totalOriginalAmount: 0,
+      totalFixAmount: 0, /* if any discount */
+    },
   },
   Products: [],
 };

@@ -21,7 +21,7 @@ import {T_ListProducts} from '@store/types';
 export default function List(): React.JSX.Element {
   const {dispatch, state} = useGlobalProps() as T_GlobalContextCTX;
   const ListProducts = state.Products;
-  const listCart = state.Casier.cart;
+  const listCart = state.Casier.cart.items;
 
   const Item = (Item: {index: number} & T_ListProducts) => {
     const stylePrice =

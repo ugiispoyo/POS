@@ -1,0 +1,93 @@
+import React from 'react';
+import {View, Image, Text, StyleSheet} from 'react-native';
+
+import Button from '@components/Button';
+
+import numberToIDR from '@utils/numberToIDR';
+import {T_CartItems} from '@store/types';
+
+import styles from '../../styles';
+import {useGlobalProps} from '@context/context';
+import {T_GlobalContextCTX} from '@context/types';
+
+const ItemCart = ({
+  Item,
+  index,
+}: {
+  Item: T_CartItems;
+  index: number;
+}): React.JSX.Element => {
+  const {state} = useGlobalProps() as T_GlobalContextCTX;
+
+  const totalItem = state.Casier.cart?.items?.length;
+
+  const stylePrice =
+    Item.isDiscount &&
+    StyleSheet.create({
+      price: {
+        marginLeft: 7,
+        fontSize: 13,
+        color: '#777',
+        textDecorationLine: 'line-through',
+      },
+    }).price;
+
+  return (
+    <View
+      style={{position: 'relative', paddingHorizontal: 10, marginBottom: 10}}>
+      <View
+        style={{
+          ...styles.itemCart,
+          backgroundColor: '#fff',
+          borderRadius: 10,
+          borderWidth: 0,
+          borderBottomWidth: index + 1 !== totalItem ? 1 : 0,
+        }}>
+        <Image style={styles.itemCartImg} source={{uri: Item.image}} />
+        <Text style={styles.itemCartTextName}>{Item.name}</Text>
+        <View style={{display: 'flex', width: '27%', marginLeft: 3}}>
+          {Item.isDiscount ? (
+            <>
+              <Text
+                style={{
+                  ...styles.itemCartTextName,
+                  fontWeight: '600',
+                  width: '100%',
+                }}>
+                {numberToIDR(Item.priceAfterDiscount)}
+              </Text>
+              <Text
+                style={{
+                  ...styles.itemCartTextName,
+                  ...stylePrice,
+                  fontWeight: '600',
+                  width: '100%',
+                }}>
+                {numberToIDR(Item.price)}
+              </Text>
+            </>
+          ) : (
+            <Text
+              style={{
+                ...styles.itemCartTextName,
+                ...stylePrice,
+                fontWeight: '600',
+                width: '100%',
+              }}>
+              {numberToIDR(Item.price)}
+            </Text>
+          )}
+        </View>
+        <View style={styles.itemCartViewPcs}>
+          <Button style={{width: 35, height: 35}}>-</Button>
+          <Text style={{color: '#000', fontWeight: '600', fontSize: 16}}>
+            {Item.total}
+          </Text>
+          <Button style={{width: 35, height: 35}}>+</Button>
+        </View>
+      </View>
+    </View>
+  );
+};
+
+export default ItemCart;

@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, Platform, StyleSheet, Text, View} from 'react-native';
 import BottomSheet, {BottomSheetScrollView} from '@gorhom/bottom-sheet';
 
 import Button from '@components/Button';
@@ -38,9 +38,13 @@ export default function DetailProduct(): React.JSX.Element {
   const handleClosePress = useCallback(() => {
     dispatch({type: 'SET_DETAIL_PRODUCT', value: null});
     sheetRef.current?.close();
-    setTimeout(() => {
+    if (Platform.OS === 'android') {
+      setTimeout(() => {
+        setOpen(false);
+      }, 10);
+    } else {
       setOpen(false);
-    }, 10);
+    }
   }, []);
 
   const stylePrice =
@@ -59,7 +63,11 @@ export default function DetailProduct(): React.JSX.Element {
         <>
           <View style={styles.backDrop} />
           <View style={styles.wrapDetailProduct}>
-            <BottomSheet ref={sheetRef} index={0} snapPoints={snapPoints}>
+            <BottomSheet
+              ref={sheetRef}
+              index={0}
+              snapPoints={snapPoints}
+              enableDynamicSizing>
               <BottomSheetScrollView
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={styles.containerBottomSheet}>

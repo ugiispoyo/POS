@@ -87,4 +87,43 @@ export const ListProducts: Array<T_ListProducts> = [
     type: 'MINUMAN',
     stock: 100,
   },
+  {
+    id: '130',
+    name: 'Ayam saus tiram 2',
+    description:
+      'Ayam saus tiram',
+    image:
+      'https://asset.kompas.com/crops/yoovaRyPxaPFOY4gfCciore2eUY=/3x0:700x465/750x500/data/photo/2020/12/30/5fec5602f116e.jpg',
+    isDiscount: false,
+    price: 20000,
+    priceAfterDiscount: 0,
+    type: 'MINUMAN',
+    stock: 100,
+  },
+  {
+    id: '131',
+    name: 'Ayam saus tiram 3',
+    description:
+      'Ayam saus tiram',
+    image:
+      'https://asset.kompas.com/crops/yoovaRyPxaPFOY4gfCciore2eUY=/3x0:700x465/750x500/data/photo/2020/12/30/5fec5602f116e.jpg',
+    isDiscount: false,
+    price: 20000,
+    priceAfterDiscount: 0,
+    type: 'MINUMAN',
+    stock: 100,
+  },
+  {
+    id: '132',
+    name: 'Ayam saus tiram 4',
+    description:
+      'Ayam saus tiram',
+    image:
+      'https://asset.kompas.com/crops/yoovaRyPxaPFOY4gfCciore2eUY=/3x0:700x465/750x500/data/photo/2020/12/30/5fec5602f116e.jpg',
+    isDiscount: false,
+    price: 20000,
+    priceAfterDiscount: 0,
+    type: 'MINUMAN',
+    stock: 100,
+  },
 ];

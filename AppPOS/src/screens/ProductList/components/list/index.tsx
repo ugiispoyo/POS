@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Pressable,
+  Platform,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Animated, {FadeInUp} from 'react-native-reanimated';
@@ -165,7 +166,7 @@ export default function List(): React.JSX.Element {
         <Text
           style={{
             color: '#000',
-            width: '17%',
+            width: Platform.OS === "android" ? '17%' : '20%',
             marginLeft: 10,
             fontWeight: '900',
           }}>

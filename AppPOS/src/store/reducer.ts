@@ -1,5 +1,4 @@
-import {T_ListProducts} from '@screens/Casier/types';
-import {T_Action, T_Cart, T_ListCart, T_State} from './types';
+import {T_Action, T_Cart, T_CartItems, T_State} from './types';
 
 const reducer = (state: T_State, action: T_Action): T_State => {
   const {type, value} = action;
@@ -53,13 +52,26 @@ const reducer = (state: T_State, action: T_Action): T_State => {
   }
 };
 
-function addToCart(prev: T_ListCart, product: T_Cart): T_ListCart {
+function addToCart(prev: T_Cart, product: T_CartItems): T_Cart {
+  let listItems = prev.items;
   let updateProduct = {...product, total: 1};
-  if (prev.length === 0) {
-    prev = [updateProduct];
-    return prev;
+  if (listItems.length === 0) {
+    listItems = [updateProduct];
+    updateProduct.isDiscount;
+    return {
+      totalItems: 1,
+      totalOriginalAmount: updateProduct.price,
+      items: listItems,
+      totalFixAmount: updateProduct.isDiscount
+        ? updateProduct.priceAfterDiscount
+        : updateProduct.price,
+    };
   } else {
-    let updateCart = prev;
+    let updateCart = listItems;
+    let totalItems = 0;
+    let totalFixAmount = 0;
+    let totalOriginalAmount = 0;
+
     const checkCart = updateCart.filter(item => item.id === product.id);
     if (checkCart.length !== 0) {
       for (var i in updateCart) {
@@ -69,10 +81,23 @@ function addToCart(prev: T_ListCart, product: T_Cart): T_ListCart {
         }
       }
     } else {
-      updateCart = [...prev, updateProduct];
+      updateCart = [...listItems, updateProduct];
     }
 
-    return updateCart;
+    for (let i in updateCart) {
+      totalOriginalAmount += updateCart[i].price * updateCart[i].total;
+      totalItems += updateCart[i].total;
+      totalFixAmount += updateCart[i].isDiscount
+        ? updateCart[i].priceAfterDiscount * updateCart[i].total
+        : updateCart[i].price * updateCart[i].total;
+    }
+
+    return {
+      totalFixAmount,
+      totalOriginalAmount,
+      totalItems,
+      items: updateCart,
+    };
   }
 }
 
