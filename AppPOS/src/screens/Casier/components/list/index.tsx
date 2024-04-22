@@ -1,5 +1,12 @@
 import React, {useMemo} from 'react';
-import {Image, View, Text, FlatList, StyleSheet, Pressable} from 'react-native';
+import {
+  Image,
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Pressable,
+} from 'react-native';
 
 import numberToIDR from '@utils/numberToIDR';
 import Button from '@components/Button';

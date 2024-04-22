@@ -237,8 +237,6 @@ export default StyleSheet.create({
   },
   wrapFooterCart: {
     width: '100%',
-    borderTopWidth: 2,
-    borderColor: '#ccc',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
@@ -247,7 +245,16 @@ export default StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 10,
+    paddingBottom: 20,
+  },
+  shadowHeaderFooterCart: {
+    shadowColor: '#ccc',
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 3,
   },
   textFooterCart: {
     fontSize: 20,
