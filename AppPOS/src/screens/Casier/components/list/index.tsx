@@ -6,6 +6,7 @@ import {
   FlatList,
   StyleSheet,
   Pressable,
+  Platform,
 } from 'react-native';
 
 import numberToIDR from '@utils/numberToIDR';
@@ -114,18 +115,25 @@ export default function List(): React.JSX.Element {
   return (
     <View
       style={{
-        height: listCart.length === 0 ? '90%' : '79%',
+        height:
+          listCart.length === 0
+            ? Platform.OS === 'ios'
+              ? '100%'
+              : '90%'
+            : Platform.OS === 'ios'
+            ? '88%'
+            : '79%',
         // height: '90%',
         paddingHorizontal: 20,
         paddingBottom: 20,
         paddingTop: 1,
-        marginTop: 90,
+        marginTop: Platform.OS === 'ios' ? 50 : 90,
         zIndex: 1,
         position: 'relative',
       }}>
       <View style={{paddingBottom: 2}}>
         <FlatList
-          style={{flexGrow: 0, height: '100%'}}
+          style={{height: '100%'}}
           key={2}
           // onScroll={scrollHandler}
           numColumns={2}

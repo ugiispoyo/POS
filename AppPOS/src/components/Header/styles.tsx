@@ -4,7 +4,7 @@ export default StyleSheet.create({
   header: {
     width: '100%',
     height: 'auto',
-    minHeight: '10%'
+    minHeight: '10%',
   },
   headerImg: {
     width: '100%',

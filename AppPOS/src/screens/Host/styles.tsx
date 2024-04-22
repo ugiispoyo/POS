@@ -1,9 +1,9 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   body: {
     width: '100%',
-    height: '100%',
+    height: Dimensions.get("screen").height,
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
@@ -26,7 +26,7 @@ export default StyleSheet.create({
   },
   bgImg: {
     width: '100%',
-    height: '100%',
+    height: Dimensions.get("screen").height,
     minHeight: 700,
     position: 'absolute'
   },

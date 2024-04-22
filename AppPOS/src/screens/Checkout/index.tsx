@@ -11,7 +11,7 @@ export default function Checkout(): React.JSX.Element {
     <CheckoutProvider>
       <SafeAreaView style={styles.body}>
         <StatusBar animated={true} translucent backgroundColor="transparent" />
-        <Header title="Pembayaran" />
+        <Header title="Pembayaran" style={{position: 'absolute', top: 0}} />
       </SafeAreaView>
     </CheckoutProvider>
   );

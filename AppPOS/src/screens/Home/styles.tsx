@@ -1,14 +1,16 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, Platform, StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   body: {
     position: 'relative',
     width: '100%',
-    height: '100%',
+    height: Dimensions.get('screen').height,
     backgroundColor: '#f5f5f5',
   },
   header: {
     width: '100%',
+    position: 'absolute',
+    top: 0,
   },
   headerImg: {
     width: '100%',
@@ -47,6 +49,7 @@ export default StyleSheet.create({
   wrapCard: {
     width: '100%',
     height: 400,
+    marginTop: Platform.OS === 'ios' ? '45%' : '65%',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -102,8 +105,8 @@ export default StyleSheet.create({
   },
   btnImgShadow: {
     position: 'absolute',
-    bottom: '3%',
-    right: '5%',
+    bottom: '10%',
+    right: '8%',
     shadowColor: '#04251D',
     shadowOffset: {
       width: 1,

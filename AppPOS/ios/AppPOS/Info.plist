@@ -31,10 +31,21 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>For taking a photo.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>For saving a photo.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>For choosing a photo.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>GloriaHallelujah-Regular.ttf</string>
+		<string>SpecialElite-Regular.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>LaunchScreen.storyboard</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -47,16 +58,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>GloriaHallelujah-Regular.ttf</string>
-		<string>SpecialElite-Regular.ttf</string>
-	</array>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>For choosing a photo.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>For taking a photo.</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>For saving a photo.</string>
 </dict>
 </plist>

@@ -1,10 +1,10 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   body: {
     position: 'relative',
     width: '100%',
-    height: '100%',
+    height: Dimensions.get("screen").height,
     backgroundColor: '#f5f5f5',
   },
   navbar: {

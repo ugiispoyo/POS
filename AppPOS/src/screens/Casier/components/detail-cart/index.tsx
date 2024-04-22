@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
-import {Image, Pressable, Text, View} from 'react-native';
+import {Dimensions, Image, Pressable, Text, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import BottomSheet, {BottomSheetScrollView} from '@gorhom/bottom-sheet';
 import DropShadow from 'react-native-drop-shadow';
@@ -21,7 +21,7 @@ export default function DetailCart(): React.JSX.Element {
   const [zIndex, setZindex] = useState<number>(0);
   const sheetRef = useRef<BottomSheet>(null);
 
-  const snapPoints = useMemo(() => ['12%', '90%', '100%'], []);
+  const snapPoints = useMemo(() => ['12%', '90%', Dimensions.get("screen").height], []);
 
   const product = state.Casier?.cart?.items;
 

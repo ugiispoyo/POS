@@ -39,14 +39,14 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AppPOS/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = AppPOS/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-AppPOS-AppPOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppPOS-AppPOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B4392A12AC88292D35C810B /* Pods-AppPOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppPOS.debug.xcconfig"; path = "Target Support Files/Pods-AppPOS/Pods-AppPOS.debug.xcconfig"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-AppPOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppPOS.release.xcconfig"; path = "Target Support Files/Pods-AppPOS/Pods-AppPOS.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-AppPOS-AppPOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppPOS-AppPOSTests.debug.xcconfig"; path = "Target Support Files/Pods-AppPOS-AppPOSTests/Pods-AppPOS-AppPOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		39C30A4FC9D8889DAA452BE4 /* Pods-AppPOS-AppPOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppPOS-AppPOSTests.debug.xcconfig"; path = "Target Support Files/Pods-AppPOS-AppPOSTests/Pods-AppPOS-AppPOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		51164F11FE32EFE49CE2DDE2 /* Pods-AppPOS-AppPOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppPOS-AppPOSTests.release.xcconfig"; path = "Target Support Files/Pods-AppPOS-AppPOSTests/Pods-AppPOS-AppPOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-AppPOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppPOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		840F231B2BD36C02005D51C1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-AppPOS-AppPOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppPOS-AppPOSTests.release.xcconfig"; path = "Target Support Files/Pods-AppPOS-AppPOSTests/Pods-AppPOS-AppPOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		A22D82F69F992DED27983397 /* Pods-AppPOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppPOS.release.xcconfig"; path = "Target Support Files/Pods-AppPOS/Pods-AppPOS.release.xcconfig"; sourceTree = "<group>"; };
 		B11D75CAA2354FD19F87A8DE /* GloriaHallelujah-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "GloriaHallelujah-Regular.ttf"; path = "../src/assets/fonts/GloriaHallelujah-Regular.ttf"; sourceTree = "<group>"; };
 		CB1F795069D44F7BAC7EF5A8 /* SpecialElite-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SpecialElite-Regular.ttf"; path = "../src/assets/fonts/SpecialElite-Regular.ttf"; sourceTree = "<group>"; };
+		DDEFCBA997489DFF6131BF30 /* Pods-AppPOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppPOS.debug.xcconfig"; path = "Target Support Files/Pods-AppPOS/Pods-AppPOS.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -111,6 +111,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		385A56178285D4EFE7A7D9BC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DDEFCBA997489DFF6131BF30 /* Pods-AppPOS.debug.xcconfig */,
+				A22D82F69F992DED27983397 /* Pods-AppPOS.release.xcconfig */,
+				39C30A4FC9D8889DAA452BE4 /* Pods-AppPOS-AppPOSTests.debug.xcconfig */,
+				51164F11FE32EFE49CE2DDE2 /* Pods-AppPOS-AppPOSTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		4A4EFDFEA29D46CDB842BFF3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,8 +146,8 @@
 				00E356EF1AD99517003FC87E /* AppPOSTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				BBD78D7AC51CEA395F1C20DB /* Pods */,
 				4A4EFDFEA29D46CDB842BFF3 /* Resources */,
+				385A56178285D4EFE7A7D9BC /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -150,17 +161,6 @@
 				00E356EE1AD99517003FC87E /* AppPOSTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3B4392A12AC88292D35C810B /* Pods-AppPOS.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-AppPOS.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-AppPOS-AppPOSTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-AppPOS-AppPOSTests.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,7 +427,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-AppPOS-AppPOSTests.debug.xcconfig */;
+			baseConfigurationReference = 39C30A4FC9D8889DAA452BE4 /* Pods-AppPOS-AppPOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 67CN73YGM8;
@@ -455,7 +455,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-AppPOS-AppPOSTests.release.xcconfig */;
+			baseConfigurationReference = 51164F11FE32EFE49CE2DDE2 /* Pods-AppPOS-AppPOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -480,14 +480,17 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-AppPOS.debug.xcconfig */;
+			baseConfigurationReference = DDEFCBA997489DFF6131BF30 /* Pods-AppPOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 67CN73YGM8;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = AppPOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "App POS";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -508,13 +511,16 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-AppPOS.release.xcconfig */;
+			baseConfigurationReference = A22D82F69F992DED27983397 /* Pods-AppPOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 67CN73YGM8;
 				INFOPLIST_FILE = AppPOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "App POS";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -562,7 +568,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
@@ -605,6 +611,7 @@
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -641,6 +648,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -661,6 +669,7 @@
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
