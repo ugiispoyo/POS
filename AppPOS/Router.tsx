@@ -7,6 +7,7 @@ import Home from '@screens/Home';
 import ProductList from '@screens/ProductList';
 import ProductAddEdit from '@screens/ProductAddEdit';
 import Casier from '@screens/Casier';
+import Checkout from '@screens/Checkout';
 
 import {T_GlobalContextCTX} from '@context/types';
 import {useGlobalProps} from '@context/context';
@@ -81,6 +82,7 @@ export default () => {
           <Stack.Screen name="ProductList" component={ProductList} />
           <Stack.Screen name="ProductAddEdit" component={ProductAddEdit} />
           <Stack.Screen name="Casier" component={Casier} />
+          <Stack.Screen name="Checkout" component={Checkout} />
         </>
       )}
     </Stack.Navigator>

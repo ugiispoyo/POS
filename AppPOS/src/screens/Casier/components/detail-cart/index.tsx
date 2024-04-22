@@ -1,8 +1,11 @@
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {Image, Pressable, Text, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import BottomSheet, {BottomSheetScrollView} from '@gorhom/bottom-sheet';
 import DropShadow from 'react-native-drop-shadow';
 import Animated, {FadeInDown} from 'react-native-reanimated';
+
+import Button from '@components/Button';
 
 import {useGlobalProps} from '@context/context';
 import {T_GlobalContextCTX} from '@context/types';
@@ -10,15 +13,15 @@ import {T_GlobalContextCTX} from '@context/types';
 import styles from '../../styles';
 import numberToIDR from '@utils/numberToIDR';
 import ItemCart from '../item-cart';
-import Button from '@components/Button';
 
 export default function DetailCart(): React.JSX.Element {
+  const navigation = useNavigation() as any;
   const {state} = useGlobalProps() as T_GlobalContextCTX;
   const [open, setOpen] = useState<boolean>(false);
   const [zIndex, setZindex] = useState<number>(0);
   const sheetRef = useRef<BottomSheet>(null);
 
-  const snapPoints = useMemo(() => ['12%', '90%'], []);
+  const snapPoints = useMemo(() => ['12%', '90%', '100%'], []);
 
   const product = state.Casier?.cart?.items;
 
@@ -170,7 +173,9 @@ export default function DetailCart(): React.JSX.Element {
                   <View
                     style={{
                       width: '100%',
-                      padding: 20,
+                      paddingHorizontal: 20,
+                      paddingBottom: 20,
+                      paddingTop: 10,
                       backgroundColor: '#fff',
                     }}>
                     <View style={styles.wrapFooterCart}>
@@ -226,7 +231,11 @@ export default function DetailCart(): React.JSX.Element {
                       )}
                     </View>
                     <DropShadow style={styles.shadowItemCart}>
-                      <Button style={{width: '100%'}}>Checkout</Button>
+                      <Button
+                        style={{width: '100%'}}
+                        onPress={() => navigation.navigate('Checkout')}>
+                        Checkout
+                      </Button>
                     </DropShadow>
                   </View>
                 </DropShadow>
