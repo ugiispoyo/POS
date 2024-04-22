@@ -140,7 +140,7 @@ export default function List(): React.JSX.Element {
   };
 
   return (
-    <View style={{height: '80%', padding: 20}}>
+    <View style={{height: '100%', padding: 20}}>
       <View style={styles.itemHeaderList}>
         <Text style={{color: '#000', width: '15%', fontWeight: '900'}}>
           Foto
@@ -166,7 +166,7 @@ export default function List(): React.JSX.Element {
         <Text
           style={{
             color: '#000',
-            width: Platform.OS === "android" ? '17%' : '20%',
+            width: Platform.OS === 'android' ? '17%' : '20%',
             marginLeft: 10,
             fontWeight: '900',
           }}>
@@ -174,7 +174,7 @@ export default function List(): React.JSX.Element {
         </Text>
       </View>
       <FlatList
-        style={{flexGrow: 0, height: '100%'}}
+        style={{flexGrow: 0, height: Platform.OS === 'ios' ? '90%' : '84%'}}
         data={ListProducts}
         showsVerticalScrollIndicator={false}
         renderItem={({item, index}) => <Item {...{index, ...item}} />}
