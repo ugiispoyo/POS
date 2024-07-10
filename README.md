@@ -33,3 +33,12 @@ Point of sales using React Native for mobile app & Laravel for REST API
 1. run `docker exec -it phpmyadmin /bin/sh`
 2. edit `/etc/hosts`
 1. add `172.17.0.2 mysql` use `nano` or `vi`
+
+### Run api
+1. cd `/api`
+2. install php
+3. install composer
+4. run `php artisan key:generate`
+5. run `php artisan config:cache`
+6. run `php artisan route:cache`
+7. run `php artisan serve`
