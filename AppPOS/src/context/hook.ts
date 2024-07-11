@@ -68,7 +68,10 @@ export const useLogic = () => {
 
   const getDataProducts = async () => {
     dispatch({ loading: { isLoading: true, module: "PRODUCT_LIST" } })
-    const data = await getProducts({ init: { params: { limit: 50, sort_order: "desc" } } })
+    const data = await getProducts({
+      url: `${state.hostname}/api/products?limit=200&sort_order=desc`,
+      // init: {params: { limit: 50, sort_order: "desc" }}
+    })
     if (typeof data?.data === "undefined") {
       dispatch({ loading: { isLoading: false, module: "" } })
       return;
