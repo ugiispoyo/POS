@@ -52,7 +52,7 @@ export default function Host(): React.JSX.Element {
                 required: 'Hostname wajib diisi!',
                 pattern: {
                   value:
-                    /^(https?):\/\/((\d{1,3}\.){3}\d{1,3}|[\da-z\.-]+\.[a-z]{2,6})(:[0-9]{1,5})?(\/[^\s]*)?$/i,
+                    /^(https?):\/\/((\d{1,3}\.){3}\d{1,3}|localhost|[\da-z\.-]+\.[a-z]{2,6})(:[0-9]{1,5})?(\/[^\s]*)?$/i,
                   message: 'Url hostname tidak valid!',
                 },
               }}

@@ -25,13 +25,13 @@ class Product extends Model
     }
 
     protected $fillable = [
-        'nama',
-        'deskripsi',
-        'photo',
-        'harga',
-        'harga_diskon',
+        'name',
+        'description',
+        'image',
+        'price',
+        'priceAfterDiscount',
         'stock',
-        'is_diskon',
-        'tipe',
+        'isDiscount',
+        'type',
     ];
 }

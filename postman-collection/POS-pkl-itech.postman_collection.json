@@ -13,7 +13,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/api/products?limit=1&page=2",
+					"raw": "{{base_url}}/api/products?limit=1&page=1",
 					"host": [
 						"{{base_url}}"
 					],
@@ -28,7 +28,7 @@
 						},
 						{
 							"key": "page",
-							"value": "2"
+							"value": "1"
 						}
 					]
 				}
@@ -49,22 +49,22 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "nama",
+							"key": "name",
 							"value": "mie",
 							"type": "text"
 						},
 						{
-							"key": "deskripsi",
+							"key": "description",
 							"value": "mie enak",
 							"type": "text"
 						},
 						{
-							"key": "photo",
+							"key": "image",
 							"type": "file",
 							"src": "/Users/ugi/Downloads/mie.jpg"
 						},
 						{
-							"key": "harga",
+							"key": "price",
 							"value": "5000",
 							"type": "text"
 						},
@@ -74,17 +74,17 @@
 							"type": "text"
 						},
 						{
-							"key": "is_diskon",
+							"key": "isDiscount",
 							"value": "2",
 							"type": "text"
 						},
 						{
-							"key": "tipe",
+							"key": "type",
 							"value": "makanan",
 							"type": "text"
 						},
 						{
-							"key": "harga_diskon",
+							"key": "priceAfterDiscount",
 							"value": "",
 							"type": "text"
 						}
@@ -136,22 +136,22 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "nama",
+							"key": "name",
 							"value": "mie gacoan",
 							"type": "text"
 						},
 						{
-							"key": "deskripsi",
+							"key": "description",
 							"value": "mie enak gacoan",
 							"type": "text"
 						},
 						{
-							"key": "photo",
+							"key": "image",
 							"type": "file",
 							"src": "/Users/ugi/Desktop/Screenshot 2024-07-11 at 01.21.09.png"
 						},
 						{
-							"key": "harga",
+							"key": "price",
 							"value": "10000",
 							"type": "text"
 						},
@@ -161,31 +161,31 @@
 							"type": "text"
 						},
 						{
-							"key": "is_diskon",
+							"key": "isDiscount",
 							"value": "1",
 							"type": "text"
 						},
 						{
-							"key": "tipe",
+							"key": "type",
 							"value": "makanan",
 							"type": "text"
 						},
 						{
-							"key": "harga_diskon",
+							"key": "priceAfterDiscount",
 							"value": "5000",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "{{base_url}}/api/products/3da19865-6df0-4a3e-ad7d-d9d5314e401d?_method=PUT",
+					"raw": "{{base_url}}/api/products/1594a342-8149-48db-8eab-2049f72058d2?_method=PUT",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
 						"products",
-						"3da19865-6df0-4a3e-ad7d-d9d5314e401d"
+						"1594a342-8149-48db-8eab-2049f72058d2"
 					],
 					"query": [
 						{

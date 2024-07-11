@@ -21,14 +21,14 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama' => 'required|string|max:255',
-            'deskripsi' => 'required|string',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'harga' => 'required|numeric',
-            'harga_diskon' => 'nullable|numeric',
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'price' => 'required|numeric',
+            'priceAfterDiscount' => 'nullable|numeric',
             'stock' => 'nullable|numeric',
-            'is_diskon' => 'nullable|in:1,2',
-            'tipe' => 'required|in:makanan,minuman',
+            'isDiscount' => 'nullable|in:1,2',
+            'type' => 'required|in:makanan,minuman',
         ]);
 
         if ($validator->fails()) {
@@ -37,8 +37,8 @@ class ProductController extends Controller
 
         $data = $request->all();
 
-        if ($request->hasFile('photo')) {
-            $data['photo'] = $request->file('photo')->store('photos', 'public');
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('photos', 'public');
         }
 
         $product = Product::create($data);
@@ -62,14 +62,14 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'nama' => 'required|string|max:255',
-            'deskripsi' => 'required|string',
-            'photo' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'harga' => 'required|numeric',
-            'harga_diskon' => 'nullable|numeric',
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'price' => 'required|numeric',
+            'priceAfterDiscount' => 'nullable|numeric',
             'stock' => 'nullable|numeric',
-            'is_diskon' => 'nullable|in:1,2',
-            'tipe' => 'required|in:makanan,minuman',
+            'isDiscount' => 'nullable|in:1,2',
+            'type' => 'required|in:makanan,minuman',
         ]);
 
         if ($validator->fails()) {
@@ -82,13 +82,13 @@ class ProductController extends Controller
             return response()->json(['message' => 'Product not found'], 404);
         }
 
-        $data = $request->only(['nama', 'deskripsi', 'harga', 'harga_diskon', 'stock', 'is_diskon', 'tipe']);
+        $data = $request->only(['name', 'description', 'price', 'priceAfterDiscount', 'stock', 'isDiscount', 'type']);
 
-        if ($request->hasFile('photo')) {
-            if ($product->photo) {
-                Storage::disk('public')->delete($product->photo);
+        if ($request->hasFile('image')) {
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
             }
-            $data['photo'] = $request->file('photo')->store('photos', 'public');
+            $data['image'] = $request->file('image')->store('photos', 'public');
         }
 
         $product->update($data);
@@ -105,8 +105,8 @@ class ProductController extends Controller
             return response()->json(['message' => 'Product not found'], 404);
         }
 
-        if ($product->photo) {
-            Storage::disk('public')->delete($product->photo);
+        if ($product->image) {
+            Storage::disk('public')->delete($product->image);
         }
 
         $product->delete();
