@@ -4,27 +4,35 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    // Menampilkan daftar produk
     public function index()
     {
-        return Product::all();
+        $products = Product::all();
+        return response()->json($products);
     }
 
+    // Menyimpan produk baru
     public function store(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
-            'deskripsi' => 'nullable|string',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'deskripsi' => 'required|string',
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'harga' => 'required|numeric',
             'harga_diskon' => 'nullable|numeric',
-            'stock' => 'required|integer',
-            'diskon' => 'required|boolean',
+            'stock' => 'nullable|numeric',
+            'is_diskon' => 'nullable|in:1,2',
             'tipe' => 'required|in:makanan,minuman',
         ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
 
         $data = $request->all();
 
@@ -33,9 +41,11 @@ class ProductController extends Controller
         }
 
         $product = Product::create($data);
-        return response()->json($product, 201);
+
+        return response()->json(['message' => 'Product created successfully', 'product' => $product], 201);
     }
 
+    // Menampilkan produk tertentu
     public function show($id)
     {
         $product = Product::find($id);
@@ -47,18 +57,23 @@ class ProductController extends Controller
         return response()->json($product);
     }
 
+    // Memperbarui produk tertentu
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'nama' => 'sometimes|required|string|max:255',
-            'deskripsi' => 'nullable|string',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'harga' => 'sometimes|required|numeric',
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+            'photo' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'harga' => 'required|numeric',
             'harga_diskon' => 'nullable|numeric',
-            'stock' => 'sometimes|required|integer',
-            'diskon' => 'sometimes|required|boolean',
-            'tipe' => 'sometimes|required|in:makanan,minuman',
+            'stock' => 'nullable|numeric',
+            'is_diskon' => 'nullable|in:1,2',
+            'tipe' => 'required|in:makanan,minuman',
         ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
 
         $product = Product::find($id);
 
@@ -66,7 +81,7 @@ class ProductController extends Controller
             return response()->json(['message' => 'Product not found'], 404);
         }
 
-        $data = $request->all();
+        $data = $request->only(['nama', 'deskripsi', 'harga', 'harga_diskon', 'stock', 'is_diskon', 'tipe']);
 
         if ($request->hasFile('photo')) {
             if ($product->photo) {
@@ -76,9 +91,11 @@ class ProductController extends Controller
         }
 
         $product->update($data);
-        return response()->json($product);
+
+        return response()->json(['message' => 'Product updated successfully', 'product' => $product], 200);
     }
 
+    // Menghapus produk tertentu
     public function destroy($id)
     {
         $product = Product::find($id);
@@ -92,6 +109,7 @@ class ProductController extends Controller
         }
 
         $product->delete();
-        return response()->json(['message' => 'Product deleted successfully']);
+
+        return response()->json(['message' => 'Product deleted successfully'], 200);
     }
 }
