@@ -39,7 +39,7 @@ export default function Host(): React.JSX.Element {
           textAlign: 'center',
         }}>
         Masukan alamat hostname anda untuk melanjutkan, contoh:
-        http://192.168.0.1:8000/
+        http://192.168.1.5:8000
       </Animated.Text>
       <DropShadow style={styles.shadowCardHost}>
         <View style={styles.cardHost}>
