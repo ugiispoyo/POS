@@ -42,3 +42,6 @@ Point of sales using React Native for mobile app & Laravel for REST API
 5. run `php artisan config:cache`
 6. run `php artisan route:cache`
 7. run `php artisan serve`
+
+###### if run api use ip address 
+1. run `php artisan serve --host=192.168.1.100 --port=8000`

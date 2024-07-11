@@ -59,9 +59,9 @@ export type T_ListProducts = {
   name: string;
   description: string;
   image: string;
-  isDiscount: boolean;
+  isDiscount: "1" | "2";
   price: number;
-  priceAfterDiscount: number;
-  type: 'MINUMAN' | 'MAKANAN';
-  stock: number;
+  priceAfterDiscount: number | null;
+  type: "makanan" | "minuman";
+  stock: number | null;
 };

@@ -9,25 +9,25 @@ import {
   Pressable,
   Platform,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import Animated, {FadeInUp} from 'react-native-reanimated';
+import { useNavigation } from '@react-navigation/native';
+import Animated, { FadeInUp } from 'react-native-reanimated';
 
 import numberToIDR from '@utils/numberToIDR';
 
 import styles from '../../styles';
 
-import {useGlobalProps} from '@context/context';
-import {T_GlobalContextCTX} from '@context/types';
-import {T_ListProducts} from '@store/types';
+import { T_ListProducts } from '@store/types';
+import { useProps } from '@screens/ProductList/context';
+import { T_ProductListCTX } from '@screens/ProductList/types';
 
 export default function List(): React.JSX.Element {
   const navigation = useNavigation<any>();
-  const {state, dispatch} = useGlobalProps() as T_GlobalContextCTX;
-  const ListProducts = state.Products;
+  const { Products, ProductList, dispatch, hostname } = useProps() as T_ProductListCTX;
+  const ListProducts = Products;
 
-  const Item = (Item: {index: number} & T_ListProducts) => {
+  const Item = (Item: { index: number } & T_ListProducts) => {
     const stylePrice =
-      Item.isDiscount &&
+      Item.isDiscount === "1" &&
       StyleSheet.create({
         price: {
           marginLeft: 7,
@@ -38,21 +38,21 @@ export default function List(): React.JSX.Element {
       }).price;
 
     const isActive =
-      state.ProductList.action.hasAction &&
-      state.ProductList.action.id === Item.id + Item.index;
+      ProductList.action.hasAction &&
+      ProductList.action.id === Item.id + Item.index;
 
     const styleDeactive = !isActive
       ? StyleSheet.create({
-          item: {
-            borderBottomRightRadius: 10,
-          },
-        }).item
+        item: {
+          borderBottomRightRadius: 10,
+        },
+      }).item
       : {};
 
     return (
-      <View style={{position: 'relative'}}>
+      <View style={{ position: 'relative' }}>
         <Pressable
-          style={{...styles.item, ...styleDeactive}}
+          style={{ ...styles.item, ...styleDeactive }}
           onPress={() =>
             dispatch({
               type: 'SET_ACTION_PRODUCT_LIST',
@@ -62,10 +62,10 @@ export default function List(): React.JSX.Element {
               },
             })
           }>
-          <Image style={styles.itemImg} source={{uri: Item.image}} />
+          <Image style={styles.itemImg} source={{ uri: `${hostname}/storage/${Item.image}` }} />
           <Text style={styles.itemTextName}>{Item.name}</Text>
-          <View style={{display: 'flex', width: '33%', marginLeft: 3}}>
-            {Item.isDiscount ? (
+          <View style={{ display: 'flex', width: '33%', marginLeft: 3 }}>
+            {Item.isDiscount === "1" ? (
               <>
                 <Text
                   style={{
@@ -73,7 +73,7 @@ export default function List(): React.JSX.Element {
                     fontWeight: '600',
                     width: '100%',
                   }}>
-                  {numberToIDR(Item.priceAfterDiscount)}
+                  {numberToIDR(Item.priceAfterDiscount ?? 0)}
                 </Text>
                 <Text
                   style={{
@@ -98,9 +98,9 @@ export default function List(): React.JSX.Element {
             )}
           </View>
           <View style={styles.itemViewPcs}>
-            <Text style={{color: '#000'}}>{Item.stock}</Text>
+            <Text style={{ color: '#000' }}>{Item.stock ?? "-"}</Text>
           </View>
-          {Item.isDiscount && (
+          {Item.isDiscount === "1" && (
             <Image
               style={styles.itemImgDiscount}
               source={require('@assets/icons/discount.png')}
@@ -119,18 +119,18 @@ export default function List(): React.JSX.Element {
           style={styles.wrapAction}
           entering={FadeInUp.duration(50).delay(10)}>
           <TouchableOpacity
-            style={{marginRight: 20}}
+            style={{ marginRight: 20 }}
             onPress={() =>
-              navigation.navigate('ProductAddEdit', {id: Item.id})
+              navigation.navigate('ProductAddEdit', { id: Item.id })
             }>
             <Image
-              style={{width: 25, height: 25}}
+              style={{ width: 25, height: 25 }}
               source={require('@assets/icons/edit.png')}
             />
           </TouchableOpacity>
           <TouchableOpacity>
             <Image
-              style={{width: 25, height: 25}}
+              style={{ width: 25, height: 25 }}
               source={require('@assets/icons/trash.png')}
             />
           </TouchableOpacity>
@@ -140,9 +140,9 @@ export default function List(): React.JSX.Element {
   };
 
   return (
-    <View style={{height: '100%', padding: 20}}>
+    <View style={{ height: '100%', padding: 20 }}>
       <View style={styles.itemHeaderList}>
-        <Text style={{color: '#000', width: '15%', fontWeight: '900'}}>
+        <Text style={{ color: '#000', width: '15%', fontWeight: '900' }}>
           Foto
         </Text>
         <Text
@@ -174,12 +174,12 @@ export default function List(): React.JSX.Element {
         </Text>
       </View>
       <FlatList
-        style={{flexGrow: 0, height: Platform.OS === 'ios' ? '90%' : '84%'}}
+        style={{ flexGrow: 0, height: Platform.OS === 'ios' ? '90%' : '84%' }}
         data={ListProducts}
         showsVerticalScrollIndicator={false}
-        renderItem={({item, index}) => <Item {...{index, ...item}} />}
+        renderItem={({ item, index }) => <Item {...{ index, ...item }} />}
         keyExtractor={(item, index) => item.id + index}
-        ItemSeparatorComponent={() => <View style={{height: 15}} />}
+        ItemSeparatorComponent={() => <View style={{ height: 15 }} />}
       />
     </View>
   );
