@@ -10,9 +10,10 @@ use Illuminate\Support\Facades\Storage;
 class ProductController extends Controller
 {
     // Menampilkan daftar produk
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+        $perPage = $request->get('limit', 15); // Default 15 items per page
+        $products = Product::paginate($perPage);
         return response()->json($products);
     }
 
