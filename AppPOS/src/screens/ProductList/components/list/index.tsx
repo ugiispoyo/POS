@@ -22,7 +22,7 @@ import { T_ProductListCTX } from '@screens/ProductList/types';
 
 export default function List(): React.JSX.Element {
   const navigation = useNavigation<any>();
-  const { Products, ProductList, dispatch, hostname } = useProps() as T_ProductListCTX;
+  const { Products, ProductList, dispatch, hostname, loading } = useProps() as T_ProductListCTX;
   const ListProducts = Products;
 
   const Item = (Item: { index: number } & T_ListProducts) => {
@@ -173,14 +173,27 @@ export default function List(): React.JSX.Element {
           Jumlah
         </Text>
       </View>
-      <FlatList
-        style={{ flexGrow: 0, height: Platform.OS === 'ios' ? '90%' : '84%' }}
-        data={ListProducts}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item, index }) => <Item {...{ index, ...item }} />}
-        keyExtractor={(item, index) => item.id + index}
-        ItemSeparatorComponent={() => <View style={{ height: 15 }} />}
-      />
+      {!loading.isLoading && loading.module !== "ProductList" ?
+        <FlatList
+          style={{ flexGrow: 0, height: Platform.OS === 'ios' ? '90%' : '84%' }}
+          data={ListProducts}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item, index }) => <Item {...{ index, ...item }} />}
+          keyExtractor={(item, index) => item.id + index}
+          ItemSeparatorComponent={() => <View style={{ height: 15 }} />}
+        />
+        :
+        <View>
+          <Text
+            style={{
+              color: '#000',
+              width: '100%',
+              marginLeft: 15,
+              fontWeight: '900',
+              textAlign: 'center'
+            }}>Sedang mengambil data...</Text>
+        </View>
+      }
     </View>
   );
 }

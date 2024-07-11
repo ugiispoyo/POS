@@ -16,12 +16,15 @@ export const useLogic = () => {
   }, [])
 
   const getDataProducts = async () => {
+    dispatch({ loading: { isLoading: true, module: "ProductList" } })
     const data = await listProducts({ init: { params: { limit: 50 } } })
     if (typeof data?.data === "undefined") {
+      dispatch({ loading: { isLoading: false, module: "" } })
       return;
     }
 
     dispatch({ Products: data.data })
+    dispatch({ loading: { isLoading: false, module: "" } })
   }
 
   return {

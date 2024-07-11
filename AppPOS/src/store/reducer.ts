@@ -1,11 +1,11 @@
-import {T_Action, T_Cart, T_CartItems, T_State} from './types';
+import { T_Action, T_Cart, T_CartItems, T_State } from './types';
 
 const reducer = (state: T_State, action: T_Action): T_State => {
-  const {type, value} = action;
+  const { type, value } = action;
   const updateState = action as T_State;
 
   if (typeof type === 'undefined') {
-    return {...state, ...updateState};
+    return { ...state, ...updateState };
   }
 
   switch (type) {
@@ -62,7 +62,7 @@ const reducer = (state: T_State, action: T_Action): T_State => {
 
 function addToCart(prev: T_Cart, product: T_CartItems): T_Cart {
   let listItems = prev.items;
-  let updateProduct = {...product, total: 1};
+  let updateProduct = { ...product, total: 1 };
   if (listItems.length === 0) {
     listItems = [updateProduct];
     updateProduct.isDiscount;
@@ -70,8 +70,8 @@ function addToCart(prev: T_Cart, product: T_CartItems): T_Cart {
       totalItems: 1,
       totalOriginalAmount: updateProduct.price,
       items: listItems,
-      totalFixAmount: updateProduct.isDiscount
-        ? updateProduct.priceAfterDiscount
+      totalFixAmount: updateProduct.isDiscount === "1"
+        ? updateProduct.priceAfterDiscount || 0
         : updateProduct.price,
     };
   } else {
@@ -96,7 +96,7 @@ function addToCart(prev: T_Cart, product: T_CartItems): T_Cart {
       totalOriginalAmount += updateCart[i]?.price * updateCart[i]?.total;
       totalItems += updateCart[i]?.total;
       totalFixAmount += updateCart[i]?.isDiscount
-        ? updateCart[i].priceAfterDiscount * updateCart[i]?.total
+        ? updateCart[i].priceAfterDiscount || 0 * updateCart[i]?.total
         : updateCart[i]?.price * updateCart[i]?.total;
     }
 
@@ -111,7 +111,7 @@ function addToCart(prev: T_Cart, product: T_CartItems): T_Cart {
 
 function addMinCart(
   listCart: T_Cart,
-  {id, AddOrMin}: {id: string; AddOrMin: '-' | '+'},
+  { id, AddOrMin }: { id: string; AddOrMin: '-' | '+' },
 ): T_Cart {
   let updateCart = listCart;
   let items = updateCart?.items;
@@ -143,7 +143,7 @@ function addMinCart(
     totalOriginalAmount += item[i].price * item[i].total;
     totalItems += item[i].total;
     if (item[i].isDiscount) {
-      totalFixAmount += item[i].priceAfterDiscount * item[i].total;
+      totalFixAmount += item[i].priceAfterDiscount || 0 * item[i].total;
     } else {
       totalFixAmount += item[i].price * item[i].total;
     }
