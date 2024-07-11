@@ -1,17 +1,18 @@
-import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
-import {Image, Platform, StyleSheet, Text, View} from 'react-native';
-import BottomSheet, {BottomSheetScrollView} from '@gorhom/bottom-sheet';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Image, Platform, StyleSheet, Text, View } from 'react-native';
+import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 
 import Button from '@components/Button';
 
-import {useGlobalProps} from '@context/context';
-import {T_GlobalContextCTX} from '@context/types';
+import { useGlobalProps } from '@context/context';
+import { T_GlobalContextCTX } from '@context/types';
 
 import styles from '../../styles';
 import numberToIDR from '@utils/numberToIDR';
 
 export default function DetailProduct(): React.JSX.Element {
-  const {state, dispatch} = useGlobalProps() as T_GlobalContextCTX;
+  const { state, dispatch } = useGlobalProps() as T_GlobalContextCTX;
+  const { hostname } = state
   const [open, setOpen] = useState<boolean>(false);
   const sheetRef = useRef<BottomSheet>(null);
 
@@ -19,7 +20,7 @@ export default function DetailProduct(): React.JSX.Element {
 
   const snapPoints = useMemo(() => ['60%'], []);
 
-  useEffect(() => {}, [open, state]);
+  useEffect(() => { }, [open, state]);
 
   useEffect(() => {
     if (product !== null && !open) {
@@ -36,7 +37,7 @@ export default function DetailProduct(): React.JSX.Element {
   }, []);
 
   const handleClosePress = useCallback(() => {
-    dispatch({type: 'SET_DETAIL_PRODUCT', value: null});
+    dispatch({ type: 'SET_DETAIL_PRODUCT', value: null });
     sheetRef.current?.close();
     if (Platform.OS === 'android') {
       setTimeout(() => {
@@ -48,7 +49,7 @@ export default function DetailProduct(): React.JSX.Element {
   }, []);
 
   const stylePrice =
-    product?.isDiscount &&
+    product?.isDiscount === "1" &&
     StyleSheet.create({
       price: {
         fontSize: 10,
@@ -74,7 +75,7 @@ export default function DetailProduct(): React.JSX.Element {
                 <Text style={styles.textDetailProduct}>{product?.name}</Text>
                 {product !== null && (
                   <Image
-                    source={{uri: product?.image}}
+                    source={{ uri: `${hostname}/storage/${product.image}` }}
                     style={styles.imgDetailProduct}
                   />
                 )}
@@ -86,7 +87,7 @@ export default function DetailProduct(): React.JSX.Element {
                   {product?.description}
                 </Text>
 
-                {product?.isDiscount && (
+                {product?.isDiscount === "1" && (
                   <Image
                     style={{
                       ...styles.itemImgDiscount,
@@ -97,8 +98,8 @@ export default function DetailProduct(): React.JSX.Element {
                 )}
 
                 <View style={styles.itemViewDetail}>
-                  <View style={{display: 'flex', width: '50%'}}>
-                    {product?.isDiscount ? (
+                  <View style={{ display: 'flex', width: '50%' }}>
+                    {product?.isDiscount === "1" ? (
                       <>
                         <Text
                           style={{
@@ -107,7 +108,7 @@ export default function DetailProduct(): React.JSX.Element {
                             fontSize: 20,
                             width: '100%',
                           }}>
-                          {numberToIDR(product?.priceAfterDiscount)}
+                          {numberToIDR(product?.priceAfterDiscount || 0)}
                         </Text>
                         <Text
                           style={{
@@ -133,7 +134,7 @@ export default function DetailProduct(): React.JSX.Element {
                       </Text>
                     )}
                   </View>
-                  <Text style={{color: '#000', fontSize: 16}}>
+                  <Text style={{ color: '#000', fontSize: 16 }}>
                     {product?.stock}
                   </Text>
                 </View>
@@ -147,7 +148,7 @@ export default function DetailProduct(): React.JSX.Element {
                     }}
                     onPress={() => handleClosePress()}>
                     <Text
-                      style={{fontSize: 15, color: '#fff', fontWeight: '600'}}>
+                      style={{ fontSize: 15, color: '#fff', fontWeight: '600' }}>
                       Close
                     </Text>
                   </Button>
@@ -158,12 +159,12 @@ export default function DetailProduct(): React.JSX.Element {
                       width: '65%',
                     }}
                     onPress={() => {
-                      dispatch({type: 'ADD_TO_CART', value: product});
+                      dispatch({ type: 'ADD_TO_CART', value: product });
                       handleClosePress();
                     }}>
                     <>
                       <Image
-                        style={{width: 20, height: 20, marginRight: 5}}
+                        style={{ width: 20, height: 20, marginRight: 5 }}
                         source={require('@assets/icons/add-cart.png')}
                       />
                       <Text

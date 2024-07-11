@@ -4,7 +4,7 @@ export type T_State = {
   hostname: string /* loading for first open app */;
   loading: {
     /* loading for action each module */ isLoading: boolean;
-    module: string;
+    module: T_ListModule | "";
   };
   ProductList: T_ScreenProductList;
   Casier: T_ScreenCasier;
@@ -64,4 +64,8 @@ export type T_ListProducts = {
   priceAfterDiscount: number | null;
   type: "makanan" | "minuman";
   stock: number | null;
+  created_at: string;
+  updated_at: string;
 };
+
+export type T_ListModule = "PRODUCT_LIST" | "ADD_UPDATE_PRODUCT"

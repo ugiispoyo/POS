@@ -79,7 +79,7 @@ export default StyleSheet.create({
     borderLeftWidth: 1,
     borderColor: '#aaa',
     padding: 15,
-    minWidth: 70,
+    minWidth: 60,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     display: 'flex',

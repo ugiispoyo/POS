@@ -13,7 +13,10 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->get('limit', 15); // Default 15 items per page
-        $products = Product::paginate($perPage);
+        $sortBy = $request->get('sort_by', 'created_at'); // Default sort by created_at
+        $sortOrder = $request->get('sort_order', 'asc'); // Default sort order ascending
+
+        $products = Product::orderBy($sortBy, $sortOrder)->paginate($perPage);
         return response()->json($products);
     }
 
@@ -82,7 +85,7 @@ class ProductController extends Controller
             return response()->json(['message' => 'Product not found'], 404);
         }
 
-        $data = $request->only(['name', 'description', 'price', 'priceAfterDiscount', 'stock', 'isDiscount', 'type']);
+        $data = $request->only(['name', 'description', 'price', 'priceAfterDiscount', 'stock', 'isDiscount', 'type', "image"]);
 
         if ($request->hasFile('image')) {
             if ($product->image) {

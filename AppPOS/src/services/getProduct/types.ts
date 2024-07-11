@@ -6,4 +6,4 @@ export type T_ResponseListProducts = {
   per_page: number;
   to: number;
   total: number;
-}
+} & T_ListProducts

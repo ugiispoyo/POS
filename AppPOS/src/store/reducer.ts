@@ -71,7 +71,7 @@ function addToCart(prev: T_Cart, product: T_CartItems): T_Cart {
       totalOriginalAmount: updateProduct.price,
       items: listItems,
       totalFixAmount: updateProduct.isDiscount === "1"
-        ? updateProduct.priceAfterDiscount || 0
+        ? updateProduct.priceAfterDiscount as any
         : updateProduct.price,
     };
   } else {
@@ -95,8 +95,8 @@ function addToCart(prev: T_Cart, product: T_CartItems): T_Cart {
     for (let i in updateCart) {
       totalOriginalAmount += updateCart[i]?.price * updateCart[i]?.total;
       totalItems += updateCart[i]?.total;
-      totalFixAmount += updateCart[i]?.isDiscount
-        ? updateCart[i].priceAfterDiscount || 0 * updateCart[i]?.total
+      totalFixAmount += updateCart[i]?.isDiscount === "1"
+        ? updateCart[i].priceAfterDiscount as any * updateCart[i]?.total
         : updateCart[i]?.price * updateCart[i]?.total;
     }
 
@@ -142,8 +142,8 @@ function addMinCart(
   for (let i in item) {
     totalOriginalAmount += item[i].price * item[i].total;
     totalItems += item[i].total;
-    if (item[i].isDiscount) {
-      totalFixAmount += item[i].priceAfterDiscount || 0 * item[i].total;
+    if (item[i].isDiscount === "1") {
+      totalFixAmount += item[i].priceAfterDiscount as any * item[i].total;
     } else {
       totalFixAmount += item[i].price * item[i].total;
     }

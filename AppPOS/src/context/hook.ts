@@ -1,16 +1,16 @@
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 import {
   createNavigationContainerRef,
   useNavigation,
 } from '@react-navigation/native';
-import {useForm} from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
-import {localKeys} from '@constants/index';
-import {getStorage, removeStorage, setStorage} from '@utils/storage';
+import { localKeys } from '@constants/index';
+import { getStorage, removeStorage, setStorage } from '@utils/storage';
+import getProducts from '@services/getProduct';
 
-import {store} from '@store/index';
-import {T_FieldHostname} from './types';
-import {ListProducts} from '@constants/dummy';
+import { store } from '@store/index';
+import { T_FieldHostname } from './types';
 
 /* default field hostname React hook */
 const fieldHostnameForm: T_FieldHostname = {
@@ -21,54 +21,69 @@ export const useLogic = () => {
   const navigation = useNavigation<any>();
   const navigationRef =
     createNavigationContainerRef<ReactNavigation.RootParamList>();
-  const {dispatch, state} = store();
+  const { dispatch, state } = store();
 
   const hookHostnameForm = useForm({
     defaultValues: fieldHostnameForm,
   });
 
   useEffect(() => {
-    dispatch({isLoading: true});
-    dispatch({Products: ListProducts});
+    dispatch({ isLoading: true });
     checkHostName();
+    getDataProducts();
   }, []);
 
   const checkHostName = async () => {
     const host = await getStorage(localKeys.HOSTNAME);
     if (host) {
-      dispatch({type: 'SET_HOSTNAME', value: host.hostname});
+      dispatch({ type: 'SET_HOSTNAME', value: host.hostname });
     } else {
-      dispatch({isLoading: false});
+      dispatch({ isLoading: false });
     }
   };
 
   const saveHost = async (data: T_FieldHostname) => {
-    dispatch({isLoading: true});
-    await setStorage(localKeys.HOSTNAME, {hostname: data.hostname});
+    dispatch({ isLoading: true });
+    await setStorage(localKeys.HOSTNAME, { hostname: data.hostname });
     setTimeout(async () => {
       const check = await getStorage(localKeys.HOSTNAME);
       if (!check) {
-        dispatch({isLoading: false});
+        dispatch({ isLoading: false });
       }
-      dispatch({type: 'SET_HOSTNAME', value: check.hostname});
+      dispatch({ type: 'SET_HOSTNAME', value: check.hostname });
     }, 500);
   };
 
   const changeHostname = async () => {
-    dispatch({isLoading: true});
+    dispatch({ isLoading: true });
     await removeStorage(localKeys.HOSTNAME);
     setTimeout(async () => {
-      dispatch({type: 'REMOVE_HOSTNAME'});
+      dispatch({ type: 'REMOVE_HOSTNAME' });
       if (navigationRef.isReady()) {
         navigation.navigate('Host');
       }
     }, 500);
   };
 
+
+  const getDataProducts = async () => {
+    dispatch({ loading: { isLoading: true, module: "PRODUCT_LIST" } })
+    const data = await getProducts({ init: { params: { limit: 50, sort_order: "desc" } } })
+    if (typeof data?.data === "undefined") {
+      dispatch({ loading: { isLoading: false, module: "" } })
+      return;
+    }
+
+    dispatch({ Products: data.data })
+    dispatch({ loading: { isLoading: false, module: "" } })
+  }
+
+
   return {
     saveHost,
     changeHostname,
     hookHostnameForm,
+    getDataProducts,
 
     state,
     dispatch,

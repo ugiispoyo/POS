@@ -5,6 +5,7 @@ export type T_GlobalContextCTX = {
   saveHost: (data: T_FieldHostname) => Promise<void>;
   changeHostname: () => Promise<void>;
   hookHostnameForm: UseFormReturn<T_FieldHostname, any, undefined>;
+  getDataProducts: () => Promise<void>;
 
   state: T_State;
   dispatch: React.Dispatch<T_Action>;

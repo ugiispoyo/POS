@@ -1,3 +1,4 @@
+import { T_State } from '@store/types';
 import {UseFormReturn} from 'react-hook-form';
 
 export type T_ProductAddEditCTX = {
@@ -7,7 +8,7 @@ export type T_ProductAddEditCTX = {
   isFood: string;
 
   hookForm: UseFormReturn<T_FieldFormProduct, any, undefined>;
-};
+} & T_State;
 
 export type T_ProductAddEditProvider = {
   children: JSX.Element | React.ReactNode;

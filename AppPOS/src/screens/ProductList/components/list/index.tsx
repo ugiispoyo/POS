@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Pressable,
   Platform,
+  RefreshControl
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Animated, { FadeInUp } from 'react-native-reanimated';
@@ -19,10 +20,13 @@ import styles from '../../styles';
 import { T_ListProducts } from '@store/types';
 import { useProps } from '@screens/ProductList/context';
 import { T_ProductListCTX } from '@screens/ProductList/types';
+import { useGlobalProps } from '@context/context';
+import { T_GlobalContextCTX } from '@context/types';
 
 export default function List(): React.JSX.Element {
   const navigation = useNavigation<any>();
   const { Products, ProductList, dispatch, hostname, loading } = useProps() as T_ProductListCTX;
+  const { getDataProducts } = useGlobalProps() as T_GlobalContextCTX;
   const ListProducts = Products;
 
   const Item = (Item: { index: number } & T_ListProducts) => {
@@ -119,7 +123,7 @@ export default function List(): React.JSX.Element {
           style={styles.wrapAction}
           entering={FadeInUp.duration(50).delay(10)}>
           <TouchableOpacity
-            style={{ marginRight: 20 }}
+            // style={{ marginRight: 20 }}
             onPress={() =>
               navigation.navigate('ProductAddEdit', { id: Item.id })
             }>
@@ -128,12 +132,12 @@ export default function List(): React.JSX.Element {
               source={require('@assets/icons/edit.png')}
             />
           </TouchableOpacity>
-          <TouchableOpacity>
+          {/* <TouchableOpacity>
             <Image
               style={{ width: 25, height: 25 }}
               source={require('@assets/icons/trash.png')}
             />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </Animated.View>
       </View>
     );
@@ -173,15 +177,34 @@ export default function List(): React.JSX.Element {
           Jumlah
         </Text>
       </View>
-      {!loading.isLoading && loading.module !== "ProductList" ?
-        <FlatList
-          style={{ flexGrow: 0, height: Platform.OS === 'ios' ? '90%' : '84%' }}
-          data={ListProducts}
-          showsVerticalScrollIndicator={false}
-          renderItem={({ item, index }) => <Item {...{ index, ...item }} />}
-          keyExtractor={(item, index) => item.id + index}
-          ItemSeparatorComponent={() => <View style={{ height: 15 }} />}
-        />
+      {!loading.isLoading && loading.module !== "PRODUCT_LIST" ?
+        <>
+          {
+            ListProducts.length !== 0 ?
+
+              <FlatList
+                style={{ flexGrow: 0, height: Platform.OS === 'ios' ? '90%' : '84%' }}
+                data={ListProducts}
+                showsVerticalScrollIndicator={false}
+                renderItem={({ item, index }) => <Item {...{ index, ...item }} />}
+                keyExtractor={(item, index) => item.id + index}
+                ItemSeparatorComponent={() => <View style={{ height: 15 }} />}
+                refreshControl={
+                  <RefreshControl refreshing={loading.isLoading} onRefresh={getDataProducts} />}
+              />
+              :
+              <Text
+                style={{
+                  color: '#000',
+                  width: '100%',
+                  marginLeft: 15,
+                  fontWeight: '900',
+                  textAlign: 'center'
+                }}>
+                Data tidak ditemukan!
+              </Text>
+          }
+        </>
         :
         <View>
           <Text

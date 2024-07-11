@@ -1,14 +1,14 @@
 import React from 'react';
-import {View, Image, Text, StyleSheet} from 'react-native';
+import { View, Image, Text, StyleSheet } from 'react-native';
 
 import Button from '@components/Button';
 
 import numberToIDR from '@utils/numberToIDR';
-import {T_CartItems} from '@store/types';
+import { T_CartItems } from '@store/types';
 
 import styles from '../../styles';
-import {useGlobalProps} from '@context/context';
-import {T_GlobalContextCTX} from '@context/types';
+import { useGlobalProps } from '@context/context';
+import { T_GlobalContextCTX } from '@context/types';
 
 const ItemCart = ({
   Item,
@@ -17,12 +17,13 @@ const ItemCart = ({
   Item: T_CartItems;
   index: number;
 }): React.JSX.Element => {
-  const {state, dispatch} = useGlobalProps() as T_GlobalContextCTX;
+  const { state, dispatch } = useGlobalProps() as T_GlobalContextCTX;
+  const { hostname } = state
 
   const totalItem = state.Casier.cart?.items?.length;
 
   const stylePrice =
-    Item?.isDiscount &&
+    Item?.isDiscount === "1" &&
     StyleSheet.create({
       price: {
         marginLeft: 7,
@@ -34,7 +35,7 @@ const ItemCart = ({
 
   return (
     <View
-      style={{position: 'relative', paddingHorizontal: 10, marginBottom: 10}}>
+      style={{ position: 'relative', paddingHorizontal: 10, marginBottom: 10 }}>
       <View
         style={{
           ...styles.itemCart,
@@ -43,10 +44,10 @@ const ItemCart = ({
           borderWidth: 0,
           borderBottomWidth: index + 1 !== totalItem ? 1 : 0,
         }}>
-        <Image style={styles.itemCartImg} source={{uri: Item?.image}} />
+        <Image style={styles.itemCartImg} source={{ uri: `${hostname}/storage/${Item.image}` }} />
         <Text style={styles.itemCartTextName}>{Item?.name}</Text>
-        <View style={{display: 'flex', width: '27%', marginLeft: 3}}>
-          {Item?.isDiscount ? (
+        <View style={{ display: 'flex', width: '27%', marginLeft: 3 }}>
+          {Item?.isDiscount === '1' ? (
             <>
               <Text
                 style={{
@@ -54,7 +55,7 @@ const ItemCart = ({
                   fontWeight: '600',
                   width: '100%',
                 }}>
-                {numberToIDR(Item?.priceAfterDiscount)}
+                {numberToIDR(Item?.priceAfterDiscount || 0)}
               </Text>
               <Text
                 style={{
@@ -80,24 +81,24 @@ const ItemCart = ({
         </View>
         <View style={styles.itemCartViewPcs}>
           <Button
-            style={{width: 35, height: 35}}
+            style={{ width: 35, height: 35 }}
             onPress={() =>
               dispatch({
                 type: 'ADD_OR_MIN_CART',
-                value: {id: Item?.id, AddOrMin: '-'},
+                value: { id: Item?.id, AddOrMin: '-' },
               })
             }>
             -
           </Button>
-          <Text style={{color: '#000', fontWeight: '600', fontSize: 16}}>
+          <Text style={{ color: '#000', fontWeight: '600', fontSize: 16 }}>
             {Item?.total}
           </Text>
           <Button
-            style={{width: 35, height: 35}}
+            style={{ width: 35, height: 35 }}
             onPress={() =>
               dispatch({
                 type: 'ADD_OR_MIN_CART',
-                value: {id: Item?.id, AddOrMin: '+'},
+                value: { id: Item?.id, AddOrMin: '+' },
               })
             }>
             +

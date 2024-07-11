@@ -4,11 +4,11 @@ import { CustomError } from "@services/error";
 import { localKeys } from "@constants/index";
 
 import { T_ConfigServices, T_ErrorServices } from "../types";
-import { T_ResponseListProducts } from "./types";
+import { T_ResponseProducts } from "./types";
 
-export default async function getProducts(
+export default async function addUpdateProduct(
   config?: T_ConfigServices
-): Promise<Partial<T_ResponseListProducts> & T_ErrorServices> {
+): Promise<Partial<T_ResponseProducts> & T_ErrorServices> {
   try {
     const params =
       typeof config?.init?.params !== "undefined"
@@ -17,12 +17,13 @@ export default async function getProducts(
 
     const host = await getStorage(localKeys.HOSTNAME);
     const endpoint = typeof config?.url !== "undefined" ? config.url : `${host.hostname}/api/products${params}`
+
     const res = await fetch(
-      endpoint,
+      `${endpoint}`,
       {
-        method: "GET",
+        method: "POST",
         headers: {
-          "Content-type": "application/json; charset=UTF-8",
+          "Content-type": "multipart/form-data",
           ...config?.init?.headers,
         },
         ...config?.init,
