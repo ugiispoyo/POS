@@ -44,7 +44,7 @@ export const useLogic = () => {
 
   const saveHost = async (data: T_FieldHostname) => {
     dispatch({ isLoading: true });
-    await setStorage(localKeys.HOSTNAME, { hostname: data.hostname });
+    await setStorage(localKeys.HOSTNAME, { hostname: data.hostname.toLowerCase() });
     setTimeout(async () => {
       const check = await getStorage(localKeys.HOSTNAME);
       if (!check) {
