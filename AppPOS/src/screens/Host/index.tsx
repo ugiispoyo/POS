@@ -57,7 +57,7 @@ export default function Host(): React.JSX.Element {
                 },
               }}
               hookForm={hookHostnameForm}
-              placeholder="http://192.168.0.1:8000/"
+              placeholder="http://192.168.1.5:8000"
             />
           </Animated.View>
           <Animated.View
