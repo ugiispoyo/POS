@@ -70,10 +70,12 @@ export const useLogic = () => {
     dispatch({ loading: { isLoading: true, module: "PRODUCT_LIST" } })
     const data = await getProducts({
       url: `${state.hostname}/api/products?limit=200&sort_order=desc`,
+      // url: `http://192.168.1.5:8000/api/products?limit=200&sort_order=desc`,
       // init: {params: { limit: 50, sort_order: "desc" }}
     })
     if (typeof data?.data === "undefined") {
       dispatch({ loading: { isLoading: false, module: "" } })
+      dispatch({ error: data?.status || data as any })
       return;
     }
 

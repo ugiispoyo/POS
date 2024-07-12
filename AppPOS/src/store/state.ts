@@ -8,6 +8,7 @@ const initialState: T_State = {
     /* loading for action each module */ isLoading: false,
     module: '',
   },
+  error: '',
   ProductList: {
     action: {
       hasAction: false,

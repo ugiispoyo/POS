@@ -6,6 +6,7 @@ export type T_State = {
     /* loading for action each module */ isLoading: boolean;
     module: T_ListModule | "";
   };
+  error: string;
   ProductList: T_ScreenProductList;
   Casier: T_ScreenCasier;
   Products: Array<T_ListProducts> | [];
