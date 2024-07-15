@@ -74,6 +74,9 @@ COPY config/nginx/default.conf /etc/nginx/conf.d/default.conf
 # Add custom PHP-FPM configuration
 COPY config/www.conf /usr/local/etc/php-fpm.d/www.conf
 
+# Ensure the storage/logs directory exists and has the right permissions
+RUN mkdir -p /var/www/storage/logs && chown -R www-data:www-data /var/www/storage
+
 # Create SSL certificate
 # RUN mkdir -p /etc/nginx/ssl && \
 #     openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/server.key -out /etc/nginx/ssl/server.crt -subj "/C=US/ST=State/L=City/O=Organization/OU=Department/CN=localhost"

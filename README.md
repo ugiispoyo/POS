@@ -48,6 +48,8 @@ Point of sales using React Native for mobile app & Laravel for REST API
 
 ### Run api with docker compose 
 <!-- 1. run `mkcert 192.168.1.10` for ssl local -->
-1. run `docker network create my_custom_network`
+<!-- 1. run `docker network create my_custom_network` -->
+1. run `docker network create --subnet=192.168.1.0/24 my_custom_network`
 2. run `docker-compose build`
 3. run `docker-compose up -d`
+<!-- 4. run `docker run --network my_custom_network --ip 192.168.1.10 --name api-pos -v /Users/ugi/Data/pribadi/POS/api:/var/www -p 8005:80 api-pos` -->
