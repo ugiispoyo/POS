@@ -74,8 +74,11 @@ COPY config/nginx/default.conf /etc/nginx/conf.d/default.conf
 # Add custom PHP-FPM configuration
 COPY config/www.conf /usr/local/etc/php-fpm.d/www.conf
 
-# Ensure the storage/logs directory exists and has the right permissions
-RUN mkdir -p /var/www/storage/logs && chown -R www-data:www-data /var/www/storage
+# Ensure the api/storage directory exists and has the right permissions
+RUN mkdir -p /var/www/api/storage && chown -R www-data:www-data /var/www/api/storage && chmod -R 775 /var/www/api/storage
+
+# Ensure the api/storage/logs directory exists and has the right permissions
+RUN mkdir -p /var/www/api/storage/logs && chown -R www-data:www-data /var/www/api/storage/logs && chmod -R 775 /var/www/api/storage/logs
 
 # Create SSL certificate
 # RUN mkdir -p /etc/nginx/ssl && \
