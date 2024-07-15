@@ -29,6 +29,7 @@ export default async function addUpdateProduct(
         ...config?.init,
       }
     );
+    console.log(await res.json())
 
     // Check if the response is not OK
     if (!res.ok) {

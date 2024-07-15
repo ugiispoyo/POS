@@ -44,4 +44,10 @@ Point of sales using React Native for mobile app & Laravel for REST API
 7. run `php artisan serve`
 
 ###### if run api use ip address 
-1. run `php artisan serve --host=192.168.1.100 --port=8000`
+1. run `php artisan serve --host=192.168.1.5 --port=8005`
+
+### Run api with docker compose 
+<!-- 1. run `mkcert 192.168.1.10` for ssl local -->
+1. run `docker network create my_custom_network`
+2. run `docker-compose build`
+3. run `docker-compose up -d`
