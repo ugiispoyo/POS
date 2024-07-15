@@ -69,8 +69,10 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Copy nginx config
-# COPY config/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY config/nginx/default.conf /etc/nginx/conf.d/default.conf
+
+# Add custom PHP-FPM configuration
+COPY config/www.conf /usr/local/etc/php-fpm.d/www.conf
 
 # Create SSL certificate
 # RUN mkdir -p /etc/nginx/ssl && \
@@ -84,9 +86,6 @@ RUN chown -R www-data:www-data /var/www
 
 # Expose ports
 EXPOSE 80 443
-
-# Copy supervisor configuration
-COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Start supervisor to run both php-fpm and nginx
 CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
