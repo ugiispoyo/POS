@@ -29,11 +29,11 @@ export default async function addUpdateProduct(
         ...config?.init,
       }
     );
-    console.log(await res.json())
 
     // Check if the response is not OK
     if (!res.ok) {
-      throw new CustomError(`${res.statusText}`, res.status);
+      const resFailed = await res.json();
+      throw new CustomError(`${JSON.stringify(resFailed)}`, res.status);
     }
 
     const data = await res.json();

@@ -9,6 +9,7 @@ import { T_FieldFormProduct } from './types';
 import { useRoute } from '@react-navigation/native';
 import { useGlobalProps } from '@context/context';
 import { T_GlobalContextCTX } from '@context/types';
+import { ToastAndroid } from 'react-native';
 
 const fieldFormProduct: T_FieldFormProduct = {
   name: '',
@@ -101,11 +102,18 @@ export const useLogic = () => {
 
     const result = await addUpdateProduct({ url, init: { body: formdata } });
 
-    if (["Product created successfully", "Product updated successfully"].includes(result.message)) {
+    if (["product created successfully", "product updated successfully"].includes(result.message?.toLowerCase())) {
       dispatch({ loading: { isLoading: false, module: "" } });
-      await getDataProducts()
       navigation.navigate('ProductList');
+      await getDataProducts()
     } else {
+      ToastAndroid.showWithGravityAndOffset(
+        JSON.stringify(JSON.parse(result.message)),
+        ToastAndroid.LONG,
+        ToastAndroid.BOTTOM,
+        25,
+        50
+      )
       dispatch({ loading: { isLoading: false, module: "" } });
     }
   };

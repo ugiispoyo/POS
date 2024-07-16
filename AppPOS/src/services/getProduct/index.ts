@@ -31,9 +31,10 @@ export default async function getProducts(
 
     // Check if the response is not OK
     if (!res.ok) {
-      throw new CustomError(`${res.statusText}`, res.status);
+      const resFailed = await res.json();
+      throw new CustomError(`${JSON.stringify(resFailed)}`, res.status);
     }
-
+    
     const data = await res.json();
 
     return { ...data, status: res.status };

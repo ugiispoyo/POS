@@ -11,6 +11,7 @@ import getProducts from '@services/getProduct';
 
 import { store } from '@store/index';
 import { T_FieldHostname } from './types';
+import { ToastAndroid } from 'react-native';
 
 /* default field hostname React hook */
 const fieldHostnameForm: T_FieldHostname = {
@@ -76,6 +77,13 @@ export const useLogic = () => {
     if (typeof data?.data === "undefined") {
       dispatch({ loading: { isLoading: false, module: "" } })
       dispatch({ error: data?.status || data as any })
+      ToastAndroid.showWithGravityAndOffset(
+        data?.message,
+        ToastAndroid.LONG,
+        ToastAndroid.BOTTOM,
+        25,
+        50
+      )
       return;
     }
 

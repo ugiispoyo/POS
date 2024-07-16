@@ -145,7 +145,6 @@ export default function List(): React.JSX.Element {
 
   return (
     <View style={{ height: '100%', padding: 20 }}>
-      {error !== "" && <Text style={{ color: "#000" }}>{JSON.stringify(error)}</Text>}
       <View style={styles.itemHeaderList}>
         <Text style={{ color: '#000', width: '15%', fontWeight: '900' }}>
           Foto
