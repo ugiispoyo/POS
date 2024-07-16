@@ -50,7 +50,7 @@ Point of sales using React Native for mobile app & Laravel for REST API
 1. run `docker network create my_custom_network`
 2. run `docker-compose up -d`
 3. run `composer global require laravel/valet`
-4. add `export PATH="$HOME/.composer/vendor/bin:$PATH"`
+4. add `export PATH=$HOME/.composer/vendor/bin:$PATH`
 5. run `valet install`
 6. run `valet park` on project api
 7. run `valet link` on project api
