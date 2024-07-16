@@ -159,7 +159,7 @@ export default function Form(): React.JSX.Element {
             <Button
               disabled={loading?.isLoading && loading.module === "ADD_UPDATE_PRODUCT"}
               onPress={hookForm.handleSubmit(onSave)}>
-              {loading?.isLoading && loading.module === "ADD_UPDATE_PRODUCT" ? "InProgress..." : "Simpan"}
+              {loading?.isLoading && loading.module === "ADD_UPDATE_PRODUCT" ? "In progress..." : "Simpan"}
             </Button>
           </View>
         </View>
