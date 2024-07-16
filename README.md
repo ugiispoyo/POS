@@ -46,12 +46,6 @@ Point of sales using React Native for mobile app & Laravel for REST API
 ###### if run api use ip address 
 1. run `php artisan serve --host=192.168.1.5 --port=8005`
 
-### Run api with docker compose 
-<!-- 1. run `mkcert 192.168.1.10` for ssl local -->
-<!-- 1. run `docker network create my_custom_network` -->
-1. run `docker network create --subnet=192.168.1.0/24 my_custom_network`
-2. run `docker-compose build`
-3. run `docker-compose up -d`
-<!-- 4. run `docker run --network my_custom_network --ip 192.168.1.10 --name api-pos -v /Users/ugi/Data/pribadi/POS/api:/var/www -p 8005:80 api-pos` -->
-<!-- 4. `sudo chown -R $(whoami):$(whoami) api/storage`
-5. `sudo chmod -R 775 api/storage` -->
+### Run api with docker compose for MAC
+1. run `docker network create my_custom_network`
+2. run `docker-compose up -d`
