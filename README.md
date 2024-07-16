@@ -59,4 +59,5 @@ Point of sales using React Native for mobile app & Laravel for REST API
 <!-- 9. add `listen [::]:80;` ~/.config/valet/Nginx/api.test -->
 9. restart `sudo brew services restart dnsmasq`
 10. run `valet restart`
+11. install ngrok `brew install ngrok` can use [ngrok](https://ngrok.com/) or [expose.dev](https://expose.dev/)
 11. run `ngrok http api.test`
