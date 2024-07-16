@@ -7,6 +7,14 @@ export type T_State = {
     module: T_ListModule | "";
   };
   error: string;
+  bluetoothConfig: {
+    pairedDevices: Array<any>;
+    foundDs: Array<any>;
+    bleOpend: boolean;
+    loading: boolean;
+    name: string;
+    boundAddress: string;
+  };
   ProductList: T_ScreenProductList;
   Casier: T_ScreenCasier;
   Products: Array<T_ListProducts> | [];

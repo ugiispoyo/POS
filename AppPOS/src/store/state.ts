@@ -9,6 +9,14 @@ const initialState: T_State = {
     module: '',
   },
   error: '',
+  bluetoothConfig: {
+    pairedDevices: [],
+    foundDs: [],
+    bleOpend: false,
+    loading: true,
+    name: '',
+    boundAddress: ''
+  },
   ProductList: {
     action: {
       hasAction: false,

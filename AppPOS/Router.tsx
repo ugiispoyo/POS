@@ -1,5 +1,5 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Image, StatusBar, Text, View} from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Image, StatusBar, Text, View } from 'react-native';
 
 import Host from '@screens/Host';
 // import Login from '@screens/Login';
@@ -8,15 +8,16 @@ import ProductList from '@screens/ProductList';
 import ProductAddEdit from '@screens/ProductAddEdit';
 import Casier from '@screens/Casier';
 import Checkout from '@screens/Checkout';
+import ConnectToPrint from '@screens/ConnectToPrint';
 
-import {T_GlobalContextCTX} from '@context/types';
-import {useGlobalProps} from '@context/context';
+import { T_GlobalContextCTX } from '@context/types';
+import { useGlobalProps } from '@context/context';
 
 const Stack = createNativeStackNavigator();
 
 export default () => {
-  const {state} = useGlobalProps() as T_GlobalContextCTX;
-  const {hasHostname, isLoading, hostname} = state;
+  const { state } = useGlobalProps() as T_GlobalContextCTX;
+  const { hasHostname, isLoading, hostname } = state;
 
   if (isLoading) {
     return (
@@ -70,21 +71,23 @@ export default () => {
   return (
     <Stack.Navigator
       // initialRouteName={!hasHostname && hostname === '' ? 'Host' : 'Casier'}
-      screenOptions={{headerShown: false}}>
-      {!hasHostname && hostname === '' ? (
+      screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="ConnectToPrint" component={ConnectToPrint} />
+      {/* {!hasHostname && hostname === '' ? (
         <>
           <Stack.Screen name="Host" component={Host} />
         </>
       ) : (
         <>
-          {/* <Stack.Screen name="Login" component={Login} /> */}
+          <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="ConnectToPrint" component={ConnectToPrint} />
           <Stack.Screen name="ProductList" component={ProductList} />
           <Stack.Screen name="ProductAddEdit" component={ProductAddEdit} />
           <Stack.Screen name="Casier" component={Casier} />
           <Stack.Screen name="Checkout" component={Checkout} />
         </>
-      )}
+      )} */}
     </Stack.Navigator>
   );
 };
