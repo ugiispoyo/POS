@@ -54,4 +54,9 @@ Point of sales using React Native for mobile app & Laravel for REST API
 5. run `valet install`
 7. run `valet link api` on project api
 8. run `valet secure api` on project api
-9. edit `your_ip_address api.test` /etc/hosts
+<!-- 9. add `your_ip_address api.test` /etc/hosts -->
+<!-- 10. add `address=/.test/127.0.0.1 listen-address=127.0.0.1` /usr/local/etc/dnsmasq.conf -->
+<!-- 9. add `listen [::]:80;` ~/.config/valet/Nginx/api.test -->
+9. restart `sudo brew services restart dnsmasq`
+10. run `valet restart`
+11. run `ngrok http api.test`
