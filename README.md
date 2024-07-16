@@ -53,3 +53,5 @@ Point of sales using React Native for mobile app & Laravel for REST API
 2. run `docker-compose build`
 3. run `docker-compose up -d`
 <!-- 4. run `docker run --network my_custom_network --ip 192.168.1.10 --name api-pos -v /Users/ugi/Data/pribadi/POS/api:/var/www -p 8005:80 api-pos` -->
+<!-- 4. `sudo chown -R $(whoami):$(whoami) api/storage`
+5. `sudo chmod -R 775 api/storage` -->

@@ -74,6 +74,9 @@ COPY config/nginx/default.conf /etc/nginx/conf.d/default.conf
 # Add custom PHP-FPM configuration
 COPY config/www.conf /usr/local/etc/php-fpm.d/www.conf
 
+RUN chown -R www-data:www-data /var/www \
+    && chmod -R 755 /var/www/storage
+
 # Ensure the api/storage directory exists and has the right permissions
 RUN mkdir -p /var/www/api/storage && chown -R www-data:www-data /var/www/api/storage && chmod -R 775 /var/www/api/storage
 
