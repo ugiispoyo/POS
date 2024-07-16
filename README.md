@@ -52,5 +52,6 @@ Point of sales using React Native for mobile app & Laravel for REST API
 3. run `composer global require laravel/valet`
 4. add `export PATH=$HOME/.composer/vendor/bin:$PATH`
 5. run `valet install`
-7. run `valet link` on project api
+7. run `valet link api` on project api
 8. run `valet secure api` on project api
+9. edit `your_ip_address api.test` /etc/hosts
