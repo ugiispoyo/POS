@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import {BluetoothEscposPrinter} from 'react-native-bluetooth-escpos-printer';
-import {hsdLogo} from './dummy-logo';
+// import {hsdLogo} from './dummy-logo';
 
 const SamplePrint = () => {
   return (
@@ -20,7 +20,7 @@ const SamplePrint = () => {
             );
             await BluetoothEscposPrinter.printText('\r\n\r\n\r\n', {});
           }}
-          title="Print BarCode"
+          title="Test Print BarCode"
         />
       </View>
       <View style={styles.btn}>
@@ -33,7 +33,7 @@ const SamplePrint = () => {
             ); //.then(()=>{alert('done')},(err)=>{alert(err)});
             await BluetoothEscposPrinter.printText('\r\n\r\n\r\n', {});
           }}
-          title="Print QRCode"
+          title="Test Print QRCode"
         />
       </View>
 
@@ -41,7 +41,7 @@ const SamplePrint = () => {
         <Button
           onPress={async () => {
             await BluetoothEscposPrinter.printerUnderLine(2);
-            await BluetoothEscposPrinter.printText('Prawito Hudoro\r\n', {
+            await BluetoothEscposPrinter.printText('Ugi Ispoyo Widodo\r\n', {
               encoding: 'GBK',
               codepage: 0,
               widthtimes: 0,
@@ -51,21 +51,21 @@ const SamplePrint = () => {
             await BluetoothEscposPrinter.printerUnderLine(0);
             await BluetoothEscposPrinter.printText('\r\n\r\n\r\n', {});
           }}
-          title="Print UnderLine"
+          title="Test Print UnderLine"
         />
       </View>
 
       <View style={styles.btn}>
         <Button
-          title="Print Struk Belanja"
+          title="Test Print Struk Belanja"
           onPress={async () => {
             let columnWidths = [8, 20, 20];
             try {
               await BluetoothEscposPrinter.printText('\r\n\r\n\r\n', {});
-              await BluetoothEscposPrinter.printPic(hsdLogo, {
-                width: 250,
-                left: 150,
-              });
+              // await BluetoothEscposPrinter.printPic(hsdLogo, {
+              //   width: 250,
+              //   left: 150,
+              // });
               await BluetoothEscposPrinter.printerAlign(
                 BluetoothEscposPrinter.ALIGN.CENTER,
               );
@@ -91,7 +91,7 @@ const SamplePrint = () => {
                   BluetoothEscposPrinter.ALIGN.LEFT,
                   BluetoothEscposPrinter.ALIGN.RIGHT,
                 ],
-                ['Customer', 'Prawito Hudoro'],
+                ['Customer', 'Ugi Ispoyo Widodo'],
                 {},
               );
               await BluetoothEscposPrinter.printColumn(
