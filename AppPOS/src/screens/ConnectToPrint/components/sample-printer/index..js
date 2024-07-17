@@ -35,7 +35,7 @@ const SamplePrint = () => {
             <Button
               onPress={async () => {
                 await BluetoothEscposPrinter.printQRCode(
-                  'https://hsd.co.id',
+                  'https://github.com/ugiispoyo',
                   280,
                   BluetoothEscposPrinter.ERROR_CORRECTION.L,
                 ); //.then(()=>{alert('done')},(err)=>{alert(err)});
