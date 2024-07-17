@@ -17,7 +17,11 @@ export default function ScanBluetooth(): React.JSX.Element {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.bluetoothStatusContainer}>
-        <Text style={styles.bluetoothStatus}>
+        <Text
+          style={{
+            ...styles.bluetoothStatus,
+            ...{backgroundColor: bleOpend ? 'green' : 'red'},
+          }}>
           Bluetooth {bleOpend ? 'Aktif' : 'Non Aktif'}
         </Text>
       </View>
@@ -59,8 +63,8 @@ export default function ScanBluetooth(): React.JSX.Element {
           );
         })}
       </View>
-      <SamplePrint />
       <Button onPress={() => scanBluetoothDevice()} title="Scan Bluetooth" />
+      <SamplePrint />
       <View style={{height: 170}} />
     </ScrollView>
   );

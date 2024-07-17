@@ -255,23 +255,6 @@ export const useLogic = () => {
   };
 
   useEffect(() => {
-    BluetoothManager.isBluetoothEnabled().then(
-      (enabled: any) => {
-        dispatch({
-          type: 'UPDATE_CONFIG_BLUETOOTH',
-          value: {
-            loading: false,
-            bleOpend: Boolean(enabled),
-          },
-        });
-        // setBleOpend(Boolean(enabled));
-        // setLoading(false);
-      },
-      (err: any) => {
-        err;
-      },
-    );
-
     if (Platform.OS === 'ios') {
       let bluetoothManagerEmitter = new NativeEventEmitter(BluetoothManager);
       bluetoothManagerEmitter.addListener(
@@ -341,6 +324,25 @@ export const useLogic = () => {
       scan();
     }
   }, []);
+
+  useEffect(() => {
+    BluetoothManager.isBluetoothEnabled().then(
+      (enabled: any) => {
+        dispatch({
+          type: 'UPDATE_CONFIG_BLUETOOTH',
+          value: {
+            loading: false,
+            bleOpend: Boolean(enabled),
+          },
+        });
+        // setBleOpend(Boolean(enabled));
+        // setLoading(false);
+      },
+      (err: any) => {
+        err;
+      },
+    );
+  }, [boundAddress, pairedDevices, foundDs]);
 
   return {
     connect,

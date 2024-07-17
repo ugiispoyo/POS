@@ -15,7 +15,6 @@ export default StyleSheet.create({
   containerList: {flex: 1, flexDirection: 'column'},
   bluetoothStatusContainer: {justifyContent: 'flex-end', alignSelf: 'flex-end'},
   bluetoothStatus: {
-    backgroundColor: 'blue',
     padding: 8,
     borderRadius: 2,
     color: 'white',

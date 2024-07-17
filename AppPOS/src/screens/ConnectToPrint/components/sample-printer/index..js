@@ -14,7 +14,7 @@ const SamplePrint = () => {
     <View>
       {bleOpend && name !== '' && boundAddress !== '' && (
         <>
-          <Text>Sample Print Instruction</Text>
+          <Text style={{paddingBottom: 5, paddingTop: 15, color: "grey"}}>Test Print</Text>
           <View style={styles.btn}>
             <Button
               onPress={async () => {
