@@ -61,7 +61,7 @@ export default function ScanBluetooth(): React.JSX.Element {
       </View>
       <SamplePrint />
       <Button onPress={() => scanBluetoothDevice()} title="Scan Bluetooth" />
-      <View style={{height: 100}} />
+      <View style={{height: 170}} />
     </ScrollView>
   );
 }

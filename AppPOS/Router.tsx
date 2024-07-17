@@ -72,14 +72,13 @@ export default () => {
     <Stack.Navigator
       // initialRouteName={!hasHostname && hostname === '' ? 'Host' : 'Casier'}
       screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="ConnectToPrint" component={ConnectToPrint} />
-      {/* {!hasHostname && hostname === '' ? (
+      {!hasHostname && hostname === '' ? (
         <>
           <Stack.Screen name="Host" component={Host} />
         </>
       ) : (
         <>
-          <Stack.Screen name="Login" component={Login} />
+          {/* <Stack.Screen name="Login" component={Login} /> */}
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="ConnectToPrint" component={ConnectToPrint} />
           <Stack.Screen name="ProductList" component={ProductList} />
@@ -87,7 +86,7 @@ export default () => {
           <Stack.Screen name="Casier" component={Casier} />
           <Stack.Screen name="Checkout" component={Checkout} />
         </>
-      )} */}
+      )}
     </Stack.Navigator>
   );
 };

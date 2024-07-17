@@ -9,8 +9,8 @@ export default StyleSheet.create({
   },
   container: {
     flex: 1,
-    paddingTop: 40,
     paddingHorizontal: 20,
+    top: 100
   },
   containerList: {flex: 1, flexDirection: 'column'},
   bluetoothStatusContainer: {justifyContent: 'flex-end', alignSelf: 'flex-end'},

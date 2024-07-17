@@ -115,4 +115,26 @@ export default StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 7,
   },
+  btnHostnamePrint: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#C9EDDC',
+    padding: 0,
+    width: 70,
+    height: 70,
+    borderRadius: 100,
+  },
+  btnImgShadowPrint: {
+    position: 'absolute',
+    bottom: '10%',
+    right: '35%',
+    shadowColor: '#04251D',
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 7,
+  },
 });
