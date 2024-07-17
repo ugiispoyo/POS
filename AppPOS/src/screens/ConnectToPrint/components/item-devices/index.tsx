@@ -1,7 +1,14 @@
-import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
+import {TouchableOpacity, Text, View, StyleSheet} from 'react-native';
 import React from 'react';
 
-const ItemList = ({ label, value, onPress, connected, actionText, color = '#00BCD4' }) => {
+const ItemList = ({
+  label,
+  value,
+  onPress,
+  connected,
+  actionText,
+  color = '#00BCD4',
+}: any) => {
   return (
     <View style={styles.container}>
       <View>
@@ -10,7 +17,7 @@ const ItemList = ({ label, value, onPress, connected, actionText, color = '#00BC
       </View>
       {connected && <Text style={styles.connected}>Terhubung</Text>}
       {!connected && (
-        <TouchableOpacity onPress={onPress} style={styles.button(color)}>
+        <TouchableOpacity onPress={onPress} style={styles.button}>
           <Text style={styles.actionText}>{actionText}</Text>
         </TouchableOpacity>
       )}
@@ -30,13 +37,13 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 4,
   },
-  label: { fontWeight: 'bold' },
-  connected: { fontWeight: 'bold', color: '#00BCD4' },
-  button: color => ({
-    backgroundColor: color,
+  label: {fontWeight: 'bold'},
+  connected: {fontWeight: 'bold', color: '#00BCD4'},
+  button: {
+    backgroundColor: '#00BCD4',
     paddingHorizontal: 10,
     paddingVertical: 8,
     borderRadius: 4,
-  }),
-  actionText: { color: 'white' },
+  },
+  actionText: {color: 'white'},
 });

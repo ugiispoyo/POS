@@ -36,7 +36,8 @@ export type T_TypeAction =
   | 'SET_ACTION_PRODUCT_LIST'
   | 'SET_DETAIL_PRODUCT'
   | 'ADD_TO_CART'
-  | 'ADD_OR_MIN_CART';
+  | 'ADD_OR_MIN_CART'
+  | 'UPDATE_CONFIG_BLUETOOTH';
 
 /* State screen of Product List */
 export type T_ScreenProductList = {

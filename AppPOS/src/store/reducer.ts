@@ -55,6 +55,14 @@ const reducer = (state: T_State, action: T_Action): T_State => {
           cart: addMinCart(state.Casier.cart, value),
         },
       };
+    case 'UPDATE_CONFIG_BLUETOOTH': 
+      return {
+        ...state,
+        bluetoothConfig: {
+          ...state.bluetoothConfig,
+          ...value
+        }
+      }
     default:
       return state;
   }

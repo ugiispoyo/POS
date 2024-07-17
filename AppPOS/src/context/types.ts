@@ -6,9 +6,6 @@ export type T_GlobalContextCTX = {
   changeHostname: () => Promise<void>;
   hookHostnameForm: UseFormReturn<T_FieldHostname, any, undefined>;
   getDataProducts: () => Promise<void>;
-  connect: (row: any) => void;
-  unPair: (address: any) => void;
-  scanBluetoothDevice: () => Promise<void>
 
   state: T_State;
   dispatch: React.Dispatch<T_Action>;
