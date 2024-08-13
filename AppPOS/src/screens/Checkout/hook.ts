@@ -1,15 +1,21 @@
-import {useEffect} from 'react';
+import {useForm} from 'react-hook-form';
 
 import {useGlobalProps} from '@context/context';
 import {T_GlobalContextCTX} from '@context/types';
+
+import {T_FieldCheckout} from './types';
+
+const fieldCheckout: T_FieldCheckout = {
+  nominal: 0,
+};
 
 export const useLogic = () => {
   const {state} = useGlobalProps() as T_GlobalContextCTX;
   const {Casier} = state;
 
-  useEffect(() => {
-    console.log(Casier.cart);
-  }, []);
+  const hookForm = useForm({
+    defaultValues: fieldCheckout,
+  });
 
-  return {};
+  return {hookForm};
 };
