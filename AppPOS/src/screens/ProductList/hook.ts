@@ -1,7 +1,5 @@
 import {useEffect} from 'react';
 
-import getProducts from '@services/getProduct';
-
 import {useGlobalProps} from '@context/context';
 
 import {T_GlobalContextCTX} from '@context/types';

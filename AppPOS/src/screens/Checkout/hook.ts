@@ -17,5 +17,9 @@ export const useLogic = () => {
     defaultValues: fieldCheckout,
   });
 
-  return {hookForm};
+  const onCheckout = async (data: T_FieldCheckout) => {
+    console.log(data);
+  };
+
+  return {hookForm, onCheckout};
 };

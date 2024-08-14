@@ -14,7 +14,7 @@ import Button from '@components/Button';
 
 export default function DetailCart(): React.JSX.Element {
   const navigation = useNavigation() as any;
-  const {hookForm} = useProps() as T_CheckoutCTX;
+  const {hookForm, onCheckout} = useProps() as T_CheckoutCTX;
   const {state} = useGlobalProps() as T_GlobalContextCTX;
 
   const product = state.Casier?.cart?.items;
@@ -29,7 +29,7 @@ export default function DetailCart(): React.JSX.Element {
       <ScrollView
         style={{
           marginTop: 110,
-          marginBottom: 240,
+          marginBottom: 260,
         }}>
         {product.map((item, i) => (
           <ItemCart key={i} Item={item} index={i} />
@@ -40,7 +40,7 @@ export default function DetailCart(): React.JSX.Element {
           position: 'absolute',
           bottom: 0,
           width: '100%',
-          height: 240,
+          height: 260,
           backgroundColor: '#fff',
           borderTopWidth: 1,
           borderTopColor: '#f5f5f5',
@@ -105,11 +105,26 @@ export default function DetailCart(): React.JSX.Element {
             hookForm={hookForm}
             isFormatCurrency
             name="nominal"
-            hookOptions={{required: 'Wajib diisi!'}}
+            hookOptions={{
+              required: 'Wajib diisi!',
+              min: {
+                value: totalAfterDiscount,
+                message: 'Nominal tidak cukup!',
+              },
+            }}
             style={{width: '100%'}}
           />
+          {hookForm.getValues("nominal") > totalAfterDiscount && (
+            <View style={{display: 'flex', marginBottom: 5}}>
+              <Text style={{fontWeight: '500', fontSize: 16}}>Kembalian</Text>
+            </View>
+          )}
+          <Button
+            style={{width: '100%'}}
+            onPress={hookForm.handleSubmit(onCheckout)}>
+            Bayar
+          </Button>
         </View>
-        <Button style={{width: '100%'}}>Bayar</Button>
       </View>
     </>
   );

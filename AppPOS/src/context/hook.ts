@@ -30,7 +30,6 @@ export const useLogic = () => {
   useEffect(() => {
     dispatch({isLoading: true});
     checkHostName();
-    getDataProducts();
   }, []);
 
   const checkHostName = async () => {

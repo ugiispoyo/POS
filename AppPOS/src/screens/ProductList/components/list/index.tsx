@@ -25,7 +25,7 @@ import {T_GlobalContextCTX} from '@context/types';
 
 export default function List(): React.JSX.Element {
   const navigation = useNavigation<any>();
-  const {Products, ProductList, dispatch, hostname, loading, error} =
+  const {Products, ProductList, dispatch, hostname, loading} =
     useProps() as T_ProductListCTX;
   const {getDataProducts} = useGlobalProps() as T_GlobalContextCTX;
   const ListProducts = Products;

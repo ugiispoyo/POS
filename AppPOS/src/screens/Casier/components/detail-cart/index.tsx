@@ -7,36 +7,37 @@ import Animated, {FadeInDown} from 'react-native-reanimated';
 
 import Button from '@components/Button';
 
-import {useGlobalProps} from '@context/context';
-import {T_GlobalContextCTX} from '@context/types';
-
 import styles from '../../styles';
 import numberToIDR from '@utils/numberToIDR';
 import ItemCart from '../item-cart';
 
+import {T_CasierCTX} from '@screens/Casier/types';
+import {useProps} from '@screens/Casier/context';
+
 export default function DetailCart(): React.JSX.Element {
   const navigation = useNavigation() as any;
-  const {state} = useGlobalProps() as T_GlobalContextCTX;
+  const {Casier} = useProps() as T_CasierCTX;
+
   const [open, setOpen] = useState<boolean>(false);
   const [zIndex, setZindex] = useState<number>(0);
   const sheetRef = useRef<BottomSheet>(null);
 
-  const snapPoints = useMemo(() => ['12%', '90%', Dimensions.get("screen").height], []);
+  const snapPoints = useMemo(
+    () => ['12%', '90%', Dimensions.get('screen').height],
+    [],
+  );
 
-  const product = state.Casier?.cart?.items;
+  const product = Casier?.cart?.items;
 
   const totalPrice =
-    state.Casier?.cart?.totalFixAmount !==
-    state.Casier?.cart?.totalOriginalAmount
-      ? state.Casier?.cart?.totalFixAmount
-      : state.Casier?.cart?.totalOriginalAmount;
+    Casier?.cart?.totalFixAmount !== Casier?.cart?.totalOriginalAmount
+      ? Casier?.cart?.totalFixAmount
+      : Casier?.cart?.totalOriginalAmount;
 
-  const totalItems = state.Casier?.cart?.totalItems;
+  const totalItems = Casier?.cart?.totalItems;
 
-  const totalOriginalAmount = state.Casier?.cart?.totalOriginalAmount;
-  const totalAfterDiscount = state.Casier?.cart?.totalFixAmount;
-
-  useEffect(() => {}, [open, state]);
+  const totalOriginalAmount = Casier?.cart?.totalOriginalAmount;
+  const totalAfterDiscount = Casier?.cart?.totalFixAmount;
 
   useEffect(() => {
     if (product.length !== 0 && !open) {
@@ -45,7 +46,7 @@ export default function DetailCart(): React.JSX.Element {
     if (product.length === 0 && open) {
       handleClosePress();
     }
-  }, [state]);
+  }, [Casier]);
 
   const handleSnapPress = useCallback(() => {
     setOpen(true);
