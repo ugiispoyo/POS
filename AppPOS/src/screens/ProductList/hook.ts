@@ -10,7 +10,9 @@ export const useLogic = () => {
 
   useEffect(() => {
     dispatch({ProductList: {action: {hasAction: false, id: ''}}});
-    getDataProducts();
+    if (state.Products.length === 0) {
+      getDataProducts();
+    }
   }, []);
 
   return {

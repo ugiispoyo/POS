@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 import {
   Image,
   View,
@@ -27,7 +27,7 @@ export default function List(): React.JSX.Element {
   const {hostname, loading, dispatch, Products, Casier} =
     useProps() as T_CasierCTX;
 
-  const ListProducts = useMemo(() => Products, []);
+  const ListProducts = Products;
   const listCart = Casier.cart.items;
 
   const Item = (Item: T_ListProducts) => {
@@ -138,7 +138,9 @@ export default function List(): React.JSX.Element {
         position: 'relative',
       }}>
       <View style={{paddingBottom: 2}}>
-        {!loading.isLoading && loading.module !== 'PRODUCT_LIST' ? (
+        {!loading.isLoading &&
+        loading.module !== 'PRODUCT_LIST' &&
+        ListProducts.length > 0 ? (
           <>
             {ListProducts.length !== 0 ? (
               <FlatList

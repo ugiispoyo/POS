@@ -5,11 +5,14 @@ import {useGlobalProps} from '@context/context';
 import {T_GlobalContextCTX} from '@context/types';
 
 export const useLogic = () => {
-  const {getDataProducts, state, dispatch} = useGlobalProps() as T_GlobalContextCTX;
+  const {getDataProducts, state, dispatch} =
+    useGlobalProps() as T_GlobalContextCTX;
   const [offsetY, setOffsetY] = useState<number>(0);
 
   useEffect(() => {
-    getDataProducts();
+    if (state.Products.length === 0) {
+      getDataProducts();
+    }
   }, []);
 
   const scrollHandler = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
