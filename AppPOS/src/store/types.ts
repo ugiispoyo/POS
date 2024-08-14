@@ -18,6 +18,9 @@ export type T_State = {
   ProductList: T_ScreenProductList;
   Casier: T_ScreenCasier;
   Products: Array<T_ListProducts> | [];
+  Checkout: {
+    isModalPrint: boolean;
+  }
 };
 
 export type T_Action = {

@@ -15,7 +15,7 @@ const initialState: T_State = {
     bleOpend: false,
     loading: true,
     name: '',
-    boundAddress: ''
+    boundAddress: '',
   },
   ProductList: {
     action: {
@@ -29,10 +29,13 @@ const initialState: T_State = {
       items: [],
       totalItems: 0,
       totalOriginalAmount: 0,
-      totalFixAmount: 0, /* if any discount */
+      totalFixAmount: 0 /* if any discount */,
     },
   },
   Products: [],
+  Checkout: {
+    isModalPrint: false,
+  },
 };
 
 export default initialState;

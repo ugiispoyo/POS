@@ -19,7 +19,7 @@ export const useLogic = () => {
 
   const onCheckout = async (data: T_FieldCheckout) => {
     console.log(data);
-    console.log(Casier.cart);
+    console.log(JSON.stringify(Casier.cart.items));
     console.log(state.bluetoothConfig)
   };
 
