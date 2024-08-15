@@ -14,7 +14,9 @@ class ReportController extends Controller
         $updateStartDate = date('Y-m-d 00:00:00', strtotime($startDate));
         $updateEndDate = date('Y-m-d 23:59:59', strtotime($endDate));
 
-        $data = Checkout::whereBetween('created_at', [$updateStartDate, $updateEndDate])->get();
+        $data = Checkout::whereBetween('created_at', [$updateStartDate, $updateEndDate])
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         if ($format == 'pdf') {
             return $this->generatePDF($data, $startDate, $endDate);

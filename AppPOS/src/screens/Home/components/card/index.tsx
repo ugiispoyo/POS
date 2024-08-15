@@ -26,9 +26,10 @@ export default function Card(): React.JSX.Element {
       addAndroidDownloads: {
         useDownloadManager: true,
         notification: true,
-        path: `${DownloadDir}/Report-${dayjs().format(
-          'YYYY-MM-DD',
-        )}-to-${dayjs().format('YYYY-MM-DD')}.pdf`,
+        // path: `${DownloadDir}/Report-${dayjs().format(
+        //   'YYYY-MM-DD',
+        // )}-to-${dayjs().format('YYYY-MM-DD')}.pdf`,
+        path: `${DownloadDir}/Report-${dayjs().format('YYYY-MM-DD')}.pdf`,
         description: 'Downloading the report.',
       },
     })
