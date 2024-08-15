@@ -34,7 +34,7 @@ const initialState: T_State = {
   },
   Products: [],
   Checkout: {
-    isModalPrint: false,
+    isModalChange: false,
   },
 };
 

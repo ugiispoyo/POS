@@ -1,6 +1,5 @@
 import React from 'react';
 import {ScrollView, Text, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 
 import {useGlobalProps} from '@context/context';
 import {T_GlobalContextCTX} from '@context/types';
@@ -13,7 +12,6 @@ import {T_CheckoutCTX} from '@screens/Checkout/types';
 import Button from '@components/Button';
 
 export default function DetailCart(): React.JSX.Element {
-  const navigation = useNavigation() as any;
   const {hookForm, onCheckout} = useProps() as T_CheckoutCTX;
   const {state} = useGlobalProps() as T_GlobalContextCTX;
 
@@ -114,15 +112,15 @@ export default function DetailCart(): React.JSX.Element {
             }}
             style={{width: '100%'}}
           />
-          {hookForm.getValues("nominal") > totalAfterDiscount && (
-            <View style={{display: 'flex', marginBottom: 5}}>
-              <Text style={{fontWeight: '500', fontSize: 16}}>Kembalian</Text>
-            </View>
-          )}
           <Button
             style={{width: '100%'}}
-            onPress={hookForm.handleSubmit(onCheckout)}>
-            Bayar
+            onPress={hookForm.handleSubmit(onCheckout)}
+            disabled={
+              state.loading.isLoading && state.loading.module === 'CHECKOUT'
+            }>
+            {state.loading.isLoading && state.loading.module === 'CHECKOUT'
+              ? 'Sedang diproses...'
+              : 'Bayar'}
           </Button>
         </View>
       </View>

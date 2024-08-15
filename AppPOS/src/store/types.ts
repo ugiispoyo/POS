@@ -19,7 +19,7 @@ export type T_State = {
   Casier: T_ScreenCasier;
   Products: Array<T_ListProducts> | [];
   Checkout: {
-    isModalPrint: boolean;
+    isModalChange: boolean;
   }
 };
 
@@ -81,4 +81,4 @@ export type T_ListProducts = {
   updated_at: string;
 };
 
-export type T_ListModule = "PRODUCT_LIST" | "ADD_UPDATE_PRODUCT"
+export type T_ListModule = "PRODUCT_LIST" | "ADD_UPDATE_PRODUCT" | "CHECKOUT"
