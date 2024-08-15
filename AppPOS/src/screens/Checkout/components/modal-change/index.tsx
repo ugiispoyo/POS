@@ -11,8 +11,11 @@ import {useProps} from '@screens/Checkout/context';
 import {T_CheckoutCTX} from '@screens/Checkout/types';
 import {useGlobalProps} from '@context/context';
 import {T_GlobalContextCTX} from '@context/types';
+import {useNavigation} from '@react-navigation/native';
 
 const ModalChange = () => {
+  const navigation = useNavigation<any>();
+
   const {hookForm, onPrint} = useProps() as T_CheckoutCTX;
   const {state, dispatch} = useGlobalProps() as T_GlobalContextCTX;
   const totalItems = state.Casier?.cart?.totalItems;
@@ -61,7 +64,22 @@ const ModalChange = () => {
           flexDirection: 'column',
         }}>
         <Button
-          onPress={() => dispatch({Checkout: {isModalChange: false}})}
+          onPress={() => {
+            dispatch({
+              Casier: {
+                cart: {
+                  items: [],
+                  totalFixAmount: 0,
+                  totalItems: 0,
+                  totalOriginalAmount: 0,
+                },
+                detailProduct: null,
+              },
+            });
+            dispatch({Checkout: {isModalChange: false}});
+
+            navigation.navigate('Casier');
+          }}
           style={{
             backgroundColor: 'none',
             position: 'absolute',
