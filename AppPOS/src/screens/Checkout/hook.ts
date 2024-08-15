@@ -133,7 +133,7 @@ export const useLogic = () => {
           fonttype: 10,
         });
 
-        // Hitung harga berdasarkan diskon
+        // Calc price bas on discount
         let price =
           val.isDiscount === '1'
             ? parseFloat(val.priceAfterDiscount ?? ('0' as any))
@@ -217,13 +217,15 @@ export const useLogic = () => {
       }
 
       await BluetoothEscposPrinter.printText(
-        `Nominal Bayar: \r\n${numberToIDR(hookForm.getValues('nominal'))}\r\n`,
+        `\r\nNominal Bayar: \r\n${numberToIDR(
+          hookForm.getValues('nominal'),
+        )}\r\n\r\n`,
         {font: 3},
       );
 
       if (hookForm.getValues('nominal') > fixTotalAmount) {
         await BluetoothEscposPrinter.printText(
-          `\r\nKembalian: \r\n${numberToIDR(
+          `Kembalian: \r\n${numberToIDR(
             hookForm.getValues('nominal') - fixTotalAmount,
           )}\r\n\r\n`,
           {font: 3},
@@ -241,20 +243,22 @@ export const useLogic = () => {
 
       await BluetoothEscposPrinter.printText('\r\n\r\n', {});
 
-      dispatch({
-        Casier: {
-          cart: {
-            items: [],
-            totalFixAmount: 0,
-            totalItems: 0,
-            totalOriginalAmount: 0,
+      setTimeout(() => {
+        dispatch({
+          Casier: {
+            cart: {
+              items: [],
+              totalFixAmount: 0,
+              totalItems: 0,
+              totalOriginalAmount: 0,
+            },
+            detailProduct: null,
           },
-          detailProduct: null,
-        },
-      });
-      dispatch({Checkout: {isModalChange: false}});
+        });
+        dispatch({Checkout: {isModalChange: false}});
 
-      navigation.navigate('Casier');
+        navigation.navigate('Casier');
+      }, 3000);
     } catch (e: any) {
       ToastAndroid.showWithGravityAndOffset(
         `Sedang terjadi kesalahan! ${e}`,
