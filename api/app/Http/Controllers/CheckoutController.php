@@ -16,8 +16,23 @@ class CheckoutController extends Controller
         $perPage = $request->get('limit', 15); // Default 15 items per page
         $sortBy = $request->get('sort_by', 'created_at'); // Default sort by created_at
         $sortOrder = $request->get('sort_order', 'asc'); // Default sort order ascending
-
-        $checkout = Checkout::orderBy($sortBy, $sortOrder)->paginate($perPage);
+    
+        $query = Checkout::query();
+    
+        // Select by ID
+        if ($request->has('id')) {
+            $query->where('id', $request->get('id'));
+        }
+    
+        // Select by Date Range
+        if ($request->has('start_date') && $request->has('end_date')) {
+            $startDate = $request->get('start_date') . ' 00:00:00';
+            $endDate = $request->get('end_date') . ' 23:59:59';
+            $query->whereBetween('created_at', [$startDate, $endDate]);
+        }
+    
+        $checkout = $query->orderBy($sortBy, $sortOrder)->paginate($perPage);
+    
         return response()->json($checkout);
     }
 
