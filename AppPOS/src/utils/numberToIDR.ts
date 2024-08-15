@@ -11,8 +11,8 @@ function numberToIDR(num: number): string {
     .format(num)
     .toString();
 
-  /* from Rp3.000.000,00 to Rp3.000.000 */
-  return convertToIDR.slice(0, convertToIDR.length - 3);
+  /* from Rp 3.000.000,00 to Rp3.000.000 (removing space and last three characters) */
+  return convertToIDR.replace(/\s+/g, '').slice(0, convertToIDR.length - 4);
 }
 
 export default numberToIDR;

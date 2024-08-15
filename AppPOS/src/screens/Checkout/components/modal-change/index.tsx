@@ -13,7 +13,7 @@ import {useGlobalProps} from '@context/context';
 import {T_GlobalContextCTX} from '@context/types';
 
 const ModalChange = () => {
-  const {hookForm} = useProps() as T_CheckoutCTX;
+  const {hookForm, onPrint} = useProps() as T_CheckoutCTX;
   const {state, dispatch} = useGlobalProps() as T_GlobalContextCTX;
   const totalItems = state.Casier?.cart?.totalItems;
 
@@ -150,7 +150,11 @@ const ModalChange = () => {
           <Text style={{fontWeight: '700'}}>{numberToIDR(change)}</Text>
         </Text>
 
-        <Button style={{marginTop: 20, width: '100%'}}>Print</Button>
+        <Button
+          style={{marginTop: 20, width: '100%'}}
+          onPress={async () => await onPrint()}>
+          Print
+        </Button>
       </View>
     </Modal>
   );

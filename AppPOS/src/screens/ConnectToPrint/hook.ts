@@ -1,4 +1,5 @@
 import {useEffect} from 'react';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {
   DeviceEventEmitter,
   NativeEventEmitter,
@@ -14,8 +15,11 @@ import {useGlobalProps} from '@context/context';
 import {T_GlobalContextCTX} from '@context/types';
 
 export const useLogic = () => {
+  const navigation = useNavigation<any>();
+  const route = useRoute<any>();
+
   const {dispatch, state} = useGlobalProps() as T_GlobalContextCTX;
-  const {boundAddress, pairedDevices, foundDs} = state.bluetoothConfig;
+  const {boundAddress, pairedDevices, foundDs, name} = state.bluetoothConfig;
 
   /* === For connect bluetooth to print === */
   const deviceAlreadPaired = (rsp: any) => {
@@ -342,7 +346,16 @@ export const useLogic = () => {
         err;
       },
     );
-  }, [boundAddress, pairedDevices, foundDs]);
+
+    if (
+      name !== '' &&
+      boundAddress !== '' &&
+      Boolean(route?.params?.ref) &&
+      route?.params?.ref === 'Checkout'
+    ) {
+      navigation.navigate(route?.params?.ref, {isOpenModal: 'true'});
+    }
+  }, [boundAddress, pairedDevices, foundDs, name]);
 
   return {
     connect,
