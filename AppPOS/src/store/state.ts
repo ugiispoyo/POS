@@ -36,6 +36,9 @@ const initialState: T_State = {
   Checkout: {
     isModalChange: false,
   },
+  Home: {
+    showModalReport: false,
+  },
 };
 
 export default initialState;

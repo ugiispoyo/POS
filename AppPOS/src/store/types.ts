@@ -4,7 +4,7 @@ export type T_State = {
   hostname: string /* loading for first open app */;
   loading: {
     /* loading for action each module */ isLoading: boolean;
-    module: T_ListModule | "";
+    module: T_ListModule | '';
   };
   error: string;
   bluetoothConfig: {
@@ -20,7 +20,10 @@ export type T_State = {
   Products: Array<T_ListProducts> | [];
   Checkout: {
     isModalChange: boolean;
-  }
+  };
+  Home: {
+    showModalReport: boolean;
+  };
 };
 
 export type T_Action = {
@@ -60,7 +63,7 @@ export type T_Cart = {
   items: Array<T_CartItems> | [];
   totalItems: number;
   totalOriginalAmount: number;
-  totalFixAmount: number; /* if any discount */
+  totalFixAmount: number /* if any discount */;
 };
 
 export type T_CartItems = T_ListProducts & {
@@ -72,13 +75,13 @@ export type T_ListProducts = {
   name: string;
   description: string;
   image: string;
-  isDiscount: "1" | "2";
+  isDiscount: '1' | '2';
   price: number;
   priceAfterDiscount: number | null;
-  type: "makanan" | "minuman";
+  type: 'makanan' | 'minuman';
   stock: number | null;
   created_at: string;
   updated_at: string;
 };
 
-export type T_ListModule = "PRODUCT_LIST" | "ADD_UPDATE_PRODUCT" | "CHECKOUT"
+export type T_ListModule = 'PRODUCT_LIST' | 'ADD_UPDATE_PRODUCT' | 'CHECKOUT';
