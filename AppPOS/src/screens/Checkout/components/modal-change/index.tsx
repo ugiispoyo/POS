@@ -7,17 +7,16 @@ import Button from '@components/Button';
 
 import numberToIDR from '@utils/numberToIDR';
 
-import {useProps} from '@screens/Checkout/context';
-import {T_CheckoutCTX} from '@screens/Checkout/types';
-import {useGlobalProps} from '@context/context';
-import {T_GlobalContextCTX} from '@context/types';
 import {useNavigation} from '@react-navigation/native';
+
+import {useProps} from '@screens/Checkout/context';
+import {useGlobalProps} from '@context/context';
 
 const ModalChange = () => {
   const navigation = useNavigation<any>();
 
-  const {hookForm, onPrint} = useProps() as T_CheckoutCTX;
-  const {state, dispatch} = useGlobalProps() as T_GlobalContextCTX;
+  const {hookForm, onPrint} = useProps();
+  const {state, dispatch} = useGlobalProps();
   const totalItems = state.Casier?.cart?.totalItems;
 
   const totalOriginalAmount = state.Casier?.cart?.totalOriginalAmount;

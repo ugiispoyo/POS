@@ -1,14 +1,13 @@
 import React from 'react';
 import {View, Image, Text, StyleSheet} from 'react-native';
 
-import Button from '@components/Button';
+// import Button from '@components/Button';
 
 import numberToIDR from '@utils/numberToIDR';
 import {T_CartItems} from '@store/types';
 
 import styles from '../../styles';
 import {useGlobalProps} from '@context/context';
-import {T_GlobalContextCTX} from '@context/types';
 
 const ItemCart = ({
   Item,
@@ -17,7 +16,7 @@ const ItemCart = ({
   Item: T_CartItems;
   index: number;
 }): React.JSX.Element => {
-  const {state} = useGlobalProps() as T_GlobalContextCTX;
+  const {state} = useGlobalProps();
   const {hostname} = state;
 
   const stylePrice =
@@ -41,7 +40,7 @@ const ItemCart = ({
           ...styles.itemCart,
           borderWidth: 0,
           borderBottomWidth: 1,
-          borderTopWidth: index === 0 ? 1 : 0
+          borderTopWidth: index === 0 ? 1 : 0,
         }}>
         <View style={{display: 'flex', width: '100%', flexDirection: 'row'}}>
           <Image
@@ -57,7 +56,7 @@ const ItemCart = ({
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'space-between',
-            alignItems: 'center'
+            alignItems: 'center',
           }}>
           <Text style={{color: '#000', fontWeight: '600', fontSize: 16}}>
             {Item?.total}x

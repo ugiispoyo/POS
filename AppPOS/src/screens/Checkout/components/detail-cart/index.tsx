@@ -1,19 +1,17 @@
 import React from 'react';
 import {ScrollView, Text, View} from 'react-native';
 
-import {useGlobalProps} from '@context/context';
-import {T_GlobalContextCTX} from '@context/types';
-
 import numberToIDR from '@utils/numberToIDR';
 import ItemCart from '../item-cart';
 import TextInput from '@components/TextInput';
-import {useProps} from '@screens/Checkout/context';
-import {T_CheckoutCTX} from '@screens/Checkout/types';
 import Button from '@components/Button';
 
+import {useProps} from '@screens/Checkout/context';
+import {useGlobalProps} from '@context/context';
+
 export default function DetailCart(): React.JSX.Element {
-  const {hookForm, onCheckout} = useProps() as T_CheckoutCTX;
-  const {state} = useGlobalProps() as T_GlobalContextCTX;
+  const {hookForm, onCheckout} = useProps();
+  const {state} = useGlobalProps();
 
   const product = state.Casier?.cart?.items;
 
