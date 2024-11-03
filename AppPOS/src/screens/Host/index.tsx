@@ -1,7 +1,6 @@
 import React from 'react';
 import {Image, SafeAreaView, StatusBar, View} from 'react-native';
 
-import DropShadow from 'react-native-drop-shadow';
 import Animated, {FadeInDown, FadeInUp} from 'react-native-reanimated';
 
 import TextInput from '@components/TextInput';
@@ -41,7 +40,7 @@ export default function Host(): React.JSX.Element {
         Masukan alamat hostname anda untuk melanjutkan, contoh:
         http://192.168.1.5:8000
       </Animated.Text>
-      <DropShadow style={styles.shadowCardHost}>
+      <View style={styles.shadowCardHost}>
         <View style={styles.cardHost}>
           <Animated.View
             entering={FadeInDown.delay(200).duration(1000).springify()}>
@@ -73,7 +72,7 @@ export default function Host(): React.JSX.Element {
             </Button>
           </Animated.View>
         </View>
-      </DropShadow>
+      </View>
     </SafeAreaView>
   );
 }

@@ -109,7 +109,6 @@ dependencies {
     implementation("com.facebook.react:react-android")
     implementation("com.facebook.react:flipper-integration:0.73.7")
     implementation project(':react-native-bluetooth-escpos-printer')
-    implementation project(':react-native-drop-shadow')
 
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")

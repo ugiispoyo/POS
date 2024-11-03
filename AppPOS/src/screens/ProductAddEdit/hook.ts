@@ -69,7 +69,7 @@ export const useLogic = () => {
         );
         hookForm.setValue('image', [
           {
-            uri: `${state.hostname}/storage/${result.image}`,
+            uri: `${state.hostname}/storage/app/public/${result.image}`,
           },
         ]);
       } else {
@@ -94,7 +94,7 @@ export const useLogic = () => {
   const onSave = async (data: T_FieldFormProduct) => {
     // console.log(data);
     dispatch({loading: {isLoading: true, module: 'ADD_UPDATE_PRODUCT'}});
-    const formdata = new FormData();
+    const formdata: any = new FormData();
     formdata.append('name', data.name);
     formdata.append('description', data.description);
     if (typeof data?.image?.[0]?.type !== 'undefined') {

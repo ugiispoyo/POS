@@ -62,7 +62,7 @@ const ModalChange = () => {
           display: 'flex',
           flexDirection: 'column',
         }}>
-        <Button
+        {/* <Button
           onPress={() => {
             dispatch({
               Casier: {
@@ -89,7 +89,7 @@ const ModalChange = () => {
             style={{width: 25, height: 25}}
             source={require('@assets/icons/close.png')}
           />
-        </Button>
+        </Button> */}
         <Text
           style={{
             fontWeight: '600',

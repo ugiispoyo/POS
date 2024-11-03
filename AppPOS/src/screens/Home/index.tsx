@@ -3,11 +3,10 @@ import {
   Image,
   SafeAreaView,
   StatusBar,
-  Text,
+  View,
   TouchableOpacity,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import DropShadow from 'react-native-drop-shadow';
 
 import Header from './components/header';
 import Card from './components/card';
@@ -32,7 +31,7 @@ export default function Home(): React.JSX.Element {
         <Header />
         <Card />
         <ModalReport />
-        <DropShadow style={styles.btnImgShadow}>
+        <View style={styles.btnImgShadow}>
           <TouchableOpacity
             style={styles.btnHostname}
             onPress={async () => changeHostname()}>
@@ -41,8 +40,8 @@ export default function Home(): React.JSX.Element {
               source={require('@assets/icons/hostname.png')}
             />
           </TouchableOpacity>
-        </DropShadow>
-        <DropShadow style={styles.btnImgShadowPrint}>
+        </View>
+        <View style={styles.btnImgShadowPrint}>
           <TouchableOpacity
             style={styles.btnHostnamePrint}
             onPress={() => navigation.navigate('ConnectToPrint')}>
@@ -51,7 +50,7 @@ export default function Home(): React.JSX.Element {
               source={require('@assets/icons/printer.png')}
             />
           </TouchableOpacity>
-        </DropShadow>
+        </View>
       </SafeAreaView>
     </HomeProvider>
   );

@@ -17,6 +17,7 @@ import dayjs from 'dayjs';
 
 const fieldCheckout: T_FieldCheckout = {
   nominal: 0,
+  address: '',
 };
 
 export const useLogic = () => {
@@ -103,8 +104,14 @@ export const useLogic = () => {
       await BluetoothEscposPrinter.printerAlign(
         BluetoothEscposPrinter.ALIGN.CENTER,
       );
-      await BluetoothEscposPrinter.printText('MILK SHAKE RUMAISHA\r\n\r\n', {
+      await BluetoothEscposPrinter.printText('MILK SHAKE RUMAISHA\r\n', {
         font: 4,
+      });
+      await BluetoothEscposPrinter.printText('Perumahan Puri Harmoni\r\n', {
+        font: 2,
+      });
+      await BluetoothEscposPrinter.printText('Jl. Violet, Blok D11, No 18\r\n\r\n', {
+        font: 2,
       });
       await BluetoothEscposPrinter.printerAlign(
         BluetoothEscposPrinter.ALIGN.LEFT,
@@ -232,11 +239,14 @@ export const useLogic = () => {
         );
       }
 
+      await BluetoothEscposPrinter.printText(
+        `${hookForm.getValues('address')}\r\n\r\n`,
+        {font: 7},
+      );
       await BluetoothEscposPrinter.printerAlign(
         BluetoothEscposPrinter.ALIGN.CENTER,
       );
       await BluetoothEscposPrinter.printText(`Terimakasih!\r\n`, {font: 5});
-      await BluetoothEscposPrinter.printText(`APP By: Ugi Ispoyo Widodo\r\n`, {font: 3});
       await BluetoothEscposPrinter.printText(
         '================================\r\n\r\n',
         {},

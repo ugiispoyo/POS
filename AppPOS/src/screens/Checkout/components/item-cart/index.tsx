@@ -45,7 +45,7 @@ const ItemCart = ({
         <View style={{display: 'flex', width: '100%', flexDirection: 'row'}}>
           <Image
             style={styles.itemCartImg}
-            source={{uri: `${hostname}/storage/${Item.image}`}}
+            source={{uri: `${hostname}/storage/app/public/${Item.image}`}}
           />
           <Text style={styles.itemCartTextName}>{Item?.name}</Text>
         </View>

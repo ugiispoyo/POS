@@ -2,7 +2,6 @@ import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {Dimensions, Image, Pressable, Text, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import BottomSheet, {BottomSheetScrollView} from '@gorhom/bottom-sheet';
-import DropShadow from 'react-native-drop-shadow';
 import Animated, {FadeInDown} from 'react-native-reanimated';
 
 import Button from '@components/Button';
@@ -126,120 +125,105 @@ export default function DetailCart(): React.JSX.Element {
                   <Animated.View
                     entering={FadeInDown.delay(200)}
                     style={styles.wrapItemCart}>
-                    <DropShadow style={styles.shadowItemCart}>
-                      <Pressable
-                        onPress={() => {
-                          setZindex(9);
-                          sheetRef.current?.snapToIndex(1);
-                        }}
-                        style={styles.btnItemCart}>
-                        <Text style={styles.textItemCart}>
-                          {totalItems} item
+                    <Pressable
+                      onPress={() => {
+                        setZindex(9);
+                        sheetRef.current?.snapToIndex(1);
+                      }}
+                      style={styles.btnItemCart}>
+                      <Text style={styles.textItemCart}>{totalItems} item</Text>
+                      <View style={styles.wrapPriceCart}>
+                        <Text style={styles.textPriceCart}>
+                          {numberToIDR(totalPrice)}
                         </Text>
-                        <View style={styles.wrapPriceCart}>
-                          <Text style={styles.textPriceCart}>
-                            {numberToIDR(totalPrice)}
-                          </Text>
-                          <Image
-                            source={require('@assets/icons/cart-full.png')}
-                            style={{width: 25, height: 25}}
-                          />
-                        </View>
-                      </Pressable>
-                    </DropShadow>
+                        <Image
+                          source={require('@assets/icons/cart-full.png')}
+                          style={{width: 25, height: 25}}
+                        />
+                      </View>
+                    </Pressable>
                   </Animated.View>
                 ) : (
-                  <DropShadow
+                  <View
                     style={{
-                      ...styles.shadowHeaderFooterCart,
+                      backgroundColor: '#fff',
+                      width: '100%',
                       marginBottom: 3,
                     }}>
-                    <View style={{backgroundColor: '#fff', width: '100%'}}>
-                      <Text style={styles.textItemKeranjang}>
-                        Item Keranjang
-                      </Text>
-                    </View>
-                  </DropShadow>
+                    <Text style={styles.textItemKeranjang}>Item Keranjang</Text>
+                  </View>
                 )}
                 <BottomSheetScrollView showsVerticalScrollIndicator={false}>
                   {product.map((item, i) => (
                     <ItemCart key={i} Item={item} index={i} />
                   ))}
                 </BottomSheetScrollView>
-                <DropShadow
+                <View
                   style={{
-                    ...styles.shadowHeaderFooterCart,
-                    marginTop: 3,
+                    width: '100%',
+                    paddingHorizontal: 20,
+                    paddingBottom: 20,
+                    paddingTop: 10,
+                    backgroundColor: '#fff',
                   }}>
-                  <View
-                    style={{
-                      width: '100%',
-                      paddingHorizontal: 20,
-                      paddingBottom: 20,
-                      paddingTop: 10,
-                      backgroundColor: '#fff',
-                    }}>
-                    <View style={styles.wrapFooterCart}>
-                      {totalAfterDiscount !== totalOriginalAmount ? (
-                        <View style={styles.wrapSubFooter}>
-                          <View style={styles.wrapSubSubFooter}>
-                            <Text
-                              style={{
-                                ...styles.textFooterCart,
-                                fontSize: 18,
-                                textDecorationLine: 'line-through',
-                                fontWeight: '400',
-                              }}>
-                              {numberToIDR(totalOriginalAmount)}
-                            </Text>
-                            <Text style={styles.textFooterCart}>
-                              {numberToIDR(totalAfterDiscount)}
-                            </Text>
-                          </View>
-                          <View
+                  <View style={styles.wrapFooterCart}>
+                    {totalAfterDiscount !== totalOriginalAmount ? (
+                      <View style={styles.wrapSubFooter}>
+                        <View style={styles.wrapSubSubFooter}>
+                          <Text
                             style={{
-                              width: '37%',
+                              ...styles.textFooterCart,
+                              fontSize: 18,
+                              textDecorationLine: 'line-through',
+                              fontWeight: '400',
                             }}>
-                            <Text
-                              style={{
-                                ...styles.textFooterCart,
-                                textAlign: 'center',
-                              }}>
-                              {totalItems}
-                            </Text>
-                          </View>
+                            {numberToIDR(totalOriginalAmount)}
+                          </Text>
+                          <Text style={styles.textFooterCart}>
+                            {numberToIDR(totalAfterDiscount)}
+                          </Text>
                         </View>
-                      ) : (
-                        <View style={styles.wrapSubFooter}>
-                          <View style={styles.wrapSubSubFooter}>
-                            <Text style={styles.textFooterCart}>
-                              {numberToIDR(totalOriginalAmount)}
-                            </Text>
-                          </View>
-                          <View
+                        <View
+                          style={{
+                            width: '37%',
+                          }}>
+                          <Text
                             style={{
-                              width: '37%',
+                              ...styles.textFooterCart,
+                              textAlign: 'center',
                             }}>
-                            <Text
-                              style={{
-                                ...styles.textFooterCart,
-                                textAlign: 'center',
-                              }}>
-                              {totalItems}
-                            </Text>
-                          </View>
+                            {totalItems}
+                          </Text>
                         </View>
-                      )}
-                    </View>
-                    <DropShadow style={styles.shadowItemCart}>
-                      <Button
-                        style={{width: '100%'}}
-                        onPress={() => navigation.navigate('Checkout')}>
-                        Checkout
-                      </Button>
-                    </DropShadow>
+                      </View>
+                    ) : (
+                      <View style={styles.wrapSubFooter}>
+                        <View style={styles.wrapSubSubFooter}>
+                          <Text style={styles.textFooterCart}>
+                            {numberToIDR(totalOriginalAmount)}
+                          </Text>
+                        </View>
+                        <View
+                          style={{
+                            width: '37%',
+                          }}>
+                          <Text
+                            style={{
+                              ...styles.textFooterCart,
+                              textAlign: 'center',
+                            }}>
+                            {totalItems}
+                          </Text>
+                        </View>
+                      </View>
+                    )}
                   </View>
-                </DropShadow>
+                  <Button
+                    style={{width: '100%'}}
+                    onPress={() => navigation.navigate('Checkout')}>
+                    Checkout
+                  </Button>
+                </View>
                 {/* <BottomSheetFlatList
                   data={product}
                   keyExtractor={i => i.id}

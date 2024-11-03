@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {Image, SafeAreaView, StatusBar, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import DropShadow from 'react-native-drop-shadow';
 import Animated, {FadeInDown, FadeInUp} from 'react-native-reanimated';
 
 import TextInput from '@components/TextInput';
@@ -30,7 +29,7 @@ export default function Login(): React.JSX.Element {
         style={styles.textLogin}>
         Login
       </Animated.Text>
-      <DropShadow style={styles.shadowCardLogin}>
+      <View style={styles.shadowCardLogin}>
         <View style={styles.cardLogin}>
           <Animated.View
             entering={FadeInDown.delay(200).duration(1000).springify()}
@@ -64,7 +63,7 @@ export default function Login(): React.JSX.Element {
             <Button onPress={() => navigation.navigate('Home')}>Login</Button>
           </Animated.View>
         </View>
-      </DropShadow>
+      </View>
     </SafeAreaView>
   );
 }

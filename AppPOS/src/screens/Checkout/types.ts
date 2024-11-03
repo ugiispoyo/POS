@@ -13,4 +13,5 @@ export type T_CheckoutProvider = {
 
 export type T_FieldCheckout = {
   nominal: number;
+  address: string;
 };

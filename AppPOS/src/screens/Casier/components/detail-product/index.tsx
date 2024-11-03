@@ -73,7 +73,7 @@ export default function DetailProduct(): React.JSX.Element {
                 <Text style={styles.textDetailProduct}>{product?.name}</Text>
                 {product !== null && (
                   <Image
-                    source={{uri: `${hostname}/storage/${product.image}`}}
+                    source={{uri: `${hostname}/storage/app/public/${product.image}`}}
                     style={styles.imgDetailProduct}
                   />
                 )}

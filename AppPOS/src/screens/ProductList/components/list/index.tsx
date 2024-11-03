@@ -69,7 +69,7 @@ export default function List(): React.JSX.Element {
           }>
           <Image
             style={styles.itemImg}
-            source={{uri: `${hostname}/storage/${Item.image}`}}
+            source={{uri: `${hostname}/storage/app/public/${Item.image}`}}
           />
           <Text style={styles.itemTextName}>{Item.name}</Text>
           <View style={{display: 'flex', width: '33%', marginLeft: 3}}>

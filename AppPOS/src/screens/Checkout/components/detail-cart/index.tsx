@@ -25,7 +25,7 @@ export default function DetailCart(): React.JSX.Element {
       <ScrollView
         style={{
           marginTop: 110,
-          marginBottom: 260,
+          marginBottom: 300,
         }}>
         {product.map((item, i) => (
           <ItemCart key={i} Item={item} index={i} />
@@ -36,7 +36,7 @@ export default function DetailCart(): React.JSX.Element {
           position: 'absolute',
           bottom: 0,
           width: '100%',
-          height: 260,
+          height: 300,
           backgroundColor: '#fff',
           borderTopWidth: 1,
           borderTopColor: '#f5f5f5',
@@ -107,6 +107,16 @@ export default function DetailCart(): React.JSX.Element {
                 value: totalAfterDiscount,
                 message: 'Nominal tidak cukup!',
               },
+            }}
+            style={{width: '100%'}}
+          />
+          <TextInput
+            label="Alamat Rumah"
+            hookForm={hookForm}
+            isFormatCurrency
+            name="address"
+            hookOptions={{
+              required: 'Wajib diisi!',
             }}
             style={{width: '100%'}}
           />
