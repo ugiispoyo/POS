@@ -16,12 +16,12 @@ export default function Header(): React.JSX.Element {
         <Animated.Text
           entering={FadeInUp.delay(200).duration(1000)}
           style={styles.headerText}>
-          Ayam Geprek
+          Milk Shake
         </Animated.Text>
         <Animated.Text
           entering={FadeInDown.delay(300).duration(1000).springify().damping(3)}
           style={styles.headerTextMak}>
-          Mak Cleguk
+          Rumaisha
         </Animated.Text>
       </View>
       <View style={styles.headerRoundedBottom}></View>
