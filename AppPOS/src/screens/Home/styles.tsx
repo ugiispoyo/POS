@@ -30,7 +30,7 @@ export default StyleSheet.create({
     fontSize: 25,
     color: '#fff',
     fontWeight: '800',
-    fontFamily: 'Arial',
+    fontFamily: 'GloriaHallelujah-Regular',
   },
   headerTextMak: {
     fontSize: 50,

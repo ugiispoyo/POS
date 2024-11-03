@@ -104,7 +104,7 @@ export const useLogic = () => {
       await BluetoothEscposPrinter.printerAlign(
         BluetoothEscposPrinter.ALIGN.CENTER,
       );
-      await BluetoothEscposPrinter.printText('MILK SHAKE RUMAISHA\r\n', {
+      await BluetoothEscposPrinter.printText('RUMAISHA MILK SHAKE\r\n', {
         font: 4,
       });
       await BluetoothEscposPrinter.printText('Perumahan Puri Harmoni\r\n', {
